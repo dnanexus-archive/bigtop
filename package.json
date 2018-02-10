@@ -21,7 +21,9 @@
     "babel-jest": "^19.0.0",
     "babel-preset-react-native": "^1.9.1",
     "jest": "^19.0.2",
+    "metro-bundler": "^0.22.1",
     "react-devtools": "^2.5.2",
+    "react-devtools-core": "^3.1.0",
     "react-test-renderer": "16.0.0",
     "xopen": "1.0.0"
   },
