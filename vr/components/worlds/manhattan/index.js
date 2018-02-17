@@ -7,6 +7,7 @@ export default class Manhattan extends React.Component {
       <View>
         <PointLight
           decay={2}
+          intensity={5}
           style={{
             color: '#1482b1',
             transform: [{translate: [-50, 100, 0]}]
@@ -14,6 +15,7 @@ export default class Manhattan extends React.Component {
         ></PointLight>
         <PointLight
           decay={2}
+          intensity={5}
           style={{
             color: '#82ae2f',
             transform: [{translate: [50, 100, 0]}]

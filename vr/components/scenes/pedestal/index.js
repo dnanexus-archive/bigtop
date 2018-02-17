@@ -1,5 +1,5 @@
 import React from 'react';
-import {asset, View, Cylinder, Sphere} from 'react-vr';
+import {View, Cylinder, Sphere} from 'react-vr';
 
 export default class Pedestal extends React.Component {
   render() {
