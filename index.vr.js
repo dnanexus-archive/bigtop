@@ -9,8 +9,8 @@ export default class ManhattanProject extends React.Component {
   render() {
     return (
       <World>
-        <ChromoPlatform radius={1500}></ChromoPlatform>
-        <PointCloud points={dataPoints}></PointCloud>
+        <ChromoPlatform radius={1500} eyeHeight={150}></ChromoPlatform>
+        <PointCloud points={dataPoints} scaleFactor={[1, 20, 1]} translationFactor={[0, -150, 0]}></PointCloud>
       </World>
     );
   }

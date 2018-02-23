@@ -13,7 +13,7 @@ export default class ChromoPlatform extends React.Component {
           lit={true}
           style={{
             color: '#fff',
-            transform: [{translate: [0, -150, 0]}],
+            transform: [{translate: [0, -this.props.eyeHeight, 0]}],
             opacity: 0.6
           }}
         ></Cylinder>
