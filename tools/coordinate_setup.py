@@ -55,8 +55,9 @@ def convert_to_cartesian(r, sigma, y_polar):
 	return x, y, z
 
 infile = open(sys.argv[1], "r")
-outfile = open(sys.argv[1][:-4] + ".coords.txt", "w")
+outfile = open(sys.argv[1][:-4] + ".coords.json", "w")
 
+outfile.write("[\n")
 for line in infile:
 	if line.split("\t")[0] != "MarkerName":
 		if line.split("\t")[1] != "No_info":
@@ -64,9 +65,16 @@ for line in infile:
 			cartesian_coords = convert_to_cartesian(polar_coords[0], polar_coords[1], polar_coords[2])
 
 			split = line.strip().split("\t")
-			outfile.write( "\t".join([
-				split[0], str(cartesian_coords[0]), str(cartesian_coords[1]), str(cartesian_coords[2])
-				]) + "\n")
+			outfile.write(
+				"\t{\n" +
+				"\t\t\"id\": \"" + split[0] + "\",\n" +
+				"\t\t\"coords\": [" + ",".join([
+					str(cartesian_coords[0]), 
+					str(cartesian_coords[1]),
+					str(cartesian_coords[2])
+				]) + "]\n\t},\n"
+			)
+outfile.write("]\n")
 
 print "Successfully converted to Cartesian coordinates."
 infile.close()

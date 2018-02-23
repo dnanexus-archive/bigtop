@@ -1,0 +1,1 @@
+Static assets should go here if they're going to be referenced dynamically from the application.
