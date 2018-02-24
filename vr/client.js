@@ -4,11 +4,21 @@
 
 // Auto-generated content.
 import {VRInstance} from 'react-vr-web';
+import * as THREE from 'three';
+import * as OVRUI from 'ovrui';
+import ControllerRayCaster from 'react-vr-controller-raycaster';
 
 function init(bundle, parent, options) {
+  const scene = new THREE.Scene();
+
   const vr = new VRInstance(bundle, 'manhattan_project', parent, {
-    // Add custom options here
     ...options,
+    scene,
+    raycasters: [
+      new ControllerRayCaster({scene, color: '#ff0000'}),
+      new OVRUI.MouseRayCaster(),
+    ],
+    cursorVisibility: 'visible'
   });
   vr.render = function() {
     // Any custom behavior you want to perform on each frame goes here
