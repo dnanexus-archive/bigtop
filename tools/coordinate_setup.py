@@ -45,11 +45,6 @@ def convert_to_polar(line):
 	return r, sigma, y_polar
 
 def convert_to_cartesian(r, sigma, y_polar):
-
-	########## TEST BLOCK - TO BE REMOVED BEFORE RUNNING FOR REAL, SETS RADIUS ALWAYS AT ONE ##########
-#	r = 500
-	########## TEST BLOCK - TO BE REMOVED BEFORE RUNNING FOR REAL, SETS RADIUS ALWAYS AT ONE ##########
-
 	x = r * math.cos(sigma)
 	y = -math.log10(y_polar)
 	z = r * math.sin(sigma)
@@ -60,21 +55,26 @@ outfile = open(sys.argv[1][:-4] + ".coords.json", "w")
 
 outfile.write("[\n")
 for line in infile:
-	if line.split("\t")[0] != "MarkerName":
-		if line.split("\t")[1] != "No_info":
-			polar_coords = convert_to_polar(line)
-			cartesian_coords = convert_to_cartesian(polar_coords[0], polar_coords[1], polar_coords[2])
+	try:
+		if line.split("\t")[0] != "MarkerName":
+			if line.split("\t")[1] != "No_info":
+				polar_coords = convert_to_polar(line)
+				cartesian_coords = convert_to_cartesian(polar_coords[0], polar_coords[1], polar_coords[2])
 
-			split = line.strip().split("\t")
-			outfile.write(
-				"\t{\n" +
-				"\t\t\"id\": \"" + split[0] + "\",\n" +
-				"\t\t\"coords\": [" + ",".join([
-					str(cartesian_coords[0]),
-					str(cartesian_coords[1]),
-					str(cartesian_coords[2])
-				]) + "]\n\t},\n"
-			)
+				split = line.strip().split("\t")
+				outfile.write(
+					"\t{\n" +
+					"\t\t\"id\": \"" + split[0] + "\",\n" +
+					"\t\t\"coords\": [" + ",".join([
+						str(cartesian_coords[0]),
+						str(cartesian_coords[1]),
+						str(cartesian_coords[2])
+					]) + "]\n\t},\n"
+				)
+	except IndexError:
+		print line
+		print "Exited with error on above line."
+		sys.exit()
 outfile.write("]\n")
 
 print "Successfully converted to Cartesian coordinates."
