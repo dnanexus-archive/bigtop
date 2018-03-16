@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Cylinder, Plane} from 'react-vr';
+import {View, Cylinder, Plane, asset} from 'react-vr';
 
 export default class ChromoPlatform extends React.Component {
   render() {
@@ -8,7 +8,7 @@ export default class ChromoPlatform extends React.Component {
         <Cylinder
           radiusTop={this.props.radius}
           radiusBottom={this.props.radius}
-          dimHeight={1}
+          dimHeight={0.1}
           segments={360}
           lit={true}
           style={{
@@ -17,15 +17,18 @@ export default class ChromoPlatform extends React.Component {
             opacity: 0.6
           }}
         ></Cylinder>
-        <Plane
-          dimWidth={5}
-          dimHeight={400}
-          lit={true}
+        <Cylinder
+          radiusTop={60}
+          radiusBottom={60}
+          dimHeight={2}
+          segments={72}
           style={{
-            transform: [{translate: [0, 0, -this.props.radius]}]
+            color: '#ffffff',
+            transform: [{translate: [0, -this.props.eyeHeight + 0.1, 0]}],
+            opacity: 1
           }}
-        >
-        </Plane>
+          texture={asset('marble.jpg')}
+        ></Cylinder>
       </View>
     )
   }

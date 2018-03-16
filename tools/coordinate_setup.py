@@ -17,8 +17,8 @@ chr_lengths_list = [248956422, 242193529, 198295559, 190214555, 181538259, 17080
 total = sum(chr_lengths_list)
 
 ##### spacer variable introduces space between each chromosome #####
-spacer = 0
-total += spacer * len(chr_lengths_list)
+#spacer = 0
+#total += spacer * len(chr_lengths_list)
 
 # functions
 def convert_to_polar(line):
@@ -32,24 +32,20 @@ def convert_to_polar(line):
 	if chr_num in chr_names_list:
 		position = chr_names_list.index(chr_num)
 		while position >= 0:
-			dist_from_genome_start += chr_lengths_list[position]
-			dist_from_genome_start += spacer
 			position -= 1
+			if position >= 0:
+				dist_from_genome_start += chr_lengths_list[position]
+#			dist_from_genome_start += spacer
 	else:
 		position = ""
 	# reduce to polar (between 0 and 2pi - math.pi)
-	sigma = float(dist_from_genome_start) / total * 2 * math.pi
+	sigma = float(dist_from_genome_start) / total * 2 * math.pi - (math.pi / 2)
 	# CHANGING THE SCALE TO BE BETWEEN 100-1,000 #
 	r = (float(allele_freq) * 900) + 100
 	y_polar = float(pval)
 	return r, sigma, y_polar
 
 def convert_to_cartesian(r, sigma, y_polar):
-
-	########## TEST BLOCK - TO BE REMOVED BEFORE RUNNING FOR REAL, SETS RADIUS ALWAYS AT ONE ##########
-#	r = 500
-	########## TEST BLOCK - TO BE REMOVED BEFORE RUNNING FOR REAL, SETS RADIUS ALWAYS AT ONE ##########
-
 	x = r * math.cos(sigma)
 	y = -math.log10(y_polar)
 	z = r * math.sin(sigma)
@@ -60,21 +56,30 @@ outfile = open(sys.argv[1][:-4] + ".coords.json", "w")
 
 outfile.write("[\n")
 for line in infile:
-	if line.split("\t")[0] != "MarkerName":
-		if line.split("\t")[1] != "No_info":
-			polar_coords = convert_to_polar(line)
-			cartesian_coords = convert_to_cartesian(polar_coords[0], polar_coords[1], polar_coords[2])
+	try:
+		if line.split("\t")[0] != "MarkerName":
+			if line.split("\t")[1] != "No_info":
+				polar_coords = convert_to_polar(line)
+				cartesian_coords = convert_to_cartesian(polar_coords[0], polar_coords[1], polar_coords[2])
 
-			split = line.strip().split("\t")
-			outfile.write(
-				"\t{\n" +
-				"\t\t\"id\": \"" + split[0] + "\",\n" +
-				"\t\t\"coords\": [" + ",".join([
-					str(cartesian_coords[0]),
-					str(cartesian_coords[1]),
-					str(cartesian_coords[2])
-				]) + "]\n\t},\n"
-			)
+				split = line.strip().split("\t")
+				outfile.write(
+					"\t{\n" +
+					"\t\t\"id\": \"" + split[0] + "\",\n" +
+					"\t\t\"coords\": [" + ",".join([
+						str(cartesian_coords[0]),
+						str(cartesian_coords[1]),
+						str(cartesian_coords[2])
+					]) + "],\n" +
+					"\t\t\"chr\": \"" + split[1] + "\",\n" +
+					"\t\t\"location\": " + str(split[2]) + ",\n" +
+					"\t\t\"frequency\": " + str(split[5]) + ",\n" +
+					"\t\t\"p\": " + str(split[6]) + "\n\t},\n"
+				)
+	except IndexError:
+		print line
+		print "Exited with error on above line."
+		sys.exit()
 outfile.write("]\n")
 
 print "Successfully converted to Cartesian coordinates."
