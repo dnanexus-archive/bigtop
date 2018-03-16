@@ -70,7 +70,11 @@ for line in infile:
 						str(cartesian_coords[0]),
 						str(cartesian_coords[1]),
 						str(cartesian_coords[2])
-					]) + "]\n\t},\n"
+					]) + "],\n" +
+					"\t\t\"chr\": \"" + split[1] + "\",\n" +
+					"\t\t\"location\": " + str(split[2]) + ",\n" +
+					"\t\t\"frequency\": " + str(split[5]) + ",\n" +
+					"\t\t\"p\": " + str(split[6]) + "\n\t},\n"
 				)
 	except IndexError:
 		print line
