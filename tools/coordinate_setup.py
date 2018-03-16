@@ -38,7 +38,7 @@ def convert_to_polar(line):
 	else:
 		position = ""
 	# reduce to polar (between 0 and 2pi - math.pi)
-	sigma = float(dist_from_genome_start) / total * 2 * math.pi
+	sigma = float(dist_from_genome_start) / total * 2 * math.pi - (math.pi / 2)
 	# CHANGING THE SCALE TO BE BETWEEN 100-1,000 #
 	r = (float(allele_freq) * 900) + 100
 	y_polar = float(pval)
