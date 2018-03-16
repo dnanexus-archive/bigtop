@@ -39,14 +39,15 @@ def convert_to_polar(line):
 		position = ""
 	# reduce to polar (between 0 and 2pi - math.pi)
 	sigma = float(dist_from_genome_start) / total * 2 * math.pi
-	r = float(allele_freq)
+	# CHANGING THE SCALE TO BE BETWEEN 100-1,000 #
+	r = (float(allele_freq) * 900) + 100
 	y_polar = float(pval)
 	return r, sigma, y_polar
 
 def convert_to_cartesian(r, sigma, y_polar):
 
 	########## TEST BLOCK - TO BE REMOVED BEFORE RUNNING FOR REAL, SETS RADIUS ALWAYS AT ONE ##########
-	r = 500
+#	r = 500
 	########## TEST BLOCK - TO BE REMOVED BEFORE RUNNING FOR REAL, SETS RADIUS ALWAYS AT ONE ##########
 
 	x = r * math.cos(sigma)
@@ -69,7 +70,7 @@ for line in infile:
 				"\t{\n" +
 				"\t\t\"id\": \"" + split[0] + "\",\n" +
 				"\t\t\"coords\": [" + ",".join([
-					str(cartesian_coords[0]), 
+					str(cartesian_coords[0]),
 					str(cartesian_coords[1]),
 					str(cartesian_coords[2])
 				]) + "]\n\t},\n"
