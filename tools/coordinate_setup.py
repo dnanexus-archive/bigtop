@@ -17,8 +17,8 @@ chr_lengths_list = [248956422, 242193529, 198295559, 190214555, 181538259, 17080
 total = sum(chr_lengths_list)
 
 ##### spacer variable introduces space between each chromosome #####
-spacer = 0
-total += spacer * len(chr_lengths_list)
+#spacer = 0
+#total += spacer * len(chr_lengths_list)
 
 # functions
 def convert_to_polar(line):
@@ -33,8 +33,9 @@ def convert_to_polar(line):
 		position = chr_names_list.index(chr_num)
 		while position >= 0:
 			position -= 1
-			dist_from_genome_start += chr_lengths_list[position]
-			dist_from_genome_start += spacer
+			if position >= 0:
+				dist_from_genome_start += chr_lengths_list[position]
+#			dist_from_genome_start += spacer
 	else:
 		position = ""
 	# reduce to polar (between 0 and 2pi - math.pi)
