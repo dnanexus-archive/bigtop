@@ -32,9 +32,9 @@ def convert_to_polar(line):
 	if chr_num in chr_names_list:
 		position = chr_names_list.index(chr_num)
 		while position >= 0:
+			position -= 1
 			dist_from_genome_start += chr_lengths_list[position]
 			dist_from_genome_start += spacer
-			position -= 1
 	else:
 		position = ""
 	# reduce to polar (between 0 and 2pi - math.pi)
