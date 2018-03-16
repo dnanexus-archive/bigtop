@@ -6,7 +6,7 @@ export default class Manhattan extends React.Component {
     return (
       <View>
         <PointLight
-          intensity={1}
+          intensity={3}
           style={{
             color: '#fff',
             transform: [{translate: [0, 100, 0]}]

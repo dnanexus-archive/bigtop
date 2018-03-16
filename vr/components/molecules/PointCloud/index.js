@@ -10,7 +10,8 @@ export default class PointCloud extends React.Component {
   render() {
     let points = map((point) => {
       let adjustedCoords = translate(this.props.translationFactor, scale(this.props.scaleFactor, point.coords));
-      return <Point cartesianCoords={adjustedCoords} key={point.id} />
+      if (point.p < 0.01)
+        return <Point cartesianCoords={adjustedCoords} key={point.id} />
     }, this.props.points);
 
     return (

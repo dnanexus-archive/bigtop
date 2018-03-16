@@ -9,8 +9,6 @@ export default class Point extends React.Component {
         <Sphere
           radius={2}
           lit={true}
-          widthSegments={1}
-          heightSegments={1}
           style={{
             color: "#ff0000",
             transform: [{translate: cartesianCoords}]

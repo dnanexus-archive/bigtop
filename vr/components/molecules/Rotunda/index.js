@@ -63,7 +63,8 @@ export default class Rotunda extends React.Component {
             style={{
               opacity: 1,
               width: cylWidth,
-              height: cylHeight
+              height: cylHeight,
+              transform: [{translate: [0, -eyeHeight, 0]}]
             }}
           >
             {panels}

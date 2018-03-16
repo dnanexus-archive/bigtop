@@ -12,7 +12,7 @@ export default class ChromoPlatform extends React.Component {
           segments={360}
           lit={true}
           style={{
-            color: '#000',
+            color: '#fff',
             transform: [{translate: [0, -this.props.eyeHeight, 0]}],
             opacity: 0.6
           }}
