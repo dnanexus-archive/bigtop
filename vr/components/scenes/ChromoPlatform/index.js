@@ -17,15 +17,6 @@ export default class ChromoPlatform extends React.Component {
             opacity: 0.6
           }}
         ></Cylinder>
-        <Plane
-          dimWidth={5}
-          dimHeight={400}
-          lit={true}
-          style={{
-            transform: [{translate: [0, 0, -this.props.radius]}]
-          }}
-        >
-        </Plane>
       </View>
     )
   }
