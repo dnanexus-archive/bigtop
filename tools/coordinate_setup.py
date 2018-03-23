@@ -23,10 +23,10 @@ total = sum(chr_lengths_list)
 # functions
 def convert_to_polar(line):
 	splitline = line.strip().split("\t")
-	chr_num = splitline[1]
-	chr_pos = splitline[2]
-	allele_freq = splitline[5]
-	pval = splitline[6]
+	chr_num = splitline[2]
+	chr_pos = splitline[3]
+	allele_freq = splitline[6]
+	pval = splitline[7]
 	dist_from_genome_start = int(chr_pos)
 
 	if chr_num in chr_names_list:
@@ -65,16 +65,17 @@ for line in infile:
 				split = line.strip().split("\t")
 				outfile.write(
 					"\t{\n" +
-					"\t\t\"id\": \"" + split[0] + "\",\n" +
+					"\t\t\"id\": \"" + split[1] + "\",\n" +
+					"\t\t\"gene\": \"" + split[0] + "\",\n" +
 					"\t\t\"coords\": [" + ",".join([
 						str(cartesian_coords[0]),
 						str(cartesian_coords[1]),
 						str(cartesian_coords[2])
 					]) + "],\n" +
-					"\t\t\"chr\": \"" + split[1] + "\",\n" +
-					"\t\t\"location\": " + str(split[2]) + ",\n" +
-					"\t\t\"frequency\": " + str(split[5]) + ",\n" +
-					"\t\t\"p\": " + str(split[6]) + "\n\t},\n"
+					"\t\t\"chr\": \"" + split[2] + "\",\n" +
+					"\t\t\"location\": " + str(split[3]) + ",\n" +
+					"\t\t\"frequency\": " + str(split[6]) + ",\n" +
+					"\t\t\"p\": " + str(split[7]) + "\n\t},\n"
 				)
 	except IndexError:
 		print line
