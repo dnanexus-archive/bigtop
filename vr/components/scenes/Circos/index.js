@@ -4,7 +4,7 @@ import {createChromosomeScale} from '../../../utils';
 import Floor from '../../molecules/Floor';
 import Rotunda from '../../molecules/Rotunda';
 import PointCloud from '../../molecules/PointCloud';
-import dataPoints from '../../../../data/10k_GIANT_height.located.coords.json';
+import dataPoints from '../../../../data/GIANT_random250.located.coords.json';
 
 export default class Circos extends React.Component {
   constructor(props) {
