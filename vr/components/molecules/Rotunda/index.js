@@ -64,12 +64,12 @@ export default class Rotunda extends React.Component {
         position: 'absolute',
         transform: [
           {rotateY: -180},
-          {translate: [0, (-eyeHeight * 0.00325) + (index * 3), 0]}
+          {translate: [0, (-eyeHeight * 0.10325) + (radius*0.7 * index), 0]}
         ],
       };
     };
-
-    const cylPanelLayer = {width: cylWidth, height: cylHeight, density: cylWidth};
+    console.log("radius:", radius);
+    const cylPanelLayer = {width: cylWidth, height: cylHeight, density: cylWidth, radius: radius};
 
     const createPanel = function(index) {
       return (
