@@ -29,10 +29,12 @@ export default class Circos extends React.Component {
       chromDict
     } = this.state;
 
+    const colorScheme = ['#E41A1C', '#A73C52', '#6B5F88', '#3780B3', '#3F918C', '#47A266','#53A651', '#6D8470', '#87638F', '#A5548D', '#C96555', '#ED761C','#FF9508', '#FFC11A', '#FFEE2C', '#EBDA30', '#CC9F2C', '#AD6428','#BB614F', '#D77083', '#F37FB8', '#DA88B3', '#B990A6', '#999999'];
+
     return (
       <View>
         <Floor chromDict={chromDict} radius={radius + 200} eyeHeight={eyeHeight}></Floor>
-        <Rotunda chromDict={chromDict} radius={radius} eyeHeight={eyeHeight} />
+        <Rotunda chromDict={chromDict} radius={radius} eyeHeight={eyeHeight} colorScheme={colorScheme} />
         <PointCloud points={dataPoints} scaleFactor={[1, 5, 1]} translationFactor={[0, -eyeHeight, 0]}></PointCloud>
       </View>
     )
