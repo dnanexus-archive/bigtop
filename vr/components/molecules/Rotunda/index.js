@@ -74,4 +74,3 @@ export default class Rotunda extends React.Component {
     )
   }
 }
-

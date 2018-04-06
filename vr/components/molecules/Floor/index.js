@@ -1,19 +1,26 @@
 import React from 'react';
 import {View, Cylinder, Plane, asset} from 'react-vr';
 
-export default class ChromoPlatform extends React.Component {
+export default class Floor extends React.Component {
+  
   render() {
+    const {
+      chromDict,
+      radius,
+      eyeHeight
+    } = this.props;
+
     return (
       <View>
         <Cylinder
-          radiusTop={this.props.radius}
-          radiusBottom={this.props.radius}
+          radiusTop={radius}
+          radiusBottom={radius}
           dimHeight={0.1}
           segments={360}
           lit={true}
           style={{
             color: '#fff',
-            transform: [{translate: [0, -this.props.eyeHeight, 0]}],
+            transform: [{translate: [0, -eyeHeight, 0]}],
             opacity: 0.6
           }}
         ></Cylinder>
@@ -24,7 +31,7 @@ export default class ChromoPlatform extends React.Component {
           segments={72}
           style={{
             color: '#ffffff',
-            transform: [{translate: [0, -this.props.eyeHeight + 0.1, 0]}],
+            transform: [{translate: [0, -eyeHeight + 0.1, 0]}],
             opacity: 1
           }}
           texture={asset('marble.jpg')}
