@@ -6,13 +6,18 @@ export default class Manhattan extends React.Component {
     return (
       <View>
         <PointLight
-          intensity={3}
+          intensity={0.5}
           style={{
             color: '#fff',
             transform: [{translate: [0, 100, 0]}]
           }}
         />
-        <AmbientLight />
+        <AmbientLight
+          intensity={0.25}
+          style={{
+            color: '#fff'
+          }}
+        />
         {this.props.children}
       </View>
     )

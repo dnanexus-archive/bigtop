@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Sphere} from 'react-vr';
+import {Sphere} from 'react-vr';
 
 export default class Point extends React.Component {
   render() {
@@ -10,8 +10,8 @@ export default class Point extends React.Component {
           radius={2}
           lit={true}
           style={{
-            color: "#ff0000",
-            transform: [{translate: cartesianCoords}]
+            transform: [{translate: cartesianCoords}],
+            color: '#ffff00'
           }}
         >
         </Sphere>

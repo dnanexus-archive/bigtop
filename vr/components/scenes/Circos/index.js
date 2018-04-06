@@ -35,7 +35,7 @@ export default class Circos extends React.Component {
       <View>
         <Floor chromDict={chromDict} radius={radius + 200} eyeHeight={eyeHeight}></Floor>
         <Rotunda chromDict={chromDict} radius={radius} eyeHeight={eyeHeight} colorScheme={colorScheme} />
-        <PointCloud points={dataPoints} scaleFactor={[1, 5, 1]} translationFactor={[0, -eyeHeight, 0]}></PointCloud>
+        <PointCloud points={dataPoints} scaleFactor={[1, 50, 1]} translationFactor={[0, -eyeHeight, 0]}></PointCloud>
       </View>
     )
   }
