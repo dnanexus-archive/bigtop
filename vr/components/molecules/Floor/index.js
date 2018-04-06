@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Cylinder, Plane, asset} from 'react-vr';
+import {View, Cylinder, Plane, Image, texture, asset} from 'react-vr';
 
 export default class Floor extends React.Component {
   
@@ -34,7 +34,7 @@ export default class Floor extends React.Component {
             transform: [{translate: [0, -eyeHeight + 0.1, 0]}],
             opacity: 1
           }}
-          texture={asset('marble.jpg')}
+          texture={texture('fps')}
         ></Cylinder>
       </View>
     )

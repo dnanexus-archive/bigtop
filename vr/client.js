@@ -20,10 +20,26 @@ function init(bundle, parent, options) {
     ],
     cursorVisibility: 'visible'
   });
-  vr.render = function() {
-    // Any custom behavior you want to perform on each frame goes here
+
+  const canvas = document.createElement('canvas');
+  const w = 256;
+  const h = 256;
+  const pad = 50;
+
+  canvas.width = w;
+  canvas.height = h;
+  const cx = canvas.getContext('2d')
+  cx.rotate(-90 * (Math.PI / 180));
+
+  vr.registerTextureSource('fps', canvas);
+
+  vr.render = function(ms) {
+    cx.fillText("100,100",100, 100);
+    cx.fillText("100,-100",100, -100);
+    cx.fillText("-50,50",-50, 50);
+    cx.fillText("-100,-100",-100, -100);
   };
-  // Begin the animation loop
+
   vr.start();
   return vr;
 }
