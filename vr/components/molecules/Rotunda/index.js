@@ -68,7 +68,6 @@ export default class Rotunda extends React.Component {
         ],
       };
     };
-    console.log("radius:", radius);
     const cylPanelLayer = {width: cylWidth, height: cylHeight, density: cylWidth, radius: radius};
 
     const createPanel = function(index) {
@@ -81,7 +80,7 @@ export default class Rotunda extends React.Component {
 
     return (
       <View>
-        {R.map(createPanel, R.range(-5,20))}
+        {R.map(createPanel, R.range(-5, 20))}
       </View>
     )
   }
