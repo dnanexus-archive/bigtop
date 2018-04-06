@@ -4,7 +4,7 @@ import {createChromosomeScale} from '../../../utils';
 import Floor from '../../molecules/Floor';
 import Rotunda from '../../molecules/Rotunda';
 import PointCloud from '../../molecules/PointCloud';
-import dataPoints from '../../../../data/GIANT_random250.located.coords.json';
+import dataPoints from '../../../../data/1k_GIANT_height.gene_loc.coords.json';
 
 export default class Circos extends React.Component {
   constructor(props) {
@@ -22,7 +22,8 @@ export default class Circos extends React.Component {
   render() {
     const {
       radius,
-      eyeHeight
+      eyeHeight,
+      threshold
     } = this.props;
 
     const {
@@ -35,7 +36,7 @@ export default class Circos extends React.Component {
       <View>
         <Floor chromDict={chromDict} radius={radius + 200} eyeHeight={eyeHeight}></Floor>
         <Rotunda chromDict={chromDict} radius={radius} eyeHeight={eyeHeight} colorScheme={colorScheme} />
-        <PointCloud points={dataPoints} scaleFactor={[1, 50, 1]} translationFactor={[0, -eyeHeight, 0]}></PointCloud>
+        <PointCloud points={dataPoints} scaleFactor={[1, 50, 1]} translationFactor={[0, -eyeHeight, 0]} threshold={threshold}/>
       </View>
     )
   }
