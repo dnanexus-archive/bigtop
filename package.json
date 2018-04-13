@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "d3-shape": "^1.2.0",
     "ovrui": "~2.0.0",
     "ramda": "^0.25.0",
     "react": "16.0.0",

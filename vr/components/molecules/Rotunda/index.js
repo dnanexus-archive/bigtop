@@ -68,7 +68,6 @@ export default class Rotunda extends React.Component {
         ],
       };
     };
-    console.log("radius:", radius);
     const cylPanelLayer = {width: cylWidth, height: cylHeight, density: cylWidth, radius: radius};
 
     const createPanel = function(index) {
