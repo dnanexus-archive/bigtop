@@ -1,8 +1,12 @@
 import React from 'react';
 import {AppRegistry, asset} from 'react-vr';
+import {Provider} from 'react-redux';
+import configureStore from './vr/store/configureStore';
 import World from './vr/components/worlds/Manhattan';
 import Circos from './vr/components/scenes/Circos';
 import ThresholdDisc from './vr/components/atoms/ThresholdDisc';
+
+store = configureStore();
 
 export default class ManhattanProject extends React.Component {
   render() {
@@ -11,10 +15,12 @@ export default class ManhattanProject extends React.Component {
     let threshold = 1e-6;
 
     return (
-      <World>
-        <Circos radius={RADIUS} eyeHeight={EYE_HEIGHT} threshold={threshold} />
-        <ThresholdDisc threshold={threshold} radius={RADIUS} eyeHeight={EYE_HEIGHT} />
-      </World>
+      <Provider store={store}>
+        <World>
+          <Circos radius={RADIUS} eyeHeight={EYE_HEIGHT} threshold={threshold} />
+          <ThresholdDisc threshold={threshold} radius={RADIUS} eyeHeight={EYE_HEIGHT} />
+        </World>
+      </Provider>
     );
   }
 };

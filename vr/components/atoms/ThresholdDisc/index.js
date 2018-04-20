@@ -6,7 +6,6 @@ export default class ThresholdDisc extends React.Component {
     let {radius, threshold, eyeHeight} = this.props;
 
     let eyeThresholdScale = eyeHeight / (1 - 1e-7);
-    console.log(-eyeHeight + (threshold * eyeThresholdScale))
 
     return (
         <Cylinder
