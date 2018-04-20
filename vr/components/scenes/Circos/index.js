@@ -45,6 +45,7 @@ class Circos extends React.Component {
 
     // OPTIONS:
     const yRange = [0, 5];
+    const optionalCeilingP = 20;
     const innerRadius = radius * 0.1;
     const yTransform = y => -1 * Math.log10(y);
 
@@ -55,8 +56,12 @@ class Circos extends React.Component {
       .domain(extent(data, d => d[keys.r]))
       .range([innerRadius, radius]);
 
+    const dataMaxP = max(data, d => yTransform(d[keys.y]));
+    const maxP = optionalCeilingP || dataMaxP;
+
+    console.log("max -log10(p) from data:", dataMaxP, "chosen value:", maxP);
     let yScale = scaleLinear()
-      .domain([0, max(data, d => yTransform(d[keys.y]))])
+      .domain([0, maxP])
       .range(yRange);
 
     let thetaScale = scaleLinear()
@@ -65,13 +70,13 @@ class Circos extends React.Component {
 
     const calculateCoordinates = function(d) {
       let r = rScale(d[keys.r]);
+      // let transformedY = yTransform(d[keys.y]); // use this if we ever need the transformed p-values
       let y = yScale(yTransform(d[keys.y]));
       let c = chromDict[d[keys.chrom]];
 
       let chromPos = c.start + d[keys.pos];
       let theta = thetaScale(chromPos);
       let {x, z} = polarToCartesian(r, theta);
-      // return {...d, x: x, y: y, z: z};
       return {...d, coords: [x, y, z]};
     }
 
