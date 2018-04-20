@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, Cylinder, Plane} from 'react-vr';
+import {connect} from 'react-redux';
 import {createChromosomeScale} from '../../../utils';
 import Floor from '../../molecules/Floor';
 import Rotunda from '../../molecules/Rotunda';
 import PointCloud from '../../molecules/PointCloud';
 import dataPoints from '../../../../data/90k_GIANT_height_filtered.gene_loc.coords.json';
 
-export default class Circos extends React.Component {
+class Circos extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,10 +35,20 @@ export default class Circos extends React.Component {
 
     return (
       <View>
-        <Floor chromDict={chromDict} radius={radius + 200} eyeHeight={eyeHeight}></Floor>
+        <Floor chromDict={chromDict} radius={radius + 2} eyeHeight={eyeHeight}></Floor>
         <Rotunda chromDict={chromDict} radius={radius} eyeHeight={eyeHeight} colorScheme={colorScheme} />
         <PointCloud points={dataPoints} scaleFactor={[1, 50, 1]} translationFactor={[0, -eyeHeight, 0]} threshold={threshold}/>
       </View>
     )
   }
 }
+
+mapStateToProps = (state) => {
+  return {
+    radius: state.world.radius,
+    eyeHeight: state.world.eyeHeight,
+    threshold: state.user.pCutoff
+  }
+}
+
+export default connect(mapStateToProps)(Circos);
