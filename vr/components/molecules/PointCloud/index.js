@@ -13,7 +13,7 @@ export default class PointCloud extends React.Component {
     let points = filter(identity, map((point) => {
       let adjustedCoords = translate(this.props.translationFactor, scale(this.props.scaleFactor, point.coords));
       if (point.p < threshold)
-        return <Point cartesianCoords={adjustedCoords} key={point.id} />
+        return <Point cartesianCoords={adjustedCoords} key={point.id} id={point.id} />
     }, this.props.points));
 
     return (

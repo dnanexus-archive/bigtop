@@ -6,6 +6,12 @@ export default combineReducers({
     return state;
   },
   user: (state = initialState.user, action) => {
-    return state;
+    switch (action && action.type) {
+      case 'SET_SELECTED_POINT':
+        return {...state, selectedPoint: action.id}
+
+      default:
+        return state;
+    }
   }
 });
