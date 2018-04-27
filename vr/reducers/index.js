@@ -13,5 +13,8 @@ export default combineReducers({
       default:
         return state;
     }
+  },
+  reference: (state = initialState.reference, action) => {
+    return state;
   }
 });
