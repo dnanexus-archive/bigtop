@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "d3-array": "^1.2.1",
+    "d3-axis": "^1.0.8",
     "d3-scale": "^2.0.0",
     "d3-shape": "^1.2.0",
     "ovrui": "~2.0.0",

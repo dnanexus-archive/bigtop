@@ -67,10 +67,12 @@ class Circos extends React.Component {
 
     let coordinates = R.map(calculateCoordinates, data);
 
+    let yScaleDomain = yScale.domain();
+
     return (
       <View>
         <Floor chromDict={chromDict} radius={radius + 2} eyeHeight={eyeHeight}></Floor>
-        <Rotunda chromDict={chromDict} radius={radius} eyeHeight={eyeHeight} colorScheme={colorScheme} />
+        <Rotunda yScaleDomain={yScaleDomain} />
         <PointCloud points={coordinates} scaleFactor={[1, 50, 1]} translationFactor={[0, -eyeHeight, 0]} threshold={threshold}/>
       </View>
     )
