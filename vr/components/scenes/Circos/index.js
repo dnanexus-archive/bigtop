@@ -6,6 +6,7 @@ import {createChromosomeScale} from '../../../utils';
 import Floor from '../../molecules/Floor';
 import Rotunda from '../../molecules/Rotunda';
 import PointCloud from '../../molecules/PointCloud';
+import Toothpick from '../../atoms/Toothpick';
 import {scaleLinear} from 'd3-scale';
 import {min, max, extent} from 'd3-array';
 import data from '../../../../data/90k_GIANT_height_filtered.gene_loc.coords.json';
@@ -74,6 +75,7 @@ class Circos extends React.Component {
         <Floor chromDict={chromDict} radius={radius + 2} eyeHeight={eyeHeight}></Floor>
         <Rotunda yScaleDomain={yScaleDomain} />
         <PointCloud points={coordinates} scaleFactor={[1, 50, 1]} translationFactor={[0, -eyeHeight, 0]} threshold={threshold}/>
+        <Toothpick></Toothpick>
       </View>
     )
   }
