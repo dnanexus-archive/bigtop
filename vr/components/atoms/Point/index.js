@@ -1,33 +1,48 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Sphere} from 'react-vr';
 import {connect} from 'react-redux';
 import * as actions from './actions';
 
-const Point = (props) => {
-  let {cartesianCoords, id, selectable = true, selectedPoint} = props;
+class Point extends Component {
+  constructor() {
+    super();
 
-  const onEnter = () => props.setSelectedPoint(id)
-  const onExit = () => props.setSelectedPoint(null)
+    this.state = {
+      selected: false
+    };
+  }
 
-  return (
-      <Sphere
-        radius={2}
-        lit={true}
-        style={{
-          transform: [{translate: cartesianCoords}],
-          color: selectedPoint === id ? '#00bbff' : '#ffff00'
-        }}
-        onEnter={onEnter}
-        onExit={onExit}
-      >
-      </Sphere>
-  )
+  render() {
+    let {cartesianCoords, id, selectable = true} = this.props;
+
+    const onEnter = () => {
+      this.props.setSelectedPoint(id);
+      this.setState({selected: true});
+    }
+
+    const onExit = () => {
+      this.props.setSelectedPoint(null);
+      this.setState({selected: false});
+    }
+
+    return (
+        <Sphere
+          radius={2}
+          lit={true}
+          style={{
+            transform: [{translate: cartesianCoords}],
+            color: this.state.selected ? '#00bbff' : '#ffff00'
+          }}
+          onEnter={onEnter}
+          onExit={onExit}
+        >
+        </Sphere>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
-  return {
-    selectedPoint: state.user.selectedPoint
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, actions)(Point);
