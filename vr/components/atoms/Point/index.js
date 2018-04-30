@@ -16,12 +16,12 @@ class Point extends Component {
     let {cartesianCoords, id, selectable = true} = this.props;
 
     const onEnter = () => {
-      this.props.setSelectedPoint(id);
+      this.props.setSelectedPoint(id, cartesianCoords);
       this.setState({selected: true});
     }
 
     const onExit = () => {
-      this.props.setSelectedPoint(null);
+      this.props.setSelectedPoint(null, null);
       this.setState({selected: false});
     }
 

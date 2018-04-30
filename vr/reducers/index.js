@@ -8,7 +8,10 @@ export default combineReducers({
   user: (state = initialState.user, action) => {
     switch (action && action.type) {
       case 'SET_SELECTED_POINT':
-        return {...state, selectedPoint: action.id}
+        return {...state,
+          selectedPoint: action.id,
+          selectedCoords: action.cartesianCoords
+        }
 
       default:
         return state;
