@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Cylinder, Plane, CylindricalPanel, Text, Image} from 'react-vr';
+import {View, CylindricalPanel} from 'react-vr';
 import {connect} from 'react-redux';
 import R from 'ramda';
 import ChromosomeRing from '../../molecules/ChromosomeRing';

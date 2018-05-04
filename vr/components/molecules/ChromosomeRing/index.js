@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, Cylinder, Plane, CylindricalPanel, Text, Image} from 'react-vr';
+import {View, Plane, Text} from 'react-vr';
 import {connect} from 'react-redux';
 import R from 'ramda';
-import {scaleLinear} from 'd3-scale';
-import {axisLeft} from 'd3-axis';
+import YAxis from '../../atoms/YAxis';
 
 class ChromosomeRing extends React.Component {
   render() {
@@ -20,15 +19,6 @@ class ChromosomeRing extends React.Component {
     const styleHeight = {opacity: 1, width: cylWidth, height: cylHeight, transform: [{translate: [0, 0, 0]}]};
 
 
-    /////////////////////// Axis ///////////////////////
-    let yScale = scaleLinear()
-      .domain(yScaleDomain)
-      .range([0, cylHeight]);
-
-    let yAxis = axisLeft(yScale).ticks(10);
-    let tickDomainValues = yAxis.scale().ticks();
-    let tickRangeValues = R.map(d => yScale(d), tickDomainValues);
-
     /////////////////////// 1 chromosome ///////////////////////
     const drawChromosomePanel = R.curry(function(labeled, seg) {
       let circumference = radius * (2 * Math.PI);
@@ -36,8 +26,6 @@ class ChromosomeRing extends React.Component {
       let midPoint = (seg.scaledStart + seg.scaledEnd) / 2;
 
       let textWidth = (cylWidth * slice) * 0.9;
-
-      let axisPlaneWidth = 5;
 
       return (
         <View key={seg.chrom} style={{position: 'absolute'}}>
@@ -67,21 +55,13 @@ class ChromosomeRing extends React.Component {
           }
           {labeled ?
             // Draw y-axis line
-            <View>
-              <Plane
-                dimWidth={axisPlaneWidth}
-                dimHeight={cylHeight}
-                style={{
-                  transform: [
-                    {translate: [seg.scaledEnd * cylWidth, 0, 0]},
-                  ],
-                  color: "black",
-                  opacity: 1
-                }}
-              />
-              {// TO DO: Draw tick marks here
-              }
-            </View> : null
+            <YAxis
+              cylHeight={cylHeight}
+              cylWidth={cylWidth}
+              seg={seg}
+              yScaleDomain={yScaleDomain}
+            />
+            : null
           }
         </View>
       );
