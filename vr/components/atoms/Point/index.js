@@ -13,7 +13,7 @@ class Point extends Component {
   }
 
   render() {
-    let {cartesianCoords, id, selectable = true} = this.props;
+    let {cartesianCoords, id, selectable, radius = true} = this.props;
 
     const onEnter = () => {
       this.props.setSelectedPoint(id, cartesianCoords);
@@ -27,7 +27,7 @@ class Point extends Component {
 
     return (
         <Sphere
-          radius={2}
+          radius={radius}
           lit={true}
           style={{
             transform: [{translate: cartesianCoords}],
@@ -42,7 +42,9 @@ class Point extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    radius: state.world.radius / 500
+  }
 }
 
 export default connect(mapStateToProps, actions)(Point);
