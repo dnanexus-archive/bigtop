@@ -30,7 +30,7 @@ class Circos extends React.Component {
     } = this.props;
 
     // OPTIONS:
-    const yRange = [0, 5];
+    const yRange = [0, (eyeHeight / 30)];
     const optionalCeilingP = 20;
     const innerRadius = radius * 0.1;
     const yTransform = y => -1 * Math.log10(y);
