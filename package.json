@@ -10,18 +10,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "aframe": "^0.8.2",
     "d3-array": "^1.2.1",
     "d3-axis": "^1.0.8",
     "d3-scale": "^2.0.0",
     "d3-shape": "^1.2.0",
-    "ovrui": "~2.0.0",
     "ramda": "^0.25.0",
-    "react": "16.0.0",
-    "react-native": "^0.48.1",
+    "react": "^16.0.0",
+    "react-native": "^0.55.0",
     "react-redux": "^5.0.7",
-    "react-vr": "~2.0.0",
-    "react-vr-controller-raycaster": "^1.1.0",
-    "react-vr-web": "~2.0.0",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
@@ -36,8 +33,5 @@
     "react-devtools-core": "^3.1.0",
     "react-test-renderer": "16.0.0",
     "xopen": "1.0.0"
-  },
-  "jest": {
-    "preset": "react-vr"
   }
 }
