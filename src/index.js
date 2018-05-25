@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+class VRScene extends Component {
+  render () {
+    return (
+      <App />
+    );
+  }
+}
+
+ReactDOM.render(<VRScene/>, document.querySelector('#root'));

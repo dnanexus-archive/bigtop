@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'aframe';
+import 'aframe-particle-system-component';
+import {Entity, Scene} from 'aframe-react';
+import React, {Component} from 'react';
+import Point from 'components/atoms/Point';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Scene>
+        <Point />
+        <Entity particle-system={{preset: 'snow'}}/>
+        <Entity light={{type: 'point'}}/>
+        <Entity gltf-model={{src: 'virtualcity.gltf'}}/>
+        <Entity text={{value: 'Hello, WebVR!'}}/>
+      </Scene>
     );
   }
 }
