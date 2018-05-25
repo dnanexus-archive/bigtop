@@ -13,10 +13,12 @@ export default class ManhattanProject extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <World>
-          <Circos />
-          <ThresholdDisc />
-        </World>
+        <a-scene>
+          <World>
+            <Circos />
+            <ThresholdDisc />
+          </World>
+        </a-scene>
       </Provider>
     );
   }
