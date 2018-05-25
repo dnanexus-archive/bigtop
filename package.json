@@ -1,37 +1,18 @@
 {
-  "name": "manhattan_project",
-  "version": "0.0.1",
+  "name": "manhattan",
+  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "start": "node -e \"console.log('open browser at http://localhost:8081/vr/\\n\\n');\" && node node_modules/react-native/local-cli/cli.js start",
-    "bundle": "node node_modules/react-vr/scripts/bundle.js",
-    "open": "node -e \"require('xopen')('http://localhost:8081/vr/')\"",
-    "devtools": "react-devtools",
-    "test": "jest"
-  },
   "dependencies": {
-    "aframe": "^0.8.2",
-    "d3-array": "^1.2.1",
-    "d3-axis": "^1.0.8",
-    "d3-scale": "^2.0.0",
-    "d3-shape": "^1.2.0",
-    "ramda": "^0.25.0",
-    "react": "^16.0.0",
-    "react-native": "^0.55.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
-    "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.2.0",
-    "three": "^0.87.0"
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0"
   },
-  "devDependencies": {
-    "babel-jest": "^19.0.0",
-    "babel-preset-react-native": "^1.9.1",
-    "jest": "^19.0.2",
-    "metro-bundler": "^0.22.1",
-    "react-devtools": "^2.5.2",
-    "react-devtools-core": "^3.1.0",
-    "react-test-renderer": "16.0.0",
-    "xopen": "1.0.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
