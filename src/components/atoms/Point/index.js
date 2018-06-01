@@ -6,15 +6,17 @@ import React, {Component} from 'react';
 class Point extends Component {
   render() {
 
-		const {
-			datum
-		} = this.props;
+  const {
+    datum
+  } = this.props;
 
-		console.log(datum);
-
-    return (
-      <Entity geometry={{primitive: 'sphere', radius: 0.05 }} material={{color: 'red'}} position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}/>
-    );
+  return (
+    <Entity
+      geometry={{primitive: 'sphere', radius: 0.03}}
+      material={{color: 'black'}}
+      position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}
+    />
+  );
   }
 }
 

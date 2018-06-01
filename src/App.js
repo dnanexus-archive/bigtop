@@ -25,10 +25,11 @@ class App extends Component {
 			someCoordinates.push(coordinates[i]);
 		}
 		console.log("someCoordinates:", someCoordinates);
+
     return (
       <Scene>
         <PointCloud data={someCoordinates} />
-        <Rotunda />
+        <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} colorScheme={colorScheme} />
         <Entity particle-system={{preset: 'snow'}}/>
         <Entity light={{type: 'point'}}/>
         <Entity gltf-model={{src: 'virtualcity.gltf'}}/>
