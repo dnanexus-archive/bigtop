@@ -20,9 +20,14 @@ class App extends Component {
 
     let {coordinates, yScaleDomain} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
+		let someCoordinates = [];
+		for (let i = 0; i < 1000; i++) {
+			someCoordinates.push(coordinates[i]);
+		}
+		console.log("someCoordinates:", someCoordinates);
     return (
       <Scene>
-        <PointCloud data={coordinates} />
+        <PointCloud data={someCoordinates} />
         <Rotunda />
         <Entity particle-system={{preset: 'snow'}}/>
         <Entity light={{type: 'point'}}/>

@@ -5,8 +5,15 @@ import React, {Component} from 'react';
 
 class Point extends Component {
   render() {
+
+		const {
+			datum
+		} = this.props;
+
+		console.log(datum);
+
     return (
-      <Entity geometry={{primitive: 'box'}} material={{color: 'red'}} position={{x: 0, y: 0, z: -5}}/>
+      <Entity geometry={{primitive: 'sphere', radius: 0.05 }} material={{color: 'red'}} position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}/>
     );
   }
 }
