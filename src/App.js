@@ -24,10 +24,8 @@ class App extends Component {
 		for (let i = 0; i < 1000; i++) {
 			someCoordinates.push(coordinates[i]);
 		}
-		console.log("someCoordinates:", someCoordinates);
-
     return (
-      <Scene>
+      <Scene style="position: absolute; height: 100%; width: 100%">
         <PointCloud data={someCoordinates} />
         <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} colorScheme={colorScheme} />
         <Entity particle-system={{preset: 'snow'}}/>

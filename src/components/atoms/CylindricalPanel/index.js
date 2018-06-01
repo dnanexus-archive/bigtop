@@ -13,7 +13,6 @@ class CylindricalPanel extends Component {
     height,
     color
   } = this.props;
-  console.log('start:', start);
 
   return (
     <Entity
