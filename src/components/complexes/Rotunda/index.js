@@ -26,7 +26,7 @@ class Rotunda extends Component {
         <ChromosomeLabels
           chromList={chromList}
           radius={radius}
-          yPosition={height / 2}
+          yPosition={0}
         />
       </Entity>
     );

@@ -13,20 +13,16 @@ class ChromosomeLabels extends Component {
       yPosition
     } = this.props;
 
-    console.log("chromList:", chromList);
-
     return (
       <Entity>
         {
           R.map(d =>
             {
-              let {x, z} = polarToCartesian(radius, ((d.scaledStart + d.scaledEnd) / 2) * 360);
+              let {x, z} = polarToCartesian(radius * 0.9, ((d.scaledStart + d.scaledEnd) / 2) * (2 * Math.PI));
               return (<Entity
                 key={d.chrom}
-                // rotate=
-                geometry={{primitive: "plane", width: 4}}
-                text={{value: d.chrom}}
-                // position={{x: radius * 0.9}}
+                rotation={`0 ${360-((d.scaledStart + d.scaledEnd) / 2) * 360} 0`}
+                text={{value: R.replace(/^chr/, '', d.chrom), align: "center", width: 10}}
                 position={{y: yPosition, x: x, z: z}}
               />);
             }

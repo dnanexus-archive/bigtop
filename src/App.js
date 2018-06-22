@@ -1,5 +1,6 @@
 import 'aframe';
 import 'aframe-particle-system-component';
+import 'aframe-animation-component';
 import {Entity, Scene} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
@@ -7,8 +8,10 @@ import PointCloud from 'components/molecules/PointCloud';
 import Rotunda from 'components/complexes/Rotunda';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
+import marble from 'data/marble.jpg'
 
 class App extends Component {
+
   render() {
 
     const roomRadius = 10; // meters
@@ -22,21 +25,43 @@ class App extends Component {
 
     let {coordinates, yScaleDomain} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
-		let someCoordinates = [];
-		for (let i = 0; i < 1000; i++) {
-			someCoordinates.push(coordinates[i]);
-		}
+	let someCoordinates = [];
+	for (let i = 0; i < 1000; i++) {
+		someCoordinates.push(coordinates[i]);
+	}
+
     return (
       <Scene style="position: absolute; height: 100%; width: 100%">
+		<Entity primitive="a-camera" position="0 -3 0">
+			<Entity geometry={{primitive: 'plane', height: 1, width: 5}}
+						position="0 -1 -0.9"
+						material={{color: 'yellow', opacity: 0.9}}
+			/>
+		</Entity>
         <PointCloud data={someCoordinates} />
         <Rotunda radius={roomRadius} height={roomHeight} chromList={chromList} colorScheme={colorScheme} />
-        <Entity particle-system={{preset: 'snow'}}/>
-        <Entity light={{type: 'point'}}/>
-        <Entity gltf-model={{src: 'virtualcity.gltf'}}/>
-        <Entity text={{value: 'Hello, WebVR!'}}/>
+		<Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position="0 -5 0" />
+        <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
+
+        <Entity light={{type: 'point'}} position="0 -2 0" />
+		<Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
       </Scene>
     );
   }
 }
 
 export default App;
+
+
+// Unused code
+// <Entity id="box"
+//   geometry={{primitive: 'box'}}
+//   material={{color: "red", opacity: 0.6}}
+//   animation__rotate={{property: 'rotation', dur: 2000, loop: true, to: '360 360 360', begin: 0}}
+//   animation__scale={{property: 'scale', dir: 'alternate', dur: 1000, loop: true, to: '1.1 1.1 1.1'}}
+//   position={{x: 0, y: -2, z: -3}}
+//   events={{click: this.changeColor.bind(this)}}>
+//   <Entity animation__scale={{property: 'scale', dir: 'alternate', dur: 1000, loop: true, to: '2 2 2', begin: 0}}
+//           geometry={{primitive: 'box', depth: 0.2, height: 0.2, width: 0.2}}
+//           material={{color: '#24CAFF'}}/>
+// </Entity>
