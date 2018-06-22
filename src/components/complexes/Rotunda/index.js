@@ -5,15 +5,19 @@ import React, {Component} from 'react';
 import * as R from 'ramda';
 import ChromosomeWalls from 'components/molecules/ChromosomeWalls';
 import ChromosomeLabels from 'components/molecules/ChromosomeLabels';
+import ChromosomeCytobands from 'components/molecules/ChromosomeCytobands';
 
 class Rotunda extends Component {
   render() {
     const {
       radius,
       height,
-      chromList,
+      chromDict,
+      cytobands,
       colorScheme
     } = this.props;
+
+    const chromList = R.values(chromDict);
 
     return (
       <Entity>
@@ -25,8 +29,15 @@ class Rotunda extends Component {
         />
         <ChromosomeLabels
           chromList={chromList}
-          radius={radius}
+          radius={radius*0.9}
           yPosition={0}
+        />
+        <ChromosomeCytobands
+          cytobands={cytobands}
+          chromDict={chromDict}
+          radius={radius*0.9}
+          height={height/10}
+          yPosition={1}
         />
       </Entity>
     );

@@ -18,7 +18,7 @@ class ChromosomeLabels extends Component {
         {
           R.map(d =>
             {
-              let {x, z} = polarToCartesian(radius * 0.9, ((d.scaledStart + d.scaledEnd) / 2) * (2 * Math.PI));
+              let {x, z} = polarToCartesian(radius, ((d.scaledStart + d.scaledEnd) / 2) * (2 * Math.PI));
               return (<Entity
                 key={d.chrom}
                 rotation={`0 ${360-((d.scaledStart + d.scaledEnd) / 2) * 360} 0`}

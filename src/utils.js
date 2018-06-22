@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import {scaleLinear} from 'd3-scale';
-import {min, max, extent} from 'd3-array';
+import {max, extent} from 'd3-array';
 
 export const createChromosomeScale = function(chroms, sizes) {
   let index = -1;
@@ -47,7 +47,7 @@ export const gather = function(obj) {
   // Find lengths of arrays and make sure they are all the same:
   let lengths = R.compose(R.uniq, R.map(R.length), R.values)(obj);
   if (lengths.length !== 1) {
-    throw "gather requires same length array within each key, but lengths are not matching.";
+    throw new Error("gather requires same length array within each key, but lengths are not matching.");
   }
   let len = lengths[0];
 

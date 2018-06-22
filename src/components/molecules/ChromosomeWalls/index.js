@@ -25,6 +25,7 @@ class ChromosomeWalls extends Component {
               color={colorScheme[d.index]}
               start={d.scaledStart * 360}
               length={(d.scaledEnd-d.scaledStart) * 360}
+              openEnded="false"
             />
           , chromList)
         }
