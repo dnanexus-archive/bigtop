@@ -11,20 +11,23 @@ class CylindricalPanel extends Component {
     length,
     radius,
     height,
-    color
+    color,
+    yPosition = 0,
+    openEnded = true
   } = this.props;
 
   return (
     <Entity
       geometry={{
         primitive: 'cylinder',
+        openEnded: openEnded,
         thetaStart: start,
         thetaLength: length,
         radius: radius,
         height: height
       }}
       material={{color: color, side: "double"}}
-      position={{x: 0, y: 0, z: 0}}
+      position={{x: 0, y: yPosition, z: 0}}
       />
   );
   }

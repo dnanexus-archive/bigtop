@@ -6,8 +6,8 @@ import React, {Component} from 'react';
 import PointCloud from 'components/molecules/PointCloud';
 import Forest from 'components/molecules/Forest';
 import Rotunda from 'components/complexes/Rotunda';
-import Text from 'components/atoms/Text';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
+import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
 import marble from 'data/marble.jpg'
 
@@ -23,33 +23,35 @@ class App extends Component {
     const chromDict = createChromosomeScale(chroms, sizes);
     const colorScheme = ['#E41A1C', '#A73C52', '#6B5F88', '#3780B3', '#3F918C', '#47A266','#53A651', '#6D8470', '#87638F', '#A5548D', '#C96555', '#ED761C','#FF9508', '#FFC11A', '#FFEE2C', '#EBDA30', '#CC9F2C', '#AD6428','#BB614F', '#D77083', '#F37FB8', '#DA88B3', '#B990A6', '#999999'];
 
-    let {coordinates, yScaleDomain} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
+    let {coordinates} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
-		let someCoordinates = [];
-		for (let i = 0; i < 1000; i++) {
-			someCoordinates.push(coordinates[i]);
-		}
+    let someCoordinates = [];
+    for (let i = 0; i < 1000; i++) {
+      someCoordinates.push(coordinates[i]);
+    }
 
     return (
-      <Scene style="position: absolute; height: 100%; width: 100%">
-				<Entity primitive="a-camera" position="0 -3 0">
-					<Entity geometry={{primitive: 'plane', height: 1, width: 5}}
-								position="0 -1 -0.9"
-								material={{color: 'yellow', opacity: 0.9}}
-					/>
-				</Entity>
+      <Scene style={{position: "absolute", height: "100%", width: "100%"}}>
+        {
+          // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
+          // the position attribute on a camera. This allows both monitor and headset position to be similar.
+        }
+        <Entity position="0 -5.4 0">
+          <Entity primitive="a-camera" position="0 2.4 0">
+            <Entity geometry={{primitive: 'plane', height: 1, width: 5}}
+                  position="0 -1 -0.9"
+                  material={{color: 'yellow', opacity: 0.9}}
+            />
+          </Entity>
+        </Entity>
         <PointCloud data={someCoordinates} />
         <Forest data={someCoordinates} />
-        <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} colorScheme={colorScheme} />
-				<Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position="0 -5 0" />
+        <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} />
+        <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position="0 -5 0" />
         <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
 
-				// light sources
         <Entity light={{type: 'point'}} position="0 -2 0" />
-				<Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
-
-				// text
-        <Text />
+        <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
       </Scene>
     );
   }
