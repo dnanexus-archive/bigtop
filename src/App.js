@@ -32,19 +32,25 @@ class App extends Component {
 
     return (
       <Scene style="position: absolute; height: 100%; width: 100%">
-		<Entity primitive="a-camera" position="0 -3 0">
-			<Entity geometry={{primitive: 'plane', height: 1, width: 5}}
-						position="0 -1 -0.9"
-						material={{color: 'yellow', opacity: 0.9}}
-			/>
-		</Entity>
+        {
+          // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
+          // the position attribute on a camera. This allows both monitor and headset position to be similar.
+        }
+        <Entity position="0 -5.4 0">
+          <Entity primitive="a-camera" position="0 2.4 0">
+            <Entity geometry={{primitive: 'plane', height: 1, width: 5}}
+                  position="0 -1 -0.9"
+                  material={{color: 'yellow', opacity: 0.9}}
+            />
+          </Entity>
+				</Entity>
         <PointCloud data={someCoordinates} />
         <Rotunda radius={roomRadius} height={roomHeight} chromList={chromList} colorScheme={colorScheme} />
-		<Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position="0 -5 0" />
+		    <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position="0 -5 0" />
         <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
 
         <Entity light={{type: 'point'}} position="0 -2 0" />
-		<Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
+		    <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
       </Scene>
     );
   }
