@@ -4,6 +4,7 @@ import 'aframe-animation-component';
 import {Entity, Scene} from 'aframe-react';
 import React, {Component} from 'react';
 import PointCloud from 'components/molecules/PointCloud';
+import Forest from 'components/molecules/Forest';
 import Rotunda from 'components/complexes/Rotunda';
 import Text from 'components/atoms/Text';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
@@ -38,6 +39,7 @@ class App extends Component {
 					/>
 				</Entity>
         <PointCloud data={someCoordinates} />
+        <Forest data={someCoordinates} />
         <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} colorScheme={colorScheme} />
 				<Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position="0 -5 0" />
         <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
