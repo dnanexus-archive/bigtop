@@ -57,7 +57,7 @@ export const gather = function(obj) {
 };
 
 
-const polarToCartesian = function(r, theta) {
+export const polarToCartesian = function(r, theta) {
   return {
     x: r * Math.cos(theta - (Math.PI / 2)),
     z: r * Math.sin(theta - (Math.PI / 2))
