@@ -19,7 +19,7 @@ class Branches extends Component {
             return datum.coords[1]+2.5;
  
           }
-          else {
+          else if ( datum.coords[1] >= -5 && datum.coords[1] < 0) {
 
 
             return datum.coords[1]-2.5;
@@ -30,9 +30,9 @@ class Branches extends Component {
 
       return (
         <Entity
-          geometry={{primitive: 'cylinder', radius: 0.02, height: 5, openEnded: true}}
+          geometry={{primitive: 'cylinder', radius: 0.01, height: 5, openEnded: true}}
           material={{color: 'white', shader: 'flat'}}
-          position={{x: datum.coords[0], y: datum.coords[1]+2.5, z: datum.coords[2]}}
+          position={{x: datum.coords[0], y: getScale(), z: datum.coords[2]}}
         />  
       );  
   }

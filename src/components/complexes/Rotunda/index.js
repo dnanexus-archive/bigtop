@@ -6,6 +6,7 @@ import * as R from 'ramda';
 import ChromosomeWalls from 'components/molecules/ChromosomeWalls';
 import ChromosomeLabels from 'components/molecules/ChromosomeLabels';
 import ChromosomeCytobands from 'components/molecules/ChromosomeCytobands';
+import YAxes from 'components/molecules/YAxes';
 
 class Rotunda extends Component {
   render() {
@@ -14,7 +15,8 @@ class Rotunda extends Component {
       height,
       chromDict,
       cytobands,
-      colorScheme
+      colorScheme,
+      yScaleDomain
     } = this.props;
 
     const chromList = R.values(chromDict);
@@ -38,6 +40,13 @@ class Rotunda extends Component {
           radius={radius*0.9}
           height={height/10}
           yPosition={1}
+        />
+        <YAxes
+          chromList={chromList}
+          yScaleDomain={yScaleDomain}
+          radius={radius*0.9}
+          height={height}
+          yPosition={0}
         />
       </Entity>
     );

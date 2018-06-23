@@ -23,12 +23,12 @@ class App extends Component {
     const chromDict = createChromosomeScale(chroms, sizes);
     const colorScheme = ['#E41A1C', '#A73C52', '#6B5F88', '#3780B3', '#3F918C', '#47A266','#53A651', '#6D8470', '#87638F', '#A5548D', '#C96555', '#ED761C','#FF9508', '#FFC11A', '#FFEE2C', '#EBDA30', '#CC9F2C', '#AD6428','#BB614F', '#D77083', '#F37FB8', '#DA88B3', '#B990A6', '#999999'];
 
-    let {coordinates} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
+    let {coordinates, yScaleDomain} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
-    let someCoordinates = [];
-    for (let i = 0; i < 1000; i++) {
-      someCoordinates.push(coordinates[i]);
-    }
+    // let someCoordinates = [];
+    // for (let i = 0; i < 1000; i++) {
+    //   someCoordinates.push(coordinates[i]);
+    // }
 
     return (
       <Scene style={{position: "absolute", height: "100%", width: "100%"}}>
@@ -44,10 +44,10 @@ class App extends Component {
             />
           </Entity>
         </Entity>
-        <PointCloud data={someCoordinates} />
-        <Forest data={someCoordinates} />
-        <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} />
-        <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position="0 -5 0" />
+        <PointCloud data={coordinates} />
+        <Forest data={coordinates} />
+        <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
+        <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position={`0 ${-roomHeight / 2} 0`} />
         <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
 
         <Entity light={{type: 'point'}} position="0 -2 0" />
