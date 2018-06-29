@@ -8,7 +8,8 @@ import * as R from 'ramda';
 class PointCloud extends Component {
   render() {
     const {
-      data
+      data,
+      height
     } = this.props;
 
     let points = R.map(function(d) {
@@ -16,7 +17,7 @@ class PointCloud extends Component {
     }, data);
 
     return (
-      <Entity>
+      <Entity position={{y: -height/2, x: 0, z: 0}}>
         {points}
       </Entity>
     );

@@ -8,7 +8,8 @@ import Rotunda from 'components/complexes/Rotunda';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
-import marble from 'data/marble.jpg'
+import marble from 'data/marble.jpg';
+import * as R from 'ramda';
 
 class App extends Component {
 
@@ -44,7 +45,7 @@ class App extends Component {
             />
           </Entity>
         </Entity>
-        <PointCloud data={coordinates} />
+        <PointCloud data={coordinates} height={roomHeight} />
         <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
         <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position={`0 ${-roomHeight / 2} 0`} />
         <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
