@@ -39,8 +39,13 @@ class App extends Component {
           // the position attribute on a camera. This allows both monitor and headset position to be similar.
         }
         <Entity position="0 -5.4 0">
-          <Entity primitive="a-camera" position="0 2.4 0">
-            <HeadsUp text={ "hello there" }/>
+          <Entity primitive="a-camera" position="0 2.4 0" look-controls raycaster="objects: .data-point">
+            <Entity
+              cursor
+              geometry={{primitive: 'ring', radiusInner: 0.0005, radiusOuter: 0.00075}}
+              position={{x:0, y: 0, z: -0.05}}
+              material={{color: 'black', shader: 'flat', opacity: 0.4}}
+            />
           </Entity>
         </Entity>
         <PointCloud data={coordinates} height={roomHeight} />
@@ -50,6 +55,10 @@ class App extends Component {
 
         <Entity light={{type: 'point'}} position="0 -2 0" />
         <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
+
+        <Entity laser-controls raycaster="objects: .data-point; far: 5" />
+
+        <div>Now displaying in VR....</div>
       </Scene>
     );
   }
