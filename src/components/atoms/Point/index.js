@@ -40,7 +40,7 @@ class Point extends Component {
           mouseleave: this.onExit
         }}
       >
-        {this.state.active && <InfoPanel position={{x: 0, y: 0.3, z: 0}} />}
+        {this.state.active && <InfoPanel position={{x: 0, y: 0.3, z: 0}} text={datum.id} />}
       </Entity>
     );
   }
