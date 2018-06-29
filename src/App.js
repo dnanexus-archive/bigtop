@@ -37,16 +37,12 @@ class App extends Component {
           // the position attribute on a camera. This allows both monitor and headset position to be similar.
         }
         <Entity position="0 -5.4 0">
-<<<<<<< HEAD
           <Entity primitive="a-camera" position="0 2.4 0">
             <Entity geometry={{primitive: 'plane', height: 1, width: 5}}
                   position="0 -0.6 -0.2"
                   material={{color: 'yellow', shader: 'flat', opacity: 0.9}}
             />
           </Entity>
-=======
-          <Entity primitive="a-camera" position="0 2.4 0" />
->>>>>>> 05ea900be219e01d557691966497acee6e981596
         </Entity>
         <PointCloud data={coordinates} />
         <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
