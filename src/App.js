@@ -26,26 +26,22 @@ class App extends Component {
     let {coordinates, yScaleDomain} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
     let someCoordinates = [];
-        for (let i = 0; i < 1000; i++) {
-        someCoordinates.push(coordinates[i]);
+    for (let i = 0; i < 1000; i++) {
+      someCoordinates.push(coordinates[i]);
     }
 
     return (
-      <Scene style={{position: "absolute", height: "100%", width: "100%"}}>
+      <Scene style="position: absolute; height: 100%; width: 100%">
         {
           // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
           // the position attribute on a camera. This allows both monitor and headset position to be similar.
         }
         <Entity position="0 -5.4 0">
-          <Entity primitive="a-camera" position="0 2.4 0">
-            <Entity geometry={{primitive: 'plane', height: 1, width: 5}}
-                  position="0 -1 -0.9"
-                  material={{color: 'yellow', opacity: 0.9}}
-            />
-          </Entity>
+          <Entity primitive="a-camera" position="0 2.4 0" />
         </Entity>
         <PointCloud data={someCoordinates} />
-        <Forest data={someCoordinates} />
+        <Forest coordinates={someCoordinates} radius={roomRadius} height={roomHeight} rotate={true} />
+        <Forest coordinates={someCoordinates} radius={roomRadius} height={roomHeight} rotate={false} />
         <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
         <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position={`0 ${-roomHeight / 2} 0`} />
         <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
@@ -58,17 +54,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// Unused code
-// <Entity id="box"
-//   geometry={{primitive: 'box'}}
-//   material={{color: "red", opacity: 0.6}}
-//   animation__rotate={{property: 'rotation', dur: 2000, loop: true, to: '360 360 360', begin: 0}}
-//   animation__scale={{property: 'scale', dir: 'alternate', dur: 1000, loop: true, to: '1.1 1.1 1.1'}}
-//   position={{x: 0, y: -2, z: -3}}
-//   events={{click: this.changeColor.bind(this)}}>
-//   <Entity animation__scale={{property: 'scale', dir: 'alternate', dur: 1000, loop: true, to: '2 2 2', begin: 0}}
-//           geometry={{primitive: 'box', depth: 0.2, height: 0.2, width: 0.2}}
-//           material={{color: '#24CAFF'}}/>
-// </Entity>

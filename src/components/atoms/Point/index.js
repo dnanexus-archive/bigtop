@@ -12,6 +12,7 @@ class Point extends Component {
 
   return (
     <Entity
+      className="data-point"
       geometry={{primitive: 'sphere', radius: 0.03}}
       material={{color: 'teal'}}
       position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}

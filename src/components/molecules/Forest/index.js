@@ -8,12 +8,15 @@ import * as R from 'ramda';
 class Forest extends Component {
   render() {
     const {
-      data
+      coordinates,
+      radius,
+      height,
+      rotate
     } = this.props;
 
     let forest = R.map(function(d) {
-      return (<Branches key={d.id} datum={d} />) 
-    }, data);
+      return (<Branches key={d.id} datum={d} radius={radius} height={height} rotate={rotate} />) 
+    }, coordinates);
 
     return (
       <Entity>
