@@ -18,11 +18,13 @@ class Text extends Component {
   } = this.props;
 
   return (
-		<Entity text={{	value: 'Arrays start at 0!',
-										align: "center",
-										width: 15}}
-						events={{click: this.changeColor.bind(this)}}
-						position="0 -2 -2" />
+		<Entity
+			text={{	value: 'Arrays start at 0!',
+							align: "center",
+							width: 15}}
+			events={{click: this.changeColor.bind(this)}}
+			position="0 -2 -2"
+		/>
   );
   }
 }
