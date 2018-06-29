@@ -101,7 +101,7 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
       let chromPos = c.start + d[keys.pos];
       let theta = thetaScale(chromPos);
       let {x, z} = polarToCartesian(r, theta);
-      return {...d, coords: [x, y, z]};
+      return {...d, theta: theta, radius: r, coords: [x, y, z]};
     }
 
     let coordinates = R.map(calculateCoordinates, data);
