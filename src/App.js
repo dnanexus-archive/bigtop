@@ -38,8 +38,8 @@ class App extends Component {
         <Entity position="0 -5.4 0">
           <Entity primitive="a-camera" position="0 2.4 0">
             <Entity geometry={{primitive: 'plane', height: 1, width: 5}}
-                  position="0 -1 -0.9"
-                  material={{color: 'yellow', opacity: 0.9}}
+                  position="0 -0.6 -0.2"
+                  material={{color: 'yellow', shader: 'flat', opacity: 0.9}}
             />
           </Entity>
         </Entity>
