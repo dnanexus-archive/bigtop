@@ -5,6 +5,7 @@ import {Entity, Scene} from 'aframe-react';
 import React, {Component} from 'react';
 import PointCloud from 'components/molecules/PointCloud';
 import Rotunda from 'components/complexes/Rotunda';
+import HeadsUp from 'components/molecules/HeadsUp';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
@@ -38,10 +39,7 @@ class App extends Component {
         }
         <Entity position="0 -5.4 0">
           <Entity primitive="a-camera" position="0 2.4 0">
-            <Entity geometry={{primitive: 'plane', height: 1, width: 5}}
-                  position="0 -0.6 -0.2"
-                  material={{color: 'yellow', shader: 'flat', opacity: 0.9}}
-            />
+            <HeadsUp text={ "hello there" }/>
           </Entity>
         </Entity>
         <PointCloud data={coordinates} />
