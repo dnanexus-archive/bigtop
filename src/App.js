@@ -25,10 +25,10 @@ class App extends Component {
 
     let {coordinates, yScaleDomain} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
-    // let someCoordinates = [];
-    // for (let i = 0; i < 1000; i++) {
-    //   someCoordinates.push(coordinates[i]);
-    // }
+    let someCoordinates = [];
+        for (let i = 0; i < 1000; i++) {
+        someCoordinates.push(coordinates[i]);
+    }
 
     return (
       <Scene style={{position: "absolute", height: "100%", width: "100%"}}>
@@ -44,8 +44,8 @@ class App extends Component {
             />
           </Entity>
         </Entity>
-        <PointCloud data={coordinates} />
-        <Forest data={coordinates} />
+        <PointCloud data={someCoordinates} />
+        <Forest data={someCoordinates} />
         <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
         <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position={`0 ${-roomHeight / 2} 0`} />
         <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>

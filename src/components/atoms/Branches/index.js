@@ -30,7 +30,7 @@ class Branches extends Component {
 
       return (
         <Entity
-          geometry={{primitive: 'cylinder', radius: 0.01, height: 5, openEnded: true}}
+          geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: 5, openEnded: true}}
           material={{color: 'white', shader: 'flat'}}
           position={{x: datum.coords[0], y: getScale(), z: datum.coords[2]}}
         />  
