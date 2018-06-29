@@ -24,10 +24,11 @@ class App extends Component {
 
     let {coordinates, yScaleDomain} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
-    // let someCoordinates = [];
-    // for (let i = 0; i < 1000; i++) {
-    //   someCoordinates.push(coordinates[i]);
-    // }
+    let someCoordinates = [];
+    for (let i = 0; i < 1000; i++) {
+      someCoordinates.push(coordinates[i]);
+    }
+    coordinates = someCoordinates;
 
     return (
       <Scene style={{position: "absolute", height: "100%", width: "100%"}}>
