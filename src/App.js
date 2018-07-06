@@ -3,14 +3,17 @@ import 'aframe-particle-system-component';
 import 'aframe-animation-component';
 import {Entity, Scene} from 'aframe-react';
 import React, {Component} from 'react';
+import {Provider} from 'react-redux';
 import PointCloud from 'components/molecules/PointCloud';
 import Rotunda from 'components/complexes/Rotunda';
-import HeadsUp from 'components/molecules/HeadsUp';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
 import marble from 'data/marble.jpg';
-import * as R from 'ramda';
+import configureStore from './store/configureStore';
+import initialState from './store/initialState';
+
+const store = configureStore(initialState);
 
 class App extends Component {
 
@@ -33,33 +36,34 @@ class App extends Component {
     coordinates = someCoordinates;
 
     return (
-      <Scene style="position: absolute; height: 100%; width: 100%">
-        {
-          // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
-          // the position attribute on a camera. This allows both monitor and headset position to be similar.
-        }
-        <Entity position="0 -5.4 0">
-          <Entity primitive="a-camera" position="0 2.4 0" look-controls raycaster="objects: .data-point">
-            <Entity
-              cursor
-              geometry={{primitive: 'ring', radiusInner: 0.0005, radiusOuter: 0.00075}}
-              position={{x:0, y: 0, z: -0.05}}
-              material={{color: 'black', shader: 'flat', opacity: 0.4}}
-            />
+      <Provider store={store}>
+        <Scene style="position: absolute; height: 100%; width: 100%">
+          {
+            // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
+            // the position attribute on a camera. This allows both monitor and headset position to be similar.
+          }
+          <Entity position="0 -5.4 0">
+            <Entity primitive="a-camera" position="0 2.4 0" look-controls raycaster="objects: .data-point">
+              <Entity
+                cursor
+                geometry={{primitive: 'ring', radiusInner: 0.0001, radiusOuter: 0.00025}}
+                position={{x:0, y: 0, z: -0.01}}
+                material={{color: 'black', shader: 'flat', opacity: 0.4}}
+              />
+            </Entity>
           </Entity>
-        </Entity>
-        <PointCloud data={coordinates} height={roomHeight} />
-        <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
-        <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position={`0 ${-roomHeight / 2} 0`} />
-        <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
+          <PointCloud data={coordinates} height={roomHeight} />
+          <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
+          <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position={`0 ${-roomHeight / 2} 0`} />
 
-        <Entity light={{type: 'point'}} position="0 -2 0" />
-        <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
+          <Entity light={{type: 'point'}} position="0 -2 0" />
+          <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
 
-        <Entity laser-controls raycaster="objects: .data-point; far: 5" />
+          <Entity laser-controls raycaster="objects: .data-point; far: 5" />
 
-        <div>Now displaying in VR....</div>
-      </Scene>
+          <div>Now displaying in VR....</div>
+        </Scene>
+      </Provider>
     );
   }
 }
