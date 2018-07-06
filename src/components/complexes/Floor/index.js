@@ -2,9 +2,7 @@ import 'aframe';
 import 'aframe-particle-system-component';
 import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
-import * as R from 'ramda';
 import marble from 'data/marble.jpg';
-import {scaleLinear} from 'd3-scale';
 import RadiusAxes from 'components/molecules/RadiusAxes';
 
 class Rotunda extends Component {

@@ -3,8 +3,6 @@ import 'aframe-particle-system-component';
 import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
-import CylindricalPanel from 'components/atoms/CylindricalPanel';
-import TickSet from 'components/atoms/TickSet';
 import {scaleLinear} from 'd3-scale';
 
 class YAxes extends Component {
