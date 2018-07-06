@@ -10,13 +10,10 @@ import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
 import marble from 'data/marble.jpg';
-<<<<<<< HEAD
-=======
 import configureStore from './store/configureStore';
 import initialState from './store/initialState';
 
 const store = configureStore(initialState);
->>>>>>> b044bbe4ec99b3576346cfda8336532bbea87382
 
 class App extends Component {
 
