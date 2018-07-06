@@ -18,7 +18,7 @@ class ChromosomeCytobands extends Component {
 
     let colorScale = scaleOrdinal()
       .domain(["gneg", "gpos25", "gpos50", "gpos75", "gpos100", "acen", "gvar", "stalk"])
-      .range(["#fff", "#ccc", "#888", "#444", "#000", "red", "red", "red"]);
+      .range(["#fff", "#ccc", "#888", "#444", "#000", "red", "white", "teal"]);
 
     return (
       <Entity scale={{x: 1, y: -1, z: -1}}>

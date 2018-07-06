@@ -31,20 +31,20 @@ class Rotunda extends Component {
         />
         <ChromosomeLabels
           chromList={chromList}
-          radius={radius*0.9}
+          radius={radius*0.999}
           yPosition={0}
         />
         <ChromosomeCytobands
           cytobands={cytobands}
           chromDict={chromDict}
-          radius={radius*0.9}
+          radius={radius*0.998}
           height={height/10}
           yPosition={1}
         />
         <YAxes
           chromList={chromList}
           yScaleDomain={yScaleDomain}
-          radius={radius*0.9}
+          radius={radius*0.997}
           height={height}
           yPosition={0}
         />

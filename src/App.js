@@ -6,10 +6,12 @@ import React, {Component} from 'react';
 import PointCloud from 'components/molecules/PointCloud';
 import Forest from 'components/molecules/Forest';
 import Rotunda from 'components/complexes/Rotunda';
+import HeadsUp from 'components/molecules/HeadsUp';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
-import marble from 'data/marble.jpg'
+import marble from 'data/marble.jpg';
+import * as R from 'ramda';
 
 class App extends Component {
 
@@ -37,17 +39,28 @@ class App extends Component {
           // the position attribute on a camera. This allows both monitor and headset position to be similar.
         }
         <Entity position="0 -5.4 0">
-          <Entity primitive="a-camera" position="0 2.4 0" />
+          <Entity primitive="a-camera" position="0 2.4 0" look-controls raycaster="objects: .data-point">
+            <Entity
+              cursor
+              geometry={{primitive: 'ring', radiusInner: 0.0005, radiusOuter: 0.00075}}
+              position={{x:0, y: 0, z: -0.05}}
+              material={{color: 'black', shader: 'flat', opacity: 0.4}}
+            />
+          </Entity>
         </Entity>
-        <PointCloud data={someCoordinates} />
-        <Forest coordinates={someCoordinates} radius={roomRadius} height={roomHeight} rotate={true} />
+        //<Forest coordinates={someCoordinates} radius={roomRadius} height={roomHeight} rotate={true} />
         <Forest coordinates={someCoordinates} radius={roomRadius} height={roomHeight} rotate={false} />
+        <PointCloud data={someCoordinates} height={roomHeight} />
         <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
         <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position={`0 ${-roomHeight / 2} 0`} />
         <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
 
         <Entity light={{type: 'point'}} position="0 -2 0" />
         <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
+
+        <Entity laser-controls raycaster="objects: .data-point; far: 5" />
+
+        <div>Now displaying in VR....</div>
       </Scene>
     );
   }

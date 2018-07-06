@@ -83,7 +83,7 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
     const maxP = optionalCeilingP || dataMaxP;
 
     console.log("max -log10(p) from data:", dataMaxP, "chosen value:", maxP);
-		const floorDistance = 10; 				// Distance from 0 to floor, lowers points by this amount
+		const floorDistance = 0; 				// Distance from 0 to floor, lowers points by this amount
 		let yScale = scaleLinear()
       .domain([floorDistance, maxP+floorDistance])
       .range(yRange);
@@ -101,7 +101,7 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
       let chromPos = c.start + d[keys.pos];
       let theta = thetaScale(chromPos);
       let {x, z} = polarToCartesian(r, theta);
-      return {...d, coords: [x, y, z]};
+      return {...d, theta: theta, radius: r, coords: [x, y, z]};
     }
 
     let coordinates = R.map(calculateCoordinates, data);
