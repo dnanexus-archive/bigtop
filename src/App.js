@@ -35,9 +35,13 @@ class App extends Component {
     }
     coordinates = someCoordinates;
 
+    const sceneOpts = {
+      style: "position: absolute; height: 100%; width: 100%"
+    };
+
     return (
       <Provider store={store}>
-        <Scene style="position: absolute; height: 100%; width: 100%">
+        <Scene {...sceneOpts}>
           {
             // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
             // the position attribute on a camera. This allows both monitor and headset position to be similar.
