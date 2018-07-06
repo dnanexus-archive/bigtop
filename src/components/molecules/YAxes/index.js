@@ -17,12 +17,10 @@ class YAxes extends Component {
       yScaleDomain
     } = this.props;
 
-    console.log("yScaleDomain:", yScaleDomain);
     let yScale = scaleLinear()
       .domain(yScaleDomain)
       .range([-height/2, height/2]);
 
-    console.log("TO DO: Make a D3 axis and get calculated tick marks, then draw them. Then simulate points at different levels to check the tick marks line up correctly with the data.");
     let tickValues = yScale.ticks();
     let ticks = R.map(d => {return {value: d, position: yScale(d)}}, tickValues);
 
