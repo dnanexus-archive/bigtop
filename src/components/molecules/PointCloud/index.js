@@ -17,7 +17,7 @@ class PointCloud extends Component {
     }, data);
 
     return (
-      <Entity position={{y: -height/2, x: 0, z: 0}}>
+      <Entity position={{y: -height/2.0, x: 0, z: 0}}>
         {points}
       </Entity>
     );

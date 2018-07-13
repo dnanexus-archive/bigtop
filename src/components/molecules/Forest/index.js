@@ -9,17 +9,17 @@ class Forest extends Component {
   render() {
     const {
       data,
-      height
+      height,
+      rotate,
+      radius
     } = this.props;
 
-    console.log(data)
-
     let forest = R.map(function(d) {
-      return (<Branches key={d.id} datum={d} />) 
+      return (<Branches key={d.id} datum={d} height={height} rotate={rotate} radius={radius} />) 
     }, data);
 
     return (
-      <Entity>
+      <Entity position={{y: -height/2, x: 0, z: 0}}>
         {forest}
       </Entity>
     );  

@@ -107,5 +107,6 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
     let coordinates = R.map(calculateCoordinates, data);
 
     let yScaleDomain = yScale.domain();
-    return {coordinates, yScaleDomain};
+    let radiusScaleInfo = {domain: rScale.domain(), range: rScale.range()};
+    return {coordinates, yScaleDomain, radiusScaleInfo};
 };
