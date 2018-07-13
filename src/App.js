@@ -10,8 +10,13 @@ import HeadsUp from 'components/molecules/HeadsUp';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
+import configureStore from './store/configureStore';
+import initialState from './store/initialState';
 import marble from 'data/marble.jpg';
-import * as R from 'ramda';
+
+//const store = configureStore(initialState);
+
+//import * as R from 'ramda';
 
 class App extends Component {
 
@@ -28,7 +33,7 @@ class App extends Component {
     let {coordinates, yScaleDomain} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
     let someCoordinates = [];
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 100; i++) {
       someCoordinates.push(coordinates[i]);
     }
 
@@ -48,8 +53,8 @@ class App extends Component {
             />
           </Entity>
         </Entity>
-        //<Forest coordinates={someCoordinates} radius={roomRadius} height={roomHeight} rotate={true} />
-        <Forest coordinates={someCoordinates} radius={roomRadius} height={roomHeight} rotate={false} />
+        <Forest data={someCoordinates} height={roomHeight}/>
+        //<Forest coordinates={someCoordinates} radius={roomRadius} height={roomHeight} rotate={false} />
         <PointCloud data={someCoordinates} height={roomHeight} />
         <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
         <Entity geometry={{primitive: 'cylinder', radius: roomRadius, height: 0.1}} material={{src: marble, transparent: true, opacity: 0.7}} position={`0 ${-roomHeight / 2} 0`} />
