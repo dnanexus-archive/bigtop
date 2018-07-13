@@ -4,6 +4,7 @@ import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
 import {scaleLinear} from 'd3-scale';
+import FloorAxisTick from 'components/atoms/FloorAxisTick';
 
 class YAxes extends Component {
   render() {
@@ -11,8 +12,6 @@ class YAxes extends Component {
       yPosition,
       radiusScaleInfo
     } = this.props;
-
-    const ringWidth = 0.01;
 
     let rScale = scaleLinear()
       .domain(radiusScaleInfo.domain)
@@ -25,13 +24,7 @@ class YAxes extends Component {
       <Entity>
         {
           R.map(function(d) {
-            return (<Entity
-              key={d.value}
-              geometry={{primitive: 'ring', radiusInner: d.position, radiusOuter: d.position + ringWidth}}
-              position={{x:0, y: yPosition, z: 0}}
-              rotation={{x: 270, y: 0, z: 180}}
-              material={{color: 'black'}}
-            />)
+            return (<FloorAxisTick key={d.value} value={d.value} radialPosition={d.position} yPosition={yPosition} />);
           }, ticks)
         }
       </Entity>

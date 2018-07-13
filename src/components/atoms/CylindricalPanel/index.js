@@ -29,7 +29,7 @@ class CylindricalPanel extends Component {
       material={{color: color, side: "double"}}
       position={{x: 0, y: yPosition, z: 0}}
       />
-  );
+    );
   }
 }
 
