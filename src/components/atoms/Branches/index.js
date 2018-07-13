@@ -32,34 +32,34 @@ class Branches extends Component {
 
       }
       
-      function getXScale() {
-         
+      function getRotation() {
+      
+          // average the point radius and room radius  
+          let {x, z} = polarToCartesian(radius, (datum.radius + radius) / 2); 
+          var rot = (datum.theta*180) / Math.PI 
           var halfRadius = radius/2.0
           // assigns a branch a scale to the walls -- TODO 
-          if (datum.coords[0] >= halfRadius && datum.coords[0] <= radius) {
+          if (datum.radius >= halfRadius && datum.radius <= radius) {
 
-            return datum.coords[0]+halfRadius/2.0;
+            return rot+radius;
  
           }
-          else if ( datum.coords[0] >= halfRadius-halfRadius && datum.coords[0] < halfRadius) {
+          else if ( datum.radius >= halfRadius-halfRadius && datum.radius < halfRadius) {
 
-            return datum.coords[0]-halfRadius/2.0;
+            return rot-radius;
 
           }
       
       }
 
       if ( rotate === true ) {
-         // average the point radius and room radius 
-         //let {x, z} = polarToCartesian(radius, datum.radius + radius / 2);
-         //datum.coords[0] = x
          return (
             <Entity
               geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: 5, openEnded: true}}
               material={{color: 'white', shader: 'flat'}}
-              position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2] }}
-              rotation={{x:90, y: (datum.theta*180) / Math.PI, z:0}} 
-           />  
+              position={{x:datum.coords[0], y: datum.coords[1], z: datum.coords[2] }}
+              rotation={{x:90, y: (datum.theta*180) / Math.PI, z: datum.radius-15}} 
+            />  
          );
       }
       else {
