@@ -4,7 +4,7 @@ import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
 import CylindricalPanel from 'components/atoms/CylindricalPanel';
-import TickSet from 'components/atoms/TickSet';
+import YAxisTickSet from 'components/atoms/YAxisTickSet';
 import {scaleLinear} from 'd3-scale';
 
 class YAxes extends Component {
@@ -40,7 +40,7 @@ class YAxes extends Component {
                   yPosition={yPosition}
                 />
               </Entity>
-              <TickSet ticks={ticks} chrom={d} radius={radius * 0.99} />
+              <YAxisTickSet ticks={ticks} chrom={d} radius={radius * 0.99} />
             </Entity>);
           }, chromList)
         }

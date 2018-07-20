@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import marble from 'data/marble.jpg';
 import RadiusAxes from 'components/molecules/RadiusAxes';
 
-class Rotunda extends Component {
+class Floor extends Component {
   render() {
     const {
       radius,
@@ -13,7 +13,6 @@ class Rotunda extends Component {
       radiusScaleInfo
     } = this.props;
 
-    // Note: the colored chromosome wedges on the floor are just the bottom of the cylinder in the Rotunda
     return (
       <Entity>
         <Entity
@@ -27,4 +26,4 @@ class Rotunda extends Component {
   }
 }
 
-export default Rotunda;
+export default Floor;

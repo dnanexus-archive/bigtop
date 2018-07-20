@@ -64,6 +64,13 @@ export const polarToCartesian = function(r, theta) {
   };
 }
 
+export const degreesToRadians = function(degrees) {
+  return degrees * (Math.PI / 180);
+}
+
+export const radiansToDegrees = function(degrees) {
+  return degrees * (180 / Math.PI);
+}
 
 export const calculateCoordinates = function(data, chromDict, roomRadius, roomHeight) {
     // OPTIONS:
