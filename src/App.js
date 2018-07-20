@@ -30,7 +30,7 @@ class App extends Component {
     let {coordinates, yScaleDomain, radiusScaleInfo} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
     let someCoordinates = [];
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 5000; i++) {
       someCoordinates.push(coordinates[i]);
     }
     coordinates = someCoordinates;
@@ -56,7 +56,7 @@ class App extends Component {
               />
             </Entity>
           </Entity>
-          <PointCloud data={coordinates} height={roomHeight} />
+          <PointCloud data={coordinates} height={roomHeight} yScaleDomain={yScaleDomain} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
 
           <Entity light={{type: 'point'}} position="0 -2 0" />
