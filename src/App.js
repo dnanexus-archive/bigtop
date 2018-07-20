@@ -58,6 +58,7 @@ class App extends Component {
             </Entity>
           </Entity>
           <Forest data={someCoordinates} height={roomHeight} rotate={true} radius={roomRadius} /> 
+          <Forest data={someCoordinates} height={roomHeight} rotate={false} radius={roomRadius} />
           <PointCloud data={coordinates} height={roomHeight} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
 

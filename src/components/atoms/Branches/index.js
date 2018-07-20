@@ -15,10 +15,10 @@ class Branches extends Component {
       } = this.props;
 
 
+      // assigns a branch a scale to roof or the ceiling
       function getScale() {
           
           var halfHeight = height/2
-          // assigns a branch a scale to roof or the ceiling 
           if (datum.coords[1] >= halfHeight && datum.coords[1] <= height) {
 
             return datum.coords[1]+halfHeight/2;
@@ -32,33 +32,15 @@ class Branches extends Component {
 
       }
       
-      function getRotation() {
-      
-          // average the point radius and room radius  
-          let {x, z} = polarToCartesian(radius, (datum.radius + radius) / 2); 
-          var rot = (datum.theta*180) / Math.PI 
-          var halfRadius = radius/2.0
-          // assigns a branch a scale to the walls -- TODO 
-          if (datum.radius >= halfRadius && datum.radius <= radius) {
-
-            return rot+radius;
- 
-          }
-          else if ( datum.radius >= halfRadius-halfRadius && datum.radius < halfRadius) {
-
-            return rot-radius;
-
-          }
-      
-      }
-
       if ( rotate === true ) {
-         return (
+        var r = (datum.radius + radius) / 2
+        let {x, z} = polarToCartesian(r, datum.theta);
+        return (
             <Entity
-              geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: 5, openEnded: true}}
+              geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: radius-datum.radius, openEnded: true}}
               material={{color: 'white', shader: 'flat'}}
-              position={{x:datum.coords[0], y: datum.coords[1], z: datum.coords[2] }}
-              rotation={{x:90, y: (datum.theta*180) / Math.PI, z: datum.radius-15}} 
+              position={{x:x, y: datum.coords[1], z: z}}
+              rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}} 
             />  
          );
       }
@@ -68,7 +50,7 @@ class Branches extends Component {
             <Entity
               geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: 5, openEnded: true}}
               material={{color: 'white', shader: 'flat'}}
-              position={{x: datum.coords[0], y: getScale(), z: datum.coords[2]}}
+              position={{x: datum.coords[0], y: datum.coords[1]-(height/2)/2, z: datum.coords[2]}}
             />  
          );
       }
