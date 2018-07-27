@@ -40,6 +40,9 @@ class App extends Component {
       style: "position: absolute; height: 100%; width: 100%"
     };
 
+    //<Forest data={coordinates} height={roomHeight} rotate={true} radius={roomRadius} /> 
+     //<Forest data={coordinates} height={roomHeight} rotate={false} radius={roomRadius} />
+
     return (
       <Provider store={store}>
         <Scene {...sceneOpts}>
@@ -57,11 +60,11 @@ class App extends Component {
               />
             </Entity>
           </Entity>
-          <Forest data={someCoordinates} height={roomHeight} rotate={true} radius={roomRadius} /> 
-          <Forest data={someCoordinates} height={roomHeight} rotate={false} radius={roomRadius} />
+          <Forest data={coordinates} height={roomHeight} rotate={false} radius={roomRadius} /> 
+          <Forest data={coordinates} height={roomHeight} rotate={true} radius={roomRadius} />
           <PointCloud data={coordinates} height={roomHeight} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
-
+          
           <Entity light={{type: 'point'}} position="0 -2 0" />
           <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
           <Floor radius={roomRadius} yPosition={-roomHeight / 2} radiusScaleInfo={radiusScaleInfo} />
