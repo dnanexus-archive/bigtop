@@ -50,34 +50,34 @@ class Branches extends Component {
 
       }
     
-      //if (this.state.active) {
-  
-        if ( rotate === true ) {
+        if ( rotate === true && this.state.active ) {
             var r = (datum.radius + radius) / 2
             let {x, z} = polarToCartesian(r, datum.theta);
             return (
-                //{ this.state.active &&
-                    <Entity
-                        geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: radius-datum.radius, openEnded: true}}
-                        material={{color: 'white', shader: 'flat'}}
-                        position={{x:x, y: datum.coords[1], z: z}}
-                        rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}} 
-                        //events={{ mouseenter: this.onEnter }}
-                    />  
-                //}
+                <Entity visible={false}  
+                >
+                 { this.state.active && <Entity
+                    geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: radius-datum.radius, openEnded: true}}
+                    material={{color: 'white', shader: 'flat'}}
+                    position={{x:x, y: datum.coords[1], z: z}}
+                    rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}} 
+                    events={{ mouseenter: this.onEnter }}
+                /> } </Entity>
             );
         }
-        else {
+        else if ( rotate === false && this.state.active ) {
              return (
-                <Entity
+                <Entity visible={false} 
+                >
+                  { this.state.active && <Entity
                     geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: datum.coords[1], openEnded: true}}
                     material={{color: 'white', shader: 'flat'}}
                     position={{x: datum.coords[0], y: datum.coords[1]/2, z: datum.coords[2]}}
-                />  
+                    events={{ mouseenter: this.onEnter }}
+                 /> } </Entity>
             );
         }
   
-    //}
   }
 }
 
