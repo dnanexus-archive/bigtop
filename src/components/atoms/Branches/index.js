@@ -15,6 +15,7 @@ class Branches extends Component {
     this.onEnter = this.onEnter.bind(this);
     this.onExit = this.onExit.bind(this);
   }
+  
   onEnter() {
     this.setState({active: true});
   }
@@ -22,7 +23,6 @@ class Branches extends Component {
   onExit() {
     this.setState({active: false});
   }
-
 
   render() {
 
@@ -33,6 +33,11 @@ class Branches extends Component {
         radius
       } = this.props;
 
+      //  <Entity position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}} >
+      // { this.state.active && <Entity
+      // ......
+      // events={{ mouseenter: this.onEnter }}
+      // /> } </Entity>
       // assigns a branch a scale to roof or the ceiling
       function getScale() {
           
@@ -50,31 +55,32 @@ class Branches extends Component {
 
       }
     
-        if ( rotate === true && this.state.active ) {
+        if ( rotate === true ) {
             var r = (datum.radius + radius) / 2
             let {x, z} = polarToCartesian(r, datum.theta);
             return (
-                <Entity visible={false}  
-                >
-                 { this.state.active && <Entity
+                //<Entity 
+                //    id={datum.id}
+                //    geometry={{primitive: 'sphere', radius: 0.1 }} 
+                //    position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}} 
+                //    events={{ mouseenter: this.onEnter }}
+                //>
+                <Entity 
                     geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: radius-datum.radius, openEnded: true}}
                     material={{color: 'white', shader: 'flat'}}
                     position={{x:x, y: datum.coords[1], z: z}}
                     rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}} 
-                    events={{ mouseenter: this.onEnter }}
-                /> } </Entity>
+                />
             );
         }
-        else if ( rotate === false && this.state.active ) {
+        else if ( rotate === false ) {
              return (
-                <Entity visible={false} 
-                >
-                  { this.state.active && <Entity
+                  <Entity
                     geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: datum.coords[1], openEnded: true}}
                     material={{color: 'white', shader: 'flat'}}
-                    position={{x: datum.coords[0], y: datum.coords[1]/2, z: datum.coords[2]}}
+                    position={{x: datum.coords[0], y: (datum.coords[1]/2), z: datum.coords[2]}}
                     events={{ mouseenter: this.onEnter }}
-                 /> } </Entity>
+                 /> 
             );
         }
   

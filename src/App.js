@@ -61,9 +61,7 @@ class App extends Component {
               />
             </Entity>
           </Entity>
-          <Forest data={coordinates} height={roomHeight} rotate={true} radius={roomRadius} /> 
-          <Forest data={coordinates} height={roomHeight} rotate={false} radius={roomRadius} />
-          <PointCloud data={coordinates} height={roomHeight} radius={roomRadius} />
+          <PointCloud data={coordinates} height={roomHeight} rotate={true} radius={roomRadius} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
           
           <Entity light={{type: 'point'}} position="0 -2 0" />
