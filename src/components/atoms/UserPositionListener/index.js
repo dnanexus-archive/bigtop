@@ -9,8 +9,8 @@ import * as actionCreators from './actions';
 
 class UserPositionListener extends Component {
   componentDidMount() {
-    const {updateUserPosition} = this.props;
-    const camera = document.querySelector('#userCamera');
+    const {updateUserPosition, follow} = this.props;
+    const camera = document.querySelector(`#${follow}`);
 
     camera.addEventListener('componentchanged', function (evt) {
       if (evt.detail.name !== 'position')

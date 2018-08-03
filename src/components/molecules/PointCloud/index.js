@@ -3,6 +3,7 @@ import 'aframe-particle-system-component';
 import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import Point from 'components/atoms/Point';
+import SelectedPoint from 'components/atoms/SelectedPoint';
 import * as R from 'ramda';
 import {scaleLinear} from 'd3-scale';
 
@@ -11,7 +12,6 @@ class PointCloud extends Component {
     const {
       data,
       height,
-      yScaleDomain,
       radius
     } = this.props;
 
@@ -26,6 +26,7 @@ class PointCloud extends Component {
     return (
       <Entity position={{y: -height/2.0, x: 0, z: 0}}>
         {points}
+        <SelectedPoint points={data} radius={radius} sizeScaler={pointSizeScale} />
       </Entity>
     );
   }

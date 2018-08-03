@@ -89,7 +89,6 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
     const dataMaxP = max(data, d => yTransform(d[keys.y]));
     const maxP = optionalCeilingP || dataMaxP * 1.05;
 
-    // console.log("max -log10(p) from data:", dataMaxP, "chosen value:", maxP);
 		const floorDistance = 0; 				// Distance from 0 to floor, lowers points by this amount
 		let yScale = scaleLinear()
       .domain([floorDistance, maxP+floorDistance])

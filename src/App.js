@@ -8,7 +8,6 @@ import PointCloud from 'components/molecules/PointCloud';
 import Rotunda from 'components/complexes/Rotunda';
 import Floor from 'components/complexes/Floor';
 import UserPositionListener from 'components/atoms/UserPositionListener';
-import UserTracker from 'components/atoms/UserTracker';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
@@ -49,8 +48,8 @@ class App extends Component {
             // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
             // the position attribute on a camera. This allows both monitor and headset position to be similar.
           }
-          <Entity position="0 -5.4 0">
-            <Entity primitive="a-camera" id="userCamera" position="0 2.4 0" look-controls raycaster="objects: .data-point">
+          <Entity position="0 -5 0">
+            <Entity primitive="a-camera" id="userCamera" look-controls raycaster="objects: .data-point">
               <Entity
                 cursor
                 geometry={{primitive: 'ring', radiusInner: 0.0001, radiusOuter: 0.00025}}
@@ -59,11 +58,9 @@ class App extends Component {
               />
             </Entity>
           </Entity>
-          <UserPositionListener />
+          {/* Not currently used */}
+          <UserPositionListener follow="userCamera" />
 
-          <UserTracker>
-            <Entity geometry={{primitive: 'box'}} material={{color: 'blue'}} position="0 -1.5 -2" />
-          </UserTracker>
           <PointCloud data={coordinates} height={roomHeight} yScaleDomain={yScaleDomain} radius={roomRadius} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
           

@@ -6,15 +6,15 @@ class InfoPanel extends Component {
   render() {
     return (
       <Entity
-        geometry={{primitive: 'plane', height: 0.2, width: 0.4, depth: 0.2}}
+        geometry={{primitive: 'plane', height: 0.2, width: 0.4}}
         material={{color: 'black', opacity: 0.4}} 
         {...this.props}
       >
         <Entity
-					text={{value: this.props.text,
-            align: "center",
-            color: "white",
-            width: 1 }}
+					text={{value: this.props.text}}
+          align="center"
+          color="white"
+          width={1}
         />
       </Entity>
     );
