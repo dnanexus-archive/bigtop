@@ -31,9 +31,22 @@ class SelectedPoint extends Component {
         material={{color: 'yellow'}}
         position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}
     >
-        <Entity geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: datum.coords[1], openEnded: true}} material={{color: 'white', shader: 'flat'}} position={{x: 0, y: -datum.coords[1]/2, z: 0}} />
-        <Entity geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: radius+datum.radius, openEnded: true}} material={{color: 'white', shader: 'flat'}} position={{x: x, y: 0, z: z}} rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}} />
-        <InfoPanel position={{x: 0, y: 0.1 + (pointDistance / 40), z: 0}} scale={{x: pointDistance, y: pointDistance, z: pointDistance }} rotation={{x: 0, y: datum.theta * -57.2958, z: 0}} text={datum.id + "\n" + datum.gene} />
+        <Entity
+          geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: datum.coords[1], openEnded: true}}
+          material={{color: 'white', shader: 'flat'}}
+          position={{x: 0, y: -datum.coords[1]/2, z: 0}}
+        />
+        <Entity
+          geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: radius+datum.radius, openEnded: true}} material={{color: 'white', shader: 'flat'}}
+          position={{x: x, y: 0, z: z}}
+          rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}}
+        />
+        <InfoPanel
+          position={{x: 0, y: 0.3 + (pointDistance / 40), z: 0}}
+          scale={{x: pointDistance, y: pointDistance, z: pointDistance}}
+          rotation={{x: 0, y: datum.theta * -57.2958, z: 0}}
+          text={[datum.id, datum.gene, `p: ${datum.p}`, `freq: ${datum.frequency}`, `${datum.chr}:${datum.location}`].join('\n')}
+        />
 
     </Entity>
     );
