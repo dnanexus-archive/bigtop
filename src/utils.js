@@ -75,7 +75,7 @@ export const radiansToDegrees = function(degrees) {
 export const calculateCoordinates = function(data, chromDict, roomRadius, roomHeight) {
     // OPTIONS:
     const yRange = [0, roomHeight];
-    const optionalCeilingP = 20;
+    const optionalCeilingP = undefined; // 20
     const innerRadius = roomRadius * 0.1;
     const yTransform = y => -1 * Math.log10(y);
 
@@ -87,9 +87,9 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
       .range([innerRadius, roomRadius]);
 
     const dataMaxP = max(data, d => yTransform(d[keys.y]));
-    const maxP = optionalCeilingP || dataMaxP;
+    const maxP = optionalCeilingP || dataMaxP * 1.05;
 
-    console.log("max -log10(p) from data:", dataMaxP, "chosen value:", maxP);
+    // console.log("max -log10(p) from data:", dataMaxP, "chosen value:", maxP);
 		const floorDistance = 0; 				// Distance from 0 to floor, lowers points by this amount
 		let yScale = scaleLinear()
       .domain([floorDistance, maxP+floorDistance])
