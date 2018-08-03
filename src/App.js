@@ -39,10 +39,6 @@ class App extends Component {
       style: "position: absolute; height: 100%; width: 100%"
     };
     
-    //<Forest data={coordinates} height={roomHeight} rotate={false} radius={roomRadius} /> 
-    //<Forest data={coordinates} height={roomHeight} rotate={true} radius={roomRadius} />
-    //<Forest data={coordinates} height={roomHeight} rotate={true} radius={roomRadius} />
-
     return (
       <Provider store={store}>
         <Scene {...sceneOpts}>
