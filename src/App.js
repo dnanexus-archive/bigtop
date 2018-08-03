@@ -40,7 +40,7 @@ class App extends Component {
     const sceneOpts = {
       style: "position: absolute; height: 100%; width: 100%"
     };
-
+    
     return (
       <Provider store={store}>
         <Scene {...sceneOpts}>
@@ -63,9 +63,9 @@ class App extends Component {
           <UserTracker>
             <Entity geometry={{primitive: 'box'}} material={{color: 'blue'}} position="0 -1.5 -2" />
           </UserTracker>
-          <PointCloud data={coordinates} height={roomHeight} yScaleDomain={yScaleDomain} />
+          <PointCloud data={coordinates} height={roomHeight} yScaleDomain={yScaleDomain} radius={roomRadius} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
-
+          
           <Entity light={{type: 'point'}} position="0 -2 0" />
           <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
           <Floor radius={roomRadius} yPosition={-roomHeight / 2} radiusScaleInfo={radiusScaleInfo} />

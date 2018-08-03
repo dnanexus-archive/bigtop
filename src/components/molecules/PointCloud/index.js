@@ -11,7 +11,8 @@ class PointCloud extends Component {
     const {
       data,
       height,
-      yScaleDomain
+      yScaleDomain,
+      radius
     } = this.props;
 
     let pointSizeScale = scaleLinear()
@@ -19,11 +20,11 @@ class PointCloud extends Component {
       .range([0.01, 0.2]);
 
     let points = R.map(function(d) {
-      return (<Point key={d.id} datum={d} size={pointSizeScale(d.coords[1])} />)
+      return (<Point key={d.id} datum={d} size={pointSizeScale(d.coords[1])} radius={radius} />)
     }, data);
 
     return (
-      <Entity position={{y: -height/2, x: 0, z: 0}}>
+      <Entity position={{y: -height/2.0, x: 0, z: 0}}>
         {points}
       </Entity>
     );
