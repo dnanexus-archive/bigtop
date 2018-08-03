@@ -4,7 +4,6 @@ import 'aframe-animation-component';
 import {Entity, Scene} from 'aframe-react';
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import Forest from 'components/molecules/Forest';
 import PointCloud from 'components/molecules/PointCloud';
 import Rotunda from 'components/complexes/Rotunda';
 import Floor from 'components/complexes/Floor';
@@ -61,7 +60,7 @@ class App extends Component {
               />
             </Entity>
           </Entity>
-          <PointCloud data={coordinates} height={roomHeight} rotate={true} radius={roomRadius} />
+          <PointCloud data={coordinates} height={roomHeight} radius={roomRadius} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
           
           <Entity light={{type: 'point'}} position="0 -2 0" />

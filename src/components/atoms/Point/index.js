@@ -3,7 +3,6 @@ import 'aframe-particle-system-component';
 import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import InfoPanel from 'components/molecules/InfoPanel';
-import Branches from 'components/atoms/Branches';
 import {polarToCartesian} from 'utils';    
 
 class Point extends Component {
@@ -30,7 +29,6 @@ class Point extends Component {
     const {
       datum,
       height,
-      rotate,
       radius
     } = this.props;
 
@@ -50,10 +48,8 @@ class Point extends Component {
 //          mouseleave: this.onExit
         }}
     >
-        // vertical
         {this.state.active && <Entity geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: datum.coords[1], openEnded: true}} material={{color: 'white', shader: 'flat'}} position={{x: 0, y: -datum.coords[1]/2, z: 0}} /> } 
     >
-        // horizontal 
         {this.state.active &&  <Entity geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: radius+datum.radius, openEnded: true}} material={{color: 'white', shader: 'flat'}} position={{x: x, y: 0, z: z}} rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}}  /> } 
      >
         {this.state.active && <InfoPanel position={{x: 0, y: 0.1 + (pointDistance / 40), z: 0}} scale={{x: pointDistance, y: pointDistance, z: pointDistance }} rotation={{x: 0, y: datum.theta * -57.2958, z: 0}} text={datum.id + "\n" + datum.gene} />} 

@@ -10,12 +10,11 @@ class PointCloud extends Component {
     const {
       data,
       height,
-      rotate,
       radius
     } = this.props;
 
     let points = R.map(function(d) {
-      return (<Point key={d.id} datum={d} height={height} rotate={rotate} radius={radius} />)
+      return (<Point key={d.id} datum={d} height={height} radius={radius} />)
     }, data);
 
     return (
