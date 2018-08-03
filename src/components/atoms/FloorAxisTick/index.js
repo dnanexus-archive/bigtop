@@ -26,7 +26,7 @@ class FloorAxisTick extends Component {
       {
         R.map(function(direction) {
           return (
-            <Entity rotation={{y: direction}}>
+            <Entity rotation={{y: direction}} key={direction}>
               <Entity
                 text={{ value: value,
                         align: "center",

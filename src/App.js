@@ -7,6 +7,8 @@ import {Provider} from 'react-redux';
 import PointCloud from 'components/molecules/PointCloud';
 import Rotunda from 'components/complexes/Rotunda';
 import Floor from 'components/complexes/Floor';
+import UserPositionListener from 'components/atoms/UserPositionListener';
+import UserTracker from 'components/atoms/UserTracker';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
@@ -30,7 +32,7 @@ class App extends Component {
     let {coordinates, yScaleDomain, radiusScaleInfo} = calculateCoordinates(data, chromDict, roomRadius, roomHeight);
 
     let someCoordinates = [];
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 5000; i++) {
       someCoordinates.push(coordinates[i]);
     }
     coordinates = someCoordinates;
@@ -47,7 +49,7 @@ class App extends Component {
             // the position attribute on a camera. This allows both monitor and headset position to be similar.
           }
           <Entity position="0 -5.4 0">
-            <Entity primitive="a-camera" position="0 2.4 0" look-controls raycaster="objects: .data-point">
+            <Entity primitive="a-camera" id="userCamera" position="0 2.4 0" look-controls raycaster="objects: .data-point">
               <Entity
                 cursor
                 geometry={{primitive: 'ring', radiusInner: 0.0001, radiusOuter: 0.00025}}
@@ -56,7 +58,12 @@ class App extends Component {
               />
             </Entity>
           </Entity>
-          <PointCloud data={coordinates} height={roomHeight} radius={roomRadius} />
+          <UserPositionListener />
+
+          <UserTracker>
+            <Entity geometry={{primitive: 'box'}} material={{color: 'blue'}} position="0 -1.5 -2" />
+          </UserTracker>
+          <PointCloud data={coordinates} height={roomHeight} yScaleDomain={yScaleDomain} radius={roomRadius} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
           
           <Entity light={{type: 'point'}} position="0 -2 0" />

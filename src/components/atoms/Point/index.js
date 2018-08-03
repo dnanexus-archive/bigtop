@@ -28,7 +28,7 @@ class Point extends Component {
   render() {
     const {
       datum,
-      height,
+      size,
       radius
     } = this.props;
 
@@ -40,7 +40,7 @@ class Point extends Component {
         id={datum.id}
         key={datum.id}
 				gene={datum.gene}
-        geometry={{primitive: 'sphere', radius: 0.03}}
+        geometry={{primitive: 'sphere', radius: size}}
         material={{color: this.state.active ? 'yellow' : 'teal'}}
         position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}
         events={{

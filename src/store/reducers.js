@@ -9,6 +9,11 @@ export default combineReducers({
           selectedPoint: action.id
         }
 
+      case 'UPDATE_USER_POSITION':
+        return {...state,
+          worldPosition: action.coords
+        };
+
       default:
         return state;
     }

@@ -1,5 +1,6 @@
 export default {
   user: {
-    selectedPoint: null
+    selectedPoint: null,
+    worldPosition: [0, -3, 0]
   }
 };
