@@ -7,7 +7,6 @@ import {Provider} from 'react-redux';
 import PointCloud from 'components/molecules/PointCloud';
 import Rotunda from 'components/complexes/Rotunda';
 import Floor from 'components/complexes/Floor';
-import UserPositionListener from 'components/atoms/UserPositionListener';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
