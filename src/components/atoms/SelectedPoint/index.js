@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as R from 'ramda';
 import InfoPanel from 'components/molecules/InfoPanel';
-import {polarToCartesian} from 'utils';    
+import {polarToCartesian} from 'utils';
 
 class SelectedPoint extends Component {
   render() {
@@ -22,7 +22,7 @@ class SelectedPoint extends Component {
     const datum = R.find((point) => point.id === selectedPoint, points)
     const size = sizeScaler(datum.coords[1]);
 
-    let pointDistance = Math.sqrt(Math.pow(datum.coords[0], 2) + Math.pow(datum.coords[2], 2))
+    let pointDistance = Math.cbrt(Math.pow(Math.abs(datum.coords[0]), 3) + Math.pow(Math.abs(datum.coords[2]), 3) + Math.pow(Math.abs(datum.coords[1]), 3))
     var r = (datum.radius + radius) / 2
     let {x, z} = polarToCartesian(r, datum.theta);
     return (
@@ -42,7 +42,7 @@ class SelectedPoint extends Component {
           rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}}
         />
         <InfoPanel
-          position={{x: 0, y: 0.3 + (pointDistance / 40), z: 0}}
+          position={{x: 0, y: (pointDistance / 7), z: 0}}
           scale={{x: pointDistance, y: pointDistance, z: pointDistance}}
           rotation={{x: 0, y: datum.theta * -57.2958, z: 0}}
           text={[datum.id, datum.gene, `p: ${datum.p}`, `freq: ${datum.frequency}`, `${datum.chr}:${datum.location}`].join('\n')}
