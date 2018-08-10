@@ -44,7 +44,8 @@ class App extends Component {
     // use just data if not downsampling
     let downsampledData = [];
     for (let i = 0; i < 5000; i++) {
-      downsampledData.push(data[i]);
+      if (data[i])
+        downsampledData.push(data[i]);
     }
 
     let {coordinates, yScaleDomain, radiusScaleInfo} = calculateCoordinates(downsampledData, chromDict, roomRadius, roomHeight);
