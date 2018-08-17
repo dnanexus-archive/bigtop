@@ -10,14 +10,7 @@ class InfoPanel extends Component {
         material={{color: 'black', opacity: 0.4}} 
         {...this.props}
       >
-        <Entity
-					text={{
-            value: this.props.text,
-            align: 'center',
-            color: 'white',
-            width: 1
-          }}
-        />
+        {this.props.children}
       </Entity>
     );
   }

@@ -4,7 +4,7 @@ import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as R from 'ramda';
-import InfoPanel from 'components/molecules/InfoPanel';
+import GeneInfoPanel from 'components/molecules/GeneInfoPanel';
 import {polarToCartesian} from 'utils';
 
 class SelectedPoint extends Component {
@@ -41,11 +41,11 @@ class SelectedPoint extends Component {
           position={{x: x, y: 0, z: z}}
           rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}}
         />
-        <InfoPanel
+        <GeneInfoPanel
           position={{x: 0, y: (pointDistance / 7), z: 0}}
           scale={{x: pointDistance, y: pointDistance, z: pointDistance}}
           rotation={{x: 0, y: datum.theta * -57.2958, z: 0}}
-          text={[datum.id, datum.gene, `p: ${datum.p}`, `freq: ${datum.frequency}`, `${datum.chr}:${datum.location}`].join('\n')}
+          data={datum /* Only a little weird to turn a datum into data, but the datum does contain many data.... */}
         />
 
     </Entity>
