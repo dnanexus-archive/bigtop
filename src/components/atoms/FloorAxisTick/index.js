@@ -27,10 +27,15 @@ class FloorAxisTick extends Component {
         R.map(function(direction) {
           return (
             <Entity rotation={{y: direction}} key={direction}>
+              {/* floor radius tick marks: 10%, 20%, etc. */}
               <Entity
-                text={{ value: value,
+                text={{ value: `${value * 100}%`,
                         align: "center",
-                        width: 5}}
+                        width: 5,
+                        color: "black"
+                      }}
+                // geometry={{primitive: "plane", height: "auto", width: 0.5}}
+                // material="color: black"
                 position={{x: 0, y: yPosition, z: -radialPosition}}
                 rotation={{x: 270, y: 0, z: 0}}
               />

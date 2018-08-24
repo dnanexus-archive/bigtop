@@ -7,6 +7,8 @@ import ChromosomeWalls from 'components/molecules/ChromosomeWalls';
 import ChromosomeLabels from 'components/molecules/ChromosomeLabels';
 import ChromosomeCytobands from 'components/molecules/ChromosomeCytobands';
 import YAxes from 'components/molecules/YAxes';
+import {polarToCartesian} from 'utils';
+
 
 class Rotunda extends Component {
   render() {
@@ -16,7 +18,8 @@ class Rotunda extends Component {
       chromDict,
       cytobands,
       colorScheme,
-      yScaleDomain
+      yScaleDomain,
+      yAxisTitle
     } = this.props;
 
     const chromList = R.values(chromDict);
@@ -47,6 +50,14 @@ class Rotunda extends Component {
           radius={radius*0.997}
           height={height}
           yPosition={0}
+        />
+        {/* Y axis: e.g. "-log10(p-value)" */}
+        <Entity
+          text={{value: yAxisTitle, align: "center", width: 10, color: "black"}}
+          // geometry={{primitive: "plane", height: "auto", width: 3.5}}
+          // material="color: black"
+          position={{y: -0.3 * height, ...polarToCartesian(radius*0.997, -0.005 * (2 * Math.PI))}}
+          rotation={{z: 90}}
         />
       </Entity>
     );

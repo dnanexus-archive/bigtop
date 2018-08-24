@@ -10,7 +10,8 @@ class Floor extends Component {
     const {
       radius,
       yPosition,
-      radiusScaleInfo
+      radiusScaleInfo,
+      radiusAxisTitle
     } = this.props;
 
     return (
@@ -20,7 +21,7 @@ class Floor extends Component {
           material={{src: marble, transparent: true, opacity: 0.7}}
           position={`0 ${yPosition} 0`}
         />
-        <RadiusAxes yPosition={yPosition * 0.99} radiusScaleInfo={radiusScaleInfo} />        
+        <RadiusAxes yPosition={yPosition * 0.99} radiusScaleInfo={radiusScaleInfo} title={radiusAxisTitle} />        
       </Entity>
     );
   }
