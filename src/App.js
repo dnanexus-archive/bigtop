@@ -67,14 +67,14 @@ class App extends Component {
     } else {
       reticle = (
         <Entity
-          cursor
+          cursor={{fuse: true, fuseTimeout: "750"}}
           geometry={{primitive: 'ring', radiusInner: 0.0005, radiusOuter: 0.001}}
           position={{x: 0, y: 0, z: -0.1}}
           material={{color: 'black', shader: 'flat', opacity: 0.4}}
         />
       );
     }
-    
+
     return (
       <Provider store={store}>
         <Scene {...sceneOpts}>
@@ -90,7 +90,7 @@ class App extends Component {
 
           <PointCloud data={coordinates} height={roomHeight} yScaleDomain={yScaleDomain} radius={roomRadius} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
-          
+
           <Entity light={{type: 'point'}} position="0 -2 0" />
           <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
           <Floor radius={roomRadius} yPosition={-roomHeight / 2} radiusScaleInfo={radiusScaleInfo} />

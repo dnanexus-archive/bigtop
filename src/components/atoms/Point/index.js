@@ -40,7 +40,7 @@ class Point extends Component {
         material={{color: shade }}
         position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}
         events={{
-          mouseenter: this.onEnter
+          click: this.onEnter
         }}
       />
     );
