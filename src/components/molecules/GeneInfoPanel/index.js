@@ -1,6 +1,7 @@
 import 'aframe';
 import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
+import {format as d3Format} from 'd3-format';
 import InfoPanel from '../InfoPanel';
 
 class GeneInfoPanel extends Component {
@@ -13,7 +14,7 @@ class GeneInfoPanel extends Component {
       gene,
       `p: ${p.toExponential()}`,
       `freq: ${frequency}`,
-      `${chr}:${location}`
+      `${chr}:${d3Format(',.2r')(location)}`
     ].join('\n');
 
     return <InfoPanel position={this.props.position} scale={this.props.scale} rotation={this.props.rotation}>
