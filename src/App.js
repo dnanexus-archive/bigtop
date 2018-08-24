@@ -7,7 +7,6 @@ import {Provider} from 'react-redux';
 import PointCloud from 'components/molecules/PointCloud';
 import Rotunda from 'components/complexes/Rotunda';
 import Floor from 'components/complexes/Floor';
-import UserPositionListener from 'components/atoms/UserPositionListener';
 import data from 'data/90k_GIANT_height_filtered.gene_loc.coords.json';
 import cytobands from 'data/human_genome_cytoband_edges.json';
 import {createChromosomeScale, calculateCoordinates} from 'utils';
@@ -17,6 +16,19 @@ import initialState from './store/initialState';
 const store = configureStore(initialState);
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      inVR: false
+    };
+  }
+
+  componentDidMount() {
+    const scene = document.querySelector('a-scene');
+    scene.addEventListener('enter-vr', () => {this.setState({inVR: true})});
+    scene.addEventListener('exit-vr', () => {this.setState({inVR: false})});
+  }
 
   render() {
 
@@ -32,7 +44,8 @@ class App extends Component {
     // use just data if not downsampling
     let downsampledData = [];
     for (let i = 0; i < 5000; i++) {
-      downsampledData.push(data[i]);
+      if (data[i])
+        downsampledData.push(data[i]);
     }
 
     let {coordinates, yScaleDomain, radiusScaleInfo} = calculateCoordinates(downsampledData, chromDict, roomRadius, roomHeight);
@@ -40,6 +53,27 @@ class App extends Component {
     const sceneOpts = {
       style: "position: absolute; height: 100%; width: 100%"
     };
+
+    let reticle;
+    if (this.state.inVR) {
+      reticle = (
+        <Entity
+          cursor
+          geometry={{primitive: 'plane', height: 0.00075, width: 0.015}}
+          position={{x: 0, y: 0, z: -0.4}}
+          material={{color: 'black', shader: 'flat'}}
+        />
+      );
+    } else {
+      reticle = (
+        <Entity
+          cursor
+          geometry={{primitive: 'ring', radiusInner: 0.0005, radiusOuter: 0.001}}
+          position={{x: 0, y: 0, z: -0.1}}
+          material={{color: 'black', shader: 'flat', opacity: 0.4}}
+        />
+      );
+    }
     
     return (
       <Provider store={store}>
@@ -50,16 +84,9 @@ class App extends Component {
           }
           <Entity position="0 -5 0">
             <Entity primitive="a-camera" id="userCamera" look-controls raycaster="objects: .data-point">
-              <Entity
-                cursor
-                geometry={{primitive: 'ring', radiusInner: 0.0001, radiusOuter: 0.00025}}
-                position={{x:0, y: 0, z: -0.01}}
-                material={{color: 'black', shader: 'flat', opacity: 0.4}}
-              />
+              {reticle}
             </Entity>
           </Entity>
-          {/* Not currently used */}
-          <UserPositionListener follow="userCamera" />
 
           <PointCloud data={coordinates} height={roomHeight} yScaleDomain={yScaleDomain} radius={roomRadius} />
           <Rotunda radius={roomRadius} height={roomHeight} chromDict={chromDict} cytobands={cytobands} colorScheme={colorScheme} yScaleDomain={yScaleDomain} />
@@ -68,7 +95,8 @@ class App extends Component {
           <Entity light={{type: 'ambient', color: '#ffffff', intensity: 0.2}} />
           <Floor radius={roomRadius} yPosition={-roomHeight / 2} radiusScaleInfo={radiusScaleInfo} />
 
-          <div>Now displaying in VR....</div>
+          {!this.state.inVR && <div>Loading...</div>}
+          {this.state.inVR && <div>Now displaying in VR....</div>}
         </Scene>
       </Provider>
     );

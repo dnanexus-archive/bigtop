@@ -3,7 +3,7 @@ import 'aframe-particle-system-component';
 import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import Point from 'components/atoms/Point';
-import SelectedPoint from 'components/atoms/SelectedPoint';
+import SelectedPoint from 'components/molecules/SelectedPoint';
 import * as R from 'ramda';
 import {scaleLinear} from 'd3-scale';
 
