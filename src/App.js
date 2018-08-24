@@ -73,6 +73,7 @@ class App extends Component {
     } else {
       reticle = (
         <Entity
+<<<<<<< HEAD
           cursor
           geometry={{
             primitive: "ring",
@@ -81,6 +82,12 @@ class App extends Component {
           }}
           position={{ x: 0, y: 0, z: -0.1 }}
           material={{ color: "black", shader: "flat", opacity: 0.4 }}
+=======
+          cursor={{fuse: true, fuseTimeout: "750"}}
+          geometry={{primitive: 'ring', radiusInner: 0.0005, radiusOuter: 0.001}}
+          position={{x: 0, y: 0, z: -0.1}}
+          material={{color: 'black', shader: 'flat', opacity: 0.4}}
+>>>>>>> 38a8cb0215a44df46f2c30e2aa90341afc68a16d
         />
       );
     }

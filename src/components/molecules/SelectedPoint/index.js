@@ -23,8 +23,16 @@ class SelectedPoint extends Component {
     const size = sizeScaler(datum.coords[1]);
 
     let pointDistance = Math.cbrt(Math.pow(Math.abs(datum.coords[0]), 3) + Math.pow(Math.abs(datum.coords[2]), 3) + Math.pow(Math.abs(datum.coords[1]), 3))
-    var r = (datum.radius + radius) / 2
+    let r = (datum.radius + radius) / 2
     let {x, z} = polarToCartesian(r, datum.theta);
+
+    // switching infopanel location based on height
+    let infoHeight = pointDistance / 7;
+		if (datum.coords[1] >= 4) {
+      infoHeight = -infoHeight;
+		}
+
+
     return (
      <Entity
         geometry={{primitive: 'sphere', radius: size + 0.002}}
@@ -42,9 +50,9 @@ class SelectedPoint extends Component {
           rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}}
         />
         <GeneInfoPanel
-          position={{x: 0, y: (pointDistance / 7), z: 0}}
+          position={{x: 0, y: infoHeight, z: 0}}
           scale={{x: pointDistance, y: pointDistance, z: pointDistance}}
-          rotation={{x: 0, y: datum.theta * -57.2958, z: 0}}
+          rotation={{x: 45 * (datum.coords[1] / 10), y: datum.theta * -57.2958, z: 0}}
           data={datum /* Only a little weird to turn a datum into data, but the datum does contain many data.... */}
         />
 
