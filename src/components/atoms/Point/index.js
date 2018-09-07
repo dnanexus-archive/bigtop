@@ -37,7 +37,7 @@ class Point extends Component {
         id={datum.id}
 				gene={datum.gene}
         geometry={{primitive: 'sphere', radius: size}}
-        material={{color: shade }}
+        material={{color: shade, metalness: 0.3}}
         position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}
         events={{
           click: this.onEnter

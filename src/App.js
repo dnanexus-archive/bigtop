@@ -130,12 +130,12 @@ class App extends Component {
           />
 
           <Entity light={{ type: "ambient", color: "#ffffff", intensity: 0.85 }} />
-					// cardinal directions
+					{/* cardinal directions */}
           <Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="7 -4 0" />
 					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="-7 -4 0" />
 					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="0 -4 7" />
 					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="0 -4 -7" />
-					// corners
+					{/* corners */}
 					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="7 -4 7" />
 					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="7 -4 -7" />
 					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="-7 -4 7" />
