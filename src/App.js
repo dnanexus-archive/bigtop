@@ -4,6 +4,8 @@ import "aframe-animation-component";
 import { Entity, Scene } from "aframe-react";
 import React, { Component } from "react";
 import { Provider } from "react-redux";
+import groupBy from 'ramda/src/groupBy';
+import PointPlane from "components/atoms/PointPlane";
 import PointCloud from "components/molecules/PointCloud";
 import Rotunda from "components/complexes/Rotunda";
 import Floor from "components/complexes/Floor";
@@ -38,6 +40,7 @@ class App extends Component {
   render() {
     const roomRadius = 10; // meters
     const roomHeight = 10; // meters
+    const pCutoff = 5e-7;
 
     const chroms = ["chr1", "chr2", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13", "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21", "chr22", "chrX", "chrY"];
     const sizes = [248956422, 242193529, 198295559, 190214555, 181538259, 170805979, 159345973, 145138636, 138394717, 133797422, 135086622, 133275309, 114364328, 107043718, 101991189, 90338345, 83257441, 80373285, 58617616, 64444167, 46709983, 50818468, 156040895, 57227415];
@@ -53,12 +56,14 @@ class App extends Component {
       R.sortBy(R.prop("p"))
     )(data);
 
-    let { coordinates, yScaleDomain, radiusScaleInfo } = calculateCoordinates(
+    let {coordinates, yScaleDomain, radiusScaleInfo} = calculateCoordinates(
       downsampledData,
       chromDict,
       roomRadius,
       roomHeight
     );
+
+    const {sigCoords, insigCoords} = groupBy((coord) => {return coord.p < pCutoff ? 'sigCoords' : 'insigCoords'}, coordinates)
 
     const sceneOpts = {
       style: "position: absolute; height: 100%; width: 100%"
@@ -107,8 +112,9 @@ class App extends Component {
             </Entity>
           </Entity>
 
+          <PointPlane points={insigCoords} height={roomHeight} radius={roomRadius} />
           <PointCloud
-            data={coordinates}
+            data={sigCoords}
             height={roomHeight}
             yScaleDomain={yScaleDomain}
             radius={roomRadius}
