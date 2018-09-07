@@ -41,8 +41,8 @@ class Rotunda extends Component {
           cytobands={cytobands}
           chromDict={chromDict}
           radius={radius*0.998}
-          height={height/10}
-          yPosition={1}
+          height={height*0.06}
+          yPosition={-1}
         />
         <YAxes
           chromList={chromList}
