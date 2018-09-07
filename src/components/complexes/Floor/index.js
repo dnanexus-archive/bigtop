@@ -18,10 +18,10 @@ class Floor extends Component {
       <Entity>
         <Entity
           geometry={{primitive: 'cylinder', radius: radius, height: 0.001}}
-          material={{src: marble, transparent: true, opacity: 0.7}}
+          material={{src: marble, transparent: true, opacity: 0.7, shader: "flat" }}
           position={`0 ${yPosition} 0`}
         />
-        <RadiusAxes yPosition={yPosition * 0.99} radiusScaleInfo={radiusScaleInfo} title={radiusAxisTitle} />        
+        <RadiusAxes yPosition={yPosition * 0.99} radiusScaleInfo={radiusScaleInfo} title={radiusAxisTitle} />
       </Entity>
     );
   }

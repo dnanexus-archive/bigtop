@@ -119,10 +119,18 @@ class App extends Component {
             yAxisTitle="-log10(p-value)"
           />
 
-          <Entity light={{ type: "point" }} position="0 -2 0" />
-          <Entity
-            light={{ type: "ambient", color: "#ffffff", intensity: 0.2 }}
-          />
+          <Entity light={{ type: "ambient", color: "#ffffff", intensity: 0.7 }} />
+					// cardinal directions
+          <Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="7 -4 0" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="-7 -4 0" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="0 -4 7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="0 -4 -7" />
+					// corners
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="7 -4 7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="7 -4 -7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="-7 -4 7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="-7 -4 -7" />
+
           <Floor
             radius={roomRadius}
             yPosition={-roomHeight / 2}

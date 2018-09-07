@@ -55,7 +55,7 @@ class Rotunda extends Component {
         <Entity
           text={{value: yAxisTitle, align: "center", width: 10, color: "black"}}
           // geometry={{primitive: "plane", height: "auto", width: 3.5}}
-          // material="color: black"
+          material={{shader: "flat" }}
           position={{y: -0.3 * height, ...polarToCartesian(radius*0.997, -0.005 * (2 * Math.PI))}}
           rotation={{z: 90}}
         />
