@@ -45,7 +45,7 @@ class App extends Component {
     const colorScheme = ["#E41A1C", "#A73C52", "#6B5F88", "#3780B3", "#3F918C", "#47A266", "#53A651", "#6D8470", "#87638F", "#A5548D", "#C96555", "#ED761C", "#FF9508", "#FFC11A", "#FFEE2C", "#EBDA30", "#CC9F2C", "#AD6428", "#BB614F", "#D77083", "#F37FB8", "#DA88B3", "#B990A6", "#999999"];
 
     // //  Use full dataset
-    // let downsampledData = data; 
+    // let downsampledData = data;
 
     // Choose the subset with the highest p-values
     let downsampledData = R.compose(
@@ -123,17 +123,17 @@ class App extends Component {
             yAxisTitle="-log10(p-value)"
           />
 
-          <Entity light={{ type: "ambient", color: "#ffffff", intensity: 0.7 }} />
+          <Entity light={{ type: "ambient", color: "#ffffff", intensity: 0.85 }} />
 					// cardinal directions
-          <Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="7 -4 0" />
-					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="-7 -4 0" />
-					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="0 -4 7" />
-					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="0 -4 -7" />
+          <Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="7 -4 0" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="-7 -4 0" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="0 -4 7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="0 -4 -7" />
 					// corners
-					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="7 -4 7" />
-					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="7 -4 -7" />
-					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="-7 -4 7" />
-					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1 }} position="-7 -4 -7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="7 -4 7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="7 -4 -7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="-7 -4 7" />
+					<Entity light={{ type: "point", color: "#ffffff", intensity: 0.1, distance: 50 }} position="-7 -4 -7" />
 
           <Floor
             radius={roomRadius}
