@@ -148,6 +148,11 @@ class App extends Component {
             radiusAxisTitle="Allele frequency"
           />
 
+          <Entity position={{y: -5}}>
+            <Entity id="rightHand" hand-controls="right" />
+            <Entity id="leftHand" hand-controls="left" />
+          </Entity>
+
           {!this.state.inVR && <div>Loading...</div>}
           {this.state.inVR && <div>Now displaying in VR....</div>}
         </Scene>
