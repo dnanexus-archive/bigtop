@@ -51,7 +51,6 @@ class SelectedPoint extends Component {
         <GeneInfoPanel
           position={{x: 0, y: infoHeight, z: 0}}
           scale={{x: pointDistance, y: pointDistance, z: pointDistance}}
-          rotation={{x: 45 * (datum.coords[1] / 10), y: datum.theta * -57.2958, z: 0}}
           data={datum /* Only a little weird to turn a datum into data, but the datum does contain many data.... */}
         />
 

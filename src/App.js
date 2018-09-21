@@ -73,6 +73,7 @@ class App extends Component {
     if (this.state.inVR) {
       reticle = (
         <Entity
+          id="reticle"
           cursor
           geometry={{ primitive: "plane", height: 0.00075, width: 0.015 }}
           position={{ x: 0, y: 0, z: -0.4 }}
@@ -82,6 +83,7 @@ class App extends Component {
     } else {
       reticle = (
         <Entity
+          id="reticle"
           cursor={{fuse: true, fuseTimeout: "750"}}
           geometry={{
             primitive: "ring",

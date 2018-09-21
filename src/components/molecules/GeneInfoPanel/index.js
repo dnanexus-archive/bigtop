@@ -4,15 +4,17 @@ import React, {Component} from 'react';
 import {format as d3Format} from 'd3-format';
 import InfoPanel from '../InfoPanel';
 
+require('aframe-look-at-component');
+
 class GeneInfoPanel extends Component {
   render() {
     const {data} = this.props;
     const {id, gene, p, frequency, chr, location} = data;
 
-    return <InfoPanel position={this.props.position} scale={this.props.scale} rotation={this.props.rotation}>
+    return <InfoPanel position={this.props.position} scale={this.props.scale} rotation={this.props.rotation} look-at="#reticle">
       <Entity
         text={{
-          value: `${id}\n${gene}\n\n\n\n`, // Extra CRs to force space  in the panel for the following text
+          value: `${id}\n${gene}\n\n\n\n`, // Extra CRs to force space in the panel for the following text
           align: 'center',
           color: 'white',
           width: 1
