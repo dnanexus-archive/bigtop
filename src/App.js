@@ -9,7 +9,13 @@ import PointPlane from "components/atoms/PointPlane";
 import PointCloud from "components/molecules/PointCloud";
 import Rotunda from "components/complexes/Rotunda";
 import Floor from "components/complexes/Floor";
-import data from "data/100k_breast_cancer.coords.json";
+
+// Breast cancer, no significant points :(
+// import data from "data/100k_breast_cancer.coords.json";
+
+// Height:
+import data from "data/90k_GIANT_height_filtered.gene_loc.coords.json";
+
 import cytobands from "data/human_genome_cytoband_edges.json";
 import { createChromosomeScale, calculateCoordinates } from "utils";
 import * as R from 'ramda';
