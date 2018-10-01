@@ -4,3 +4,4 @@
 *.js.meta
 node_modules/
 build/
+build.zip
