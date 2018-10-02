@@ -8,6 +8,10 @@ BigTop aims to demonstrate some of the potential of virtual reality for scientif
   * Makes locating points of interest easier, as the user retains a greater sense of their body-relative location.
   * Potential for more natural methods of interacting with data.
 
+## Quickest Start
+
+This can be viewed in a compatible browser on [GitHub Pages](https://dnanexus.github.io/bigtop/build/index.html)
+
 ## Quick Start
 
 ### Requirements
@@ -31,6 +35,20 @@ After cloning the repository, execute the following steps:
   1. `npm install` to install the required libraries
   1. `npm run build` to build and package the project's files
   1. Navigate to the `build` directory and launch `index.html` to view
+
+## Navigation
+
+This project can be viewed either in a compatible browser or in VR. If you have VR hardware connected to your computer, you will see a "View in VR" button with goggles in the lower right corner: click it to enter VR mode, and hit Escape on the keyboard when you're done.
+
+### In the Browser
+
+To navigate in the browser, you can use the mouse to rotate your view by holding the left button and moving the mouse. You can also move along the ground by using either WASD controls or the arrow keys.
+
+To get info on a point, position the reticle over the point in question and wait for a second. The point will then highlight and show its information panel.
+
+### In Virtual Reality
+
+In VR, you can walk around and examine points up close. When staring at a point, you'll notice there are two light horizontal lines in the center of your vision. Position the point of interest directly between them and stare at the point for a second in order to select it. This can take some practice; we recommend starting with a large point close to you, and then attempting points further away from you.
 
 ## Available Scripts
 
