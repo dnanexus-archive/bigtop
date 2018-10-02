@@ -69,3 +69,9 @@ You will also see any lint errors in the console.
 Builds the app for production and places files in the `build` folder.
 
 The build is minified and the filenames include the hashes.
+
+## About DNAnexus
+
+DNAnexus provides a global network for sharing and management of genomic data and tools to accelerate genomics. The DNAnexus cloud-based platform is optimized to address the challenges of security, scalability, and collaboration for organizations that are pursuing genomic-based approaches to health in the clinic and in the research lab. The DNAnexus team is made up of experts in computational biology, cloud computing, and machine learning who work with organizations to tackle some of the most exciting opportunities in human health, making it easier--and in many cases feasible--to work with genomic data.
+
+If you're interested in joining the DNAnexus team, check out our [job listings](https://www.dnanexus.com/careers)!
