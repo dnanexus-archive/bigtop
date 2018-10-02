@@ -16,9 +16,9 @@ This can be viewed in a compatible browser on [GitHub Pages](https://dnanexus.gi
 
 ### Requirements
 
-To build, this project only requires that you have `npm` 6+ installed on your machine.
+To build, this project only requires that you have [npm](https://www.npmjs.com/get-npm) 6+ installed on your machine.
 
-To view, you must have built the project, but the resulting files can be placed anywhere. Viewing requires a browser that supports WebXR, such as the latest version of Chrome or Firefox. For Chrome, you may need to enable some experimental extensions:
+To view, you must have built the project, but the resulting files can be placed anywhere. Viewing requires a browser that supports WebXR, such as the latest version of [Chrome](https://www.google.com/chrome/) or [Firefox](https://www.mozilla.org/en-US/firefox/). For Chrome, you may need to enable some experimental extensions:
 
   * #enable-gamepad-extensions
   * #enable-webvr
@@ -56,7 +56,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.
+Runs the app in development mode.
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -66,6 +66,6 @@ You will also see any lint errors in the console.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.
+Builds the app for production and places files in the `build` folder.
 
 The build is minified and the filenames include the hashes.
