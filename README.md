@@ -20,11 +20,11 @@ To build, this project only requires that you have [npm](https://www.npmjs.com/g
 
 Viewing requires a browser that supports WebXR, such as the latest version of [Chrome](https://www.google.com/chrome/) or [Firefox](https://www.mozilla.org/en-US/firefox/). For Chrome, you may need to enable some experimental extensions:
 
-  * #enable-gamepad-extensions
-  * #enable-webvr
-  * #webxr
-  * #webxr-gamepad-support
-  * #oculus-vr
+  * [#enable-gamepad-extensions](chrome://flags#enable-gamepad-extensions)
+  * [#enable-webvr](chrome://flags#enable-webvr)
+  * [#webxr](chrome://flags#webxr)
+  * [#webxr-gamepad-support](chrome://flags#webxr-gamepad-support)
+  * [#oculus-vr](chrome://flags#oculus-vr)
 
 To view in virtual reality, you need a compatible VR headset. This has been tested with the Oculus Rift and the HTC Vive.
 
