@@ -2,15 +2,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Introduction
 
-BigTop aims to demonstrate some of the potential of virtual reality for scientific visualization by providing an easy way for scientists and science enthusiasts to become immersed in their data. This provides several key advantages over more traditional 2D visualization methods, such as:
+BigTop demonstrates some of the potential of virtual reality for scientific visualization by providing an easy way for scientists and science enthusiasts to become immersed in their data. This provides several key advantages over more traditional 2D visualization methods, such as:
 
-  * A greater field upon which to render data, making navigation faster and more intuitive than entering genomic coordinates in a browser.
+  * Provides a greater field for data display, making navigation faster and more intuitive than entering genomic coordinates in a browser.
   * Makes locating points of interest easier, as the user retains a greater sense of their body-relative location.
-  * Potential for more natural methods of interacting with data.
+  * Opens potential for more natural methods of interacting with data.
 
 ## Quickest Start
 
-This can be viewed in a compatible browser on [GitHub Pages](https://dnanexus.github.io/bigtop/build/index.html)
+This can be viewed in Chrome or Firefox on [GitHub Pages](https://dnanexus.github.io/bigtop/build/index.html)
 
 ## Quick Start
 
@@ -18,7 +18,7 @@ This can be viewed in a compatible browser on [GitHub Pages](https://dnanexus.gi
 
 To build, this project only requires that you have [npm](https://www.npmjs.com/get-npm) 6+ installed on your machine.
 
-To view, you must have built the project, but the resulting files can be placed anywhere. Viewing requires a browser that supports WebXR, such as the latest version of [Chrome](https://www.google.com/chrome/) or [Firefox](https://www.mozilla.org/en-US/firefox/). For Chrome, you may need to enable some experimental extensions:
+Viewing requires a browser that supports WebXR, such as the latest version of [Chrome](https://www.google.com/chrome/) or [Firefox](https://www.mozilla.org/en-US/firefox/). For Chrome, you may need to enable some experimental extensions:
 
   * #enable-gamepad-extensions
   * #enable-webvr
@@ -26,7 +26,7 @@ To view, you must have built the project, but the resulting files can be placed 
   * #webxr-gamepad-support
   * #oculus-vr
 
-To view in virtual reality, you need a compatible VR headset. This has been tested with Oculus Rift.
+To view in virtual reality, you need a compatible VR headset. This has been tested with the Oculus Rift and the HTC Vive.
 
 ### Installation and Building
 
