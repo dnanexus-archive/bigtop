@@ -50,6 +50,14 @@ To get info on a point, position the reticle over the point in question and wait
 
 In VR, you can walk around and explore your data. Your right-hand controller will project a laser that can be used to select points: simply aim the laser at a point and pull the trigger on the controller to get info on it. Your left controller will present a virtual hand; this currently does nothing, but you can use it to wave or give a thumbs-up to your data.
 
+## Configuration
+
+You can configure certain aspects of how the world renders by passing in query parameters at the end of the URL, e.g. `index.html?stats&lefty`. The following parameters are supported:
+
+  * `lefty`: If this parameter is present, regardless of its value, the controllers will be switched to a leeft-handed configuration (laser pointer on the left, hand avatar on the right).
+
+  * `stats`: If this parameter is present, regardless of its value, then a stats window will be displayed in the upper left of the screen when not in VR mode.
+
 ## Available Scripts
 
 In the project directory, you can run:

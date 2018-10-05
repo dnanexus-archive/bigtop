@@ -1,6 +1,7 @@
 {
   "name": "bigtop",
   "version": "1.0.0",
+  "license": "MIT",
   "private": false,
   "dependencies": {
     "aframe": "^0.8.2",
@@ -15,6 +16,7 @@
     "d3-scale": "^2.1.2",
     "install": "^0.11.2",
     "npm": "^6.4.1",
+    "query-string": "^6.2.0",
     "ramda": "^0.25.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
