@@ -26,7 +26,7 @@ Viewing requires a browser that supports WebXR, such as the latest version of [C
   * [#webxr-gamepad-support](chrome://flags#webxr-gamepad-support)
   * [#oculus-vr](chrome://flags#oculus-vr)
 
-To view in virtual reality, you need a compatible VR headset. This has been tested with the Oculus Rift and the HTC Vive.
+To view in virtual reality, you need a compatible VR headset. This has been tested with the Oculus Rift, HTC Vive, and Google Daydream.
 
 ### Installation and Building
 
@@ -48,7 +48,7 @@ To get info on a point, position the reticle over the point in question and wait
 
 ### In Virtual Reality
 
-In VR, you can walk around and examine points up close. When staring at a point, you'll notice there are two light horizontal lines in the center of your vision. Position the point of interest directly between them and stare at the point for a second in order to select it. This can take some practice; we recommend starting with a large point close to you, and then attempting points further away from you.
+In VR, you can walk around and explore your data. Your right-hand controller will project a laser that can be used to select points: simply aim the laser at a point and pull the trigger on the controller to get info on it. Your left controller will present a virtual hand; this currently does nothing, but you can use it to wave or give a thumbs-up to your data.
 
 ## Available Scripts
 

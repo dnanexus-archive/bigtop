@@ -76,33 +76,6 @@ class App extends Component {
       style: "position: absolute; height: 100%; width: 100%"
     };
 
-    let reticle;
-    if (this.state.inVR) {
-      reticle = (
-        <Entity
-          id="reticle"
-          cursor
-          geometry={{ primitive: "plane", height: 0.00075, width: 0.015 }}
-          position={{ x: 0, y: 0, z: -0.4 }}
-          material={{ color: "black", shader: "flat" }}
-        />
-      );
-    } else {
-      reticle = (
-        <Entity
-          id="reticle"
-          cursor={{fuse: true, fuseTimeout: "750"}}
-          geometry={{
-            primitive: "ring",
-            radiusInner: 0.0005,
-            radiusOuter: 0.001
-          }}
-          position={{ x: 0, y: 0, z: -0.1 }}
-          material={{ color: "black", shader: "flat", opacity: 0.4 }}
-        />
-      );
-    }
-
     return (
       <Provider store={store}>
         <Scene {...sceneOpts}>
@@ -117,7 +90,17 @@ class App extends Component {
               look-controls
               raycaster="objects: .data-point"
             >
-              {reticle}
+              {!this.state.inVR && (<Entity
+                id="reticle"
+                cursor={{fuse: true, fuseTimeout: "500"}}
+                geometry={{
+                  primitive: "ring",
+                  radiusInner: 0.0005,
+                  radiusOuter: 0.001
+                }}
+                position={{x: 0, y: 0, z: -0.1}}
+                material={{color: "black", shader: "flat", opacity: 0.4}}
+              />)}
             </Entity>
           </Entity>
 
@@ -148,8 +131,8 @@ class App extends Component {
             radiusAxisTitle="Allele frequency"
           />
 
-          <Entity position={{y: -5}}>
-            <Entity id="rightHand" hand-controls="right" />
+          <Entity position={{y: -roomHeight / 2}}>
+            <Entity id="rightHand" laser-controls="hand: right" />
             <Entity id="leftHand" hand-controls="left" />
           </Entity>
 
