@@ -1,7 +1,6 @@
 import "aframe";
 import "aframe-particle-system-component";
 import "aframe-animation-component";
-import "oculus-touch-controls";
 import { Entity, Scene } from "aframe-react";
 import React, { Component } from "react";
 import { Provider } from "react-redux";
