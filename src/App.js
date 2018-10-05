@@ -50,7 +50,8 @@ class App extends Component {
   }
 
   render() {
-    const {rightHanded} = this.props;
+    const {user = {}} = this.props;
+
     const roomRadius = 10; // meters
     const roomHeight = 10; // meters
     const pCutoff = 1e-7;
@@ -140,8 +141,8 @@ class App extends Component {
           />
 
           <Entity position={{y: -roomHeight / 2}}>
-            <Entity id="rightHand" laser-controls={`hand: ${rightHanded ? 'right' : 'left'}`} />
-            <Entity id="leftHand" hand-controls={rightHanded? 'left' : 'right'} />
+            <Entity id="rightHand" laser-controls={{hand: user.rightHanded ? 'right' : 'left'}} />
+            <Entity id="leftHand" hand-controls={user.rightHanded? 'left' : 'right'} />
           </Entity>
 
           {!this.state.inVR && <div>Loading...</div>}
