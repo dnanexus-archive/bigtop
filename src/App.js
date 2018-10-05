@@ -1,5 +1,4 @@
 import "aframe";
-import "aframe-particle-system-component";
 import "aframe-animation-component";
 import {Entity, Scene} from "aframe-react";
 import React, {Component} from "react";
@@ -7,6 +6,7 @@ import {Provider} from "react-redux";
 import queryString from 'query-string';
 import PointPlane from "components/atoms/PointPlane";
 import PointCloud from "components/molecules/PointCloud";
+import HandControls from "components/molecules/HandControls";
 import Rotunda from "components/complexes/Rotunda";
 import Floor from "components/complexes/Floor";
 
@@ -50,8 +50,6 @@ class App extends Component {
   }
 
   render() {
-    const {user = {}} = this.props;
-
     const roomRadius = 10; // meters
     const roomHeight = 10; // meters
     const pCutoff = 1e-7;
@@ -140,10 +138,7 @@ class App extends Component {
             radiusAxisTitle="Allele frequency"
           />
 
-          <Entity position={{y: -roomHeight / 2}}>
-            <Entity id="rightHand" laser-controls={{hand: user.rightHanded ? 'right' : 'left'}} />
-            <Entity id="leftHand" hand-controls={user.rightHanded? 'left' : 'right'} />
-          </Entity>
+          <HandControls />
 
           {!this.state.inVR && <div>Loading...</div>}
           {this.state.inVR && <div>Now displaying in VR....</div>}

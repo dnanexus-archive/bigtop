@@ -17,5 +17,9 @@ export default combineReducers({
       default:
         return state;
     }
-  }
+  },
+
+  room: (state = initialState.room) => state,
+
+  pCutoff: (state = initialState.pCutoff) => state
 });
