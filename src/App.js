@@ -80,9 +80,8 @@ class App extends Component {
 
     const sceneOpts = {
       style: "position: absolute; height: 100%; width: 100%",
-      stats: typeof queryStore.stats !== "undefined"
+      stats: typeof queryParams.stats !== "undefined"
     };
-    console.log(queryStore)
 
     return (
       <Provider store={store}>
