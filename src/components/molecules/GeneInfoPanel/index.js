@@ -11,7 +11,7 @@ class GeneInfoPanel extends Component {
     const {data} = this.props;
     const {id, gene, p, frequency, chr, location} = data;
 
-    return <InfoPanel position={this.props.position} scale={this.props.scale} rotation={this.props.rotation} look-at="#reticle">
+    return <InfoPanel position={this.props.position} scale={this.props.scale} rotation={this.props.rotation} look-at="[camera]">
       <Entity
         text={{
           value: `${id}\n${gene}\n\n\n\n`, // Extra CRs to force space in the panel for the following text
