@@ -24,11 +24,11 @@ import initialState from "./store/initialState";
 
 const queryParams = queryString.parse(window.location.search);
 
-const store = configureStore(R.merge(initialState, {
+const store = configureStore(R.mergeDeepLeft({
   user: {
     rightHanded: typeof queryParams.lefty === 'undefined'
   }
-}));
+}, initialState));
 
 class App extends Component {
   constructor() {
