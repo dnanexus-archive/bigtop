@@ -89,7 +89,7 @@ class App extends Component {
             // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
             // the position attribute on a camera. This allows both monitor and headset position to be similar.
           }
-          <Entity position="0 -5 0">
+          <Entity position={{y: -roomHeight / 2}}>
             <Entity
               primitive="a-camera"
               id="userCamera"
