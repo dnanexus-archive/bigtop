@@ -9,7 +9,6 @@ class PointPlane extends Component {
       height,
       radius
     } = this.props;
-    console.log(points)
 
     const fillColor = 'rgba(40, 40, 40, 0.8)';
     const canvasSize = 8192; // Must be a power of 2

@@ -1,10 +1,10 @@
 import "aframe";
 import "aframe-particle-system-component";
 import "aframe-animation-component";
-import { Entity, Scene } from "aframe-react";
-import React, { Component } from "react";
-import { Provider } from "react-redux";
-import groupBy from 'ramda/src/groupBy';
+import {Entity, Scene} from "aframe-react";
+import React, {Component} from "react";
+import {Provider} from "react-redux";
+import queryString from 'query-string';
 import PointPlane from "components/atoms/PointPlane";
 import PointCloud from "components/molecules/PointCloud";
 import Rotunda from "components/complexes/Rotunda";
@@ -17,12 +17,18 @@ import Floor from "components/complexes/Floor";
 import data from "data/90k_GIANT_height_filtered.gene_loc.coords.json";
 
 import cytobands from "data/human_genome_cytoband_edges.json";
-import { createChromosomeScale, calculateCoordinates } from "utils";
+import {createChromosomeScale, calculateCoordinates} from "utils";
 import * as R from 'ramda';
 import configureStore from "./store/configureStore";
 import initialState from "./store/initialState";
 
-const store = configureStore(initialState);
+const queryParams = queryString.parse(window.location.search);
+
+const store = configureStore(R.merge(initialState, {
+  user: {
+    rightHanded: typeof queryParams.lefty === 'undefined'
+  }
+}));
 
 class App extends Component {
   constructor() {
@@ -44,6 +50,7 @@ class App extends Component {
   }
 
   render() {
+    const {rightHanded} = this.props;
     const roomRadius = 10; // meters
     const roomHeight = 10; // meters
     const pCutoff = 1e-7;
@@ -53,10 +60,9 @@ class App extends Component {
     const chromDict = createChromosomeScale(chroms, sizes);
     const colorScheme = ["#E41A1C", "#A73C52", "#6B5F88", "#3780B3", "#3F918C", "#47A266", "#53A651", "#6D8470", "#87638F", "#A5548D", "#C96555", "#ED761C", "#FF9508", "#FFC11A", "#FFEE2C", "#EBDA30", "#CC9F2C", "#AD6428", "#BB614F", "#D77083", "#F37FB8", "#DA88B3", "#B990A6", "#999999"];
 
-    // //  Use full dataset
+    // Use full dataset
     let downsampledData = data;
 
-    console.log(`Showing ${R.length(data)} GWAS data points`);
     // Choose the subset with the highest p-values
     // let downsampledData = R.compose(
     //   R.slice(0, 5000),
@@ -70,11 +76,13 @@ class App extends Component {
       roomHeight
     );
 
-    const {sigCoords = [], insigCoords = []} = groupBy((coord) => {return coord.p < pCutoff ? 'sigCoords' : 'insigCoords'}, coordinates)
+    const {sigCoords = [], insigCoords = []} = R.groupBy((coord) => {return coord.p < pCutoff ? 'sigCoords' : 'insigCoords'}, coordinates)
 
     const sceneOpts = {
-      style: "position: absolute; height: 100%; width: 100%"
+      style: "position: absolute; height: 100%; width: 100%",
+      stats: typeof queryStore.stats !== "undefined"
     };
+    console.log(queryStore)
 
     return (
       <Provider store={store}>
@@ -133,8 +141,8 @@ class App extends Component {
           />
 
           <Entity position={{y: -roomHeight / 2}}>
-            <Entity id="rightHand" laser-controls="hand: right" />
-            <Entity id="leftHand" hand-controls="left" />
+            <Entity id="rightHand" laser-controls={`hand: ${rightHanded ? 'right' : 'left'}`} />
+            <Entity id="leftHand" hand-controls={rightHanded? 'left' : 'right'} />
           </Entity>
 
           {!this.state.inVR && <div>Loading...</div>}
