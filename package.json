@@ -21,7 +21,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^2.0.4",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0"
@@ -32,5 +32,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "."
+  "homepage": ".",
+  "browserslist": [
+    "Chrome 68",
+    "Firefox 62"
+  ]
 }
