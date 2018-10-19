@@ -21,5 +21,9 @@ export default combineReducers({
 
   room: (state = initialState.room) => state,
 
-  pCutoff: (state = initialState.pCutoff) => state
+  pCutoff: (state = initialState.pCutoff) => state,
+
+  pointCount: (state = initialState.pCutoff) => state,
+
+  chromosomes: (state = initialState.pCutoff) => state
 });

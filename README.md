@@ -52,11 +52,19 @@ In VR, you can walk around and explore your data. Your right-hand controller wil
 
 ## Configuration
 
-You can configure certain aspects of how the world renders by passing in query parameters at the end of the URL, e.g. `index.html?stats&lefty`. The following parameters are supported:
+You can configure certain aspects of how the world renders by passing in query parameters at the end of the URL, e.g. `index.html?stats&points=5000`. The following parameters are supported:
 
-  * `lefty`: If this parameter is present, regardless of its value, the controllers will be switched to a leeft-handed configuration (laser pointer on the left, hand avatar on the right).
+  * `lefty`: If this parameter is present, regardless of its value, the controllers will be switched to a left-handed configuration (laser pointer on the left, hand avatar on the right).
 
   * `stats`: If this parameter is present, regardless of its value, then a stats window will be displayed in the upper left of the screen when not in VR mode.
+
+  * `room.height`: Adjust the apparent height of the room, in meters. (Default: 10)
+
+  * `room.radius`: Adjust the apparent radius of the room, in meters (note this is radius, not diameter, so the room will stretch this far in either direction from the initial vantage point). (Default: 10)
+
+  * `p`: Adjust the p-value cutoff for displaying points. Any points falling below the p-values cutoff will be rendered as semi-transprent blobs on the ground. This can be given as a floating-point value (e.g. 0.0) or in log notation (e.g. 1e-5). (Default: 1e-7)
+
+  * `points`: Define the maximum number of points from the dataset to render. Giving no value will render all points in the given dataset. Points will be selected from most significant p-value to least significant, e.g. `points=100` will render the 100 most significant points. (Default: unlimited)
 
 ## Available Scripts
 
