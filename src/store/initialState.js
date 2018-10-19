@@ -11,6 +11,7 @@ export default {
   },
   pCutoff: 1e-7,
   pointCount: null,
+  data: null,
   chromosomes: [
     {"label": "chr1", "size": 248956422, "color": "#E41A1C"},
     {"label": "chr2", "size": 242193529, "color": "#A73C52"},

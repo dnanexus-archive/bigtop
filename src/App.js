@@ -12,10 +12,10 @@ import Rotunda from "components/complexes/Rotunda";
 import Floor from "components/complexes/Floor";
 
 // Breast cancer, no significant points :(
-// import data from "data/100k_breast_cancer.coords.json";
+// import sampleData from "data/100k_breast_cancer.coords.json";
 
 // Height:
-import data from "data/90k_GIANT_height_filtered.gene_loc.coords.json";
+import sampleData from "data/90k_GIANT_height_filtered.gene_loc.coords.json";
 
 import cytobands from "data/human_genome_cytoband_edges.json";
 import {createChromosomeScale, calculateCoordinates} from "utils";
@@ -34,6 +34,7 @@ const store = configureStore(R.mergeDeepLeft({
   },
   pCutoff: (queryParams.p && parseFloat(queryParams.p, 10)) || initialState.pCutoff,
   pointCount: (queryParams.points && parseInt(queryParams.points, 10)) || initialState.pointCount,
+  data: sampleData // TODO: When we load data dynamically, this will become an async event
 }, initialState));
 
 class App extends Component {
@@ -66,14 +67,14 @@ class App extends Component {
     const chromDict = createChromosomeScale(chroms, sizes);
 
     // Use full dataset
-    let downsampledData = data;
+    let downsampledData = state.data;
 
     // Choose the subset with the highest p-values
     if (state.pointCount) {
       downsampledData = R.compose(
         R.slice(0, state.pointCount),
         R.sortBy(R.prop("p"))
-      )(data);
+      )(downsampledData);
     }
 
     let {coordinates, yScaleDomain, radiusScaleInfo} = calculateCoordinates(

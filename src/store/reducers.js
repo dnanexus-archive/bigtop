@@ -23,7 +23,9 @@ export default combineReducers({
 
   pCutoff: (state = initialState.pCutoff) => state,
 
-  pointCount: (state = initialState.pCutoff) => state,
+  pointCount: (state = initialState.pointCount) => state,
 
-  chromosomes: (state = initialState.pCutoff) => state
+  chromosomes: (state = initialState.chromosomes) => state,
+
+  data: (state = initialState.data) => state
 });
