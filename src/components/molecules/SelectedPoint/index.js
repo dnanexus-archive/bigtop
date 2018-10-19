@@ -14,6 +14,10 @@ class SelectedPoint extends Component {
         this.props.clearSelectedPoint();
       }
     });
+
+    const scene = document.querySelector("a-scene");
+    scene.addEventListener("bbuttonup", this.props.clearSelectedPoint);
+    scene.addEventListener("trackpadup", this.props.clearSelectedPoint);
   }
 
   render() {
