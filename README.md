@@ -46,6 +46,8 @@ To navigate in the browser, you can use the mouse to rotate your view by holding
 
 To get info on a point, position the reticle over the point in question and wait for a second. The point will then highlight and show its information panel.
 
+If you want to clear the selected point, hit the Escape key.
+
 ### In Virtual Reality
 
 In VR, you can walk around and explore your data. Your right-hand controller will project a laser that can be used to select points: simply aim the laser at a point and pull the trigger on the controller to get info on it. Your left controller will present a virtual hand; this currently does nothing, but you can use it to wave or give a thumbs-up to your data.

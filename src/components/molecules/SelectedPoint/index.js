@@ -5,8 +5,17 @@ import {connect} from 'react-redux';
 import * as R from 'ramda';
 import GeneInfoPanel from 'components/molecules/GeneInfoPanel';
 import {polarToCartesian} from 'utils';
+import * as actionCreators from './actions';
 
 class SelectedPoint extends Component {
+  componentDidMount() {
+    window.addEventListener("keyup", (e) => {
+      if (e.keyCode === 27) { // Escape
+        this.props.clearSelectedPoint();
+      }
+    });
+  }
+
   render() {
     const {
       points,
@@ -61,4 +70,4 @@ class SelectedPoint extends Component {
 
 const mapStateToProps = (state) => ({selectedPoint: state.user.selectedPoint});
 
-export default connect(mapStateToProps)(SelectedPoint);
+export default connect(mapStateToProps, actionCreators)(SelectedPoint);
