@@ -5,20 +5,15 @@ import React, {Component} from "react";
 import {Provider} from "react-redux";
 import queryString from 'query-string';
 import * as R from 'ramda';
-import PointPlane from "components/atoms/PointPlane";
-import PointCloud from "components/molecules/PointCloud";
 import HandControls from "components/molecules/HandControls";
-import Rotunda from "components/complexes/Rotunda";
-import Floor from "components/complexes/Floor";
+import Room from "components/scenes/Room";
 
 // Breast cancer, no significant points :(
 // import sampleData from "data/100k_breast_cancer.coords.json";
 
 // Height:
-import sampleData from "data/90k_GIANT_height_filtered.gene_loc.coords.json";
+//import sampleData from "data/90k_GIANT_height_filtered.gene_loc.coords.json";
 
-import cytobands from "data/human_genome_cytoband_edges.json";
-import {createChromosomeScale, calculateCoordinates} from "utils";
 import configureStore from "./store/configureStore";
 import initialState from "./store/initialState";
 
@@ -33,8 +28,7 @@ const store = configureStore(R.mergeDeepLeft({
     radius: (queryParams['room.radius'] && parseInt(queryParams['room.radius'], 10)) || initialState.room.radius,
   },
   pCutoff: (queryParams.p && parseFloat(queryParams.p, 10)) || initialState.pCutoff,
-  pointCount: (queryParams.points && parseInt(queryParams.points, 10)) || initialState.pointCount,
-  data: sampleData // TODO: When we load data dynamically, this will become an async event
+  pointCount: (queryParams.points && parseInt(queryParams.points, 10)) || initialState.pointCount
 }, initialState));
 
 class App extends Component {
@@ -59,33 +53,6 @@ class App extends Component {
   render() {
     const state = store.getState();
     const roomHeight = state.room.height;
-    const roomRadius = state.room.radius;
-
-    const chroms = R.pluck("label", state.chromosomes);
-    const sizes = R.pluck("size", state.chromosomes);
-    const colorScheme = R.pluck("color", state.chromosomes);
-    const chromDict = createChromosomeScale(chroms, sizes);
-
-    // Use full dataset
-    let downsampledData = state.data;
-
-    // Choose the subset with the highest p-values
-    if (state.pointCount) {
-      downsampledData = R.compose(
-        R.slice(0, state.pointCount),
-        R.sortBy(R.prop("p"))
-      )(downsampledData);
-    }
-
-    let {coordinates, yScaleDomain, radiusScaleInfo} = calculateCoordinates(
-      downsampledData,
-      chromDict,
-      roomRadius,
-      roomHeight
-    );
-
-    const {sigCoords = [], insigCoords = []} = R.groupBy((coord) => {return coord.p < state.pCutoff ? 'sigCoords' : 'insigCoords'}, coordinates)
-
     const sceneOpts = {
       style: "position: absolute; height: 100%; width: 100%",
       stats: typeof queryParams.stats !== "undefined"
@@ -119,37 +86,10 @@ class App extends Component {
             </Entity>
           </Entity>
 
-          <PointPlane points={insigCoords} height={roomHeight} radius={roomRadius} />
-          <PointCloud
-            data={sigCoords}
-            height={roomHeight}
-            yScaleDomain={yScaleDomain}
-            radius={roomRadius}
-          />
-
-          <Rotunda
-            radius={roomRadius}
-            height={roomHeight}
-            chromDict={chromDict}
-            cytobands={cytobands}
-            colorScheme={colorScheme}
-            yScaleDomain={yScaleDomain}
-            yAxisTitle="-log10(p-value)"
-          />
-
-          <Entity light={{ type: "ambient", color: "#ffffff", intensity: 0.9 }} />
-          <Entity light={{ type: "point", color: "#ffffff", intensity: 0.4, distance: 50 }} position={`0 ${roomHeight / 2 - roomHeight * 0.1} 0`} />
-
-          <Floor
-            radius={roomRadius}
-            yPosition={-roomHeight / 2}
-            radiusScaleInfo={radiusScaleInfo}
-            radiusAxisTitle="Allele frequency"
-          />
-
           <HandControls />
 
-          {!this.state.inVR && <div>Loading...</div>}
+          <Room url={queryParams.data} />
+
           {this.state.inVR && <div>Now displaying in VR....</div>}
         </Scene>
       </Provider>

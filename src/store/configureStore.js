@@ -2,7 +2,7 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers';
-import sagas from './sagas';
+import * as sagas from './sagas';
 import {forEachObjIndexed} from 'ramda';
 
 const sagaMiddleware = createSagaMiddleware();
