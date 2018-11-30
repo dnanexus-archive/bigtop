@@ -4,7 +4,7 @@ import API from "api";
 function *goFetchDataFile(action) {
   const {url} = action;
   try {
-    const data = yield call(API.fetchJSON(url));
+    const data = yield call(API.fetchJSON, url, null, {method: "GET"});
     yield put({type: "RECEIVED_DATA", data});
   } catch (error) {
     console.error(error);

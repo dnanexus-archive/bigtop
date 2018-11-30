@@ -6,8 +6,8 @@ import * as R from 'ramda';
 
 const API = {
   fetchJSON: (url, body, options) => {
-    let opts = {...options, method: "POST", accept: 'application/json', credentials: 'include'};
-    if (!R.isEmpty(body)) {
+    let opts = {method: "POST", accept: 'application/json', credentials: 'include', ...options};
+    if (!R.isEmpty(body) && opts.method === "POST") {
       opts.body = JSON.stringify(body);
     }
 
@@ -16,7 +16,7 @@ const API = {
       if (response.ok) {
         return response.json();
       } else {
-        console.error("Request rejected was:", url, opts);
+        return new Promise((accept, reject) => reject("Request rejected was:", url, opts));
       }
     });
   }
