@@ -58,6 +58,8 @@ If you want to clear the selected point, use the B button on an Oculus controlle
 
 You can configure certain aspects of how the world renders by passing in query parameters at the end of the URL, e.g. `index.html?stats&points=5000`. The following parameters are supported:
 
+  * `data`: This determines where the data is loaded from. This should be a URI-encoded string pointing to a JSON resource containing all the points to be rendered. If this parameter is not provided, a sample dataset from the GIANT GWAS study will be loaded.
+
   * `lefty`: If this parameter is present, regardless of its value, the controllers will be switched to a left-handed configuration (laser pointer on the left, hand avatar on the right).
 
   * `stats`: If this parameter is present, regardless of its value, then a stats window will be displayed in the upper left of the screen when not in VR mode.

@@ -27,5 +27,13 @@ export default combineReducers({
 
   chromosomes: (state = initialState.chromosomes) => state,
 
-  data: (state = initialState.data) => state
+  data: (state = initialState.data, action) => {
+    switch (action && action.type) {
+      case "RECEIVED_DATA":
+        return action.data;
+
+      default:
+        return state;
+    }
+  }
 });
