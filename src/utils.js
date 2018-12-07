@@ -73,46 +73,48 @@ export const radiansToDegrees = function(degrees) {
 }
 
 export const calculateCoordinates = function(data, chromDict, roomRadius, roomHeight) {
-    // OPTIONS:
-    const yRange = [0, roomHeight];
-    const optionalCeilingP = undefined; // 20
-    const innerRadius = roomRadius * 0.1;
-    const yTransform = y => -1 * Math.log10(y);
+  // OPTIONS:
+  const yRange = [0, roomHeight];
+  const optionalCeilingP = undefined; // 20
+  const innerRadius = roomRadius * 0.1;
+  const yTransform = y => -1 * Math.log10(y);
 
-    const keys = {r: "frequency", y: "p", chrom: "chr", pos: "location"};
+  const keys = {r: "frequency", y: "p", chrom: "chr", pos: "location"};
 
-    // rScale determines how far away from center a point is
-    let rScale = scaleLinear()
-      .domain(extent(data, d => d[keys.r]))
-      .range([innerRadius, roomRadius]);
+  // rScale determines how far away from center a point is
+  let rScale = scaleLinear()
+    .domain(extent(data, d => d[keys.r]))
+    .range([innerRadius, roomRadius]);
 
-    const dataMaxP = max(data, d => yTransform(d[keys.y]));
-    const maxP = optionalCeilingP || dataMaxP * 1.05;
+  const dataMaxP = max(data, d => yTransform(d[keys.y]));
+  const maxP = optionalCeilingP || dataMaxP * 1.05;
 
-		const floorDistance = 0; 				// Distance from 0 to floor, lowers points by this amount
-		let yScale = scaleLinear()
-      .domain([floorDistance, maxP+floorDistance])
-      .range(yRange);
+  const floorDistance = 0; 				// Distance from 0 to floor, lowers points by this amount
+  let yScale = scaleLinear()
+    .domain([floorDistance, maxP+floorDistance])
+    .range(yRange);
 
-    let thetaScale = scaleLinear()
-      .domain([0, max(R.values(chromDict), d => d.end)])
-      .range([0, 2 * Math.PI])
+  let thetaScale = scaleLinear()
+    .domain([0, max(R.values(chromDict), d => d.end)])
+    .range([0, 2 * Math.PI])
 
-    const calculateCoordinates = function(d) {
-      let r = rScale(d[keys.r]);
-      // let transformedY = yTransform(d[keys.y]); // use this if we ever need the transformed p-values
-      let y = yScale(yTransform(d[keys.y]));
-      let c = chromDict[d[keys.chrom]];
+  const calculateCoordinatesInner = function(d) {
+    let r = rScale(d[keys.r]);
+    // let transformedY = yTransform(d[keys.y]); // use this if we ever need the transformed p-values
+    let y = yScale(yTransform(d[keys.y]));
+    let c = chromDict[d[keys.chrom]];
+    if (!c)
+      return null;
 
-      let chromPos = c.start + d[keys.pos];
-      let theta = thetaScale(chromPos);
-      let {x, z} = polarToCartesian(r, theta);
-      return {...d, theta: theta, radius: r, coords: [x, y, z]};
-    }
+    let chromPos = c.start + d[keys.pos];
+    let theta = thetaScale(chromPos);
+    let {x, z} = polarToCartesian(r, theta);
+    return {...d, theta: theta, radius: r, coords: [x, y, z]};
+  }
 
-    let coordinates = R.map(calculateCoordinates, data);
+  let coordinates = R.filter(R.identity, R.map(calculateCoordinatesInner, data));
 
-    let yScaleDomain = yScale.domain();
-    let radiusScaleInfo = {domain: rScale.domain(), range: rScale.range()};
-    return {coordinates, yScaleDomain, radiusScaleInfo};
+  let yScaleDomain = yScale.domain();
+  let radiusScaleInfo = {domain: rScale.domain(), range: rScale.range()};
+  return {coordinates, yScaleDomain, radiusScaleInfo};
 };
