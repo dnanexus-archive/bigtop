@@ -60,6 +60,18 @@ You can configure certain aspects of how the world renders by passing in query p
 
   * `data`: This determines where the data is loaded from. This should be a URI-encoded string pointing to a JSON resource containing all the points to be rendered. If this parameter is not provided, a sample dataset from the GIANT GWAS study will be loaded.
 
+  * `chr`: (Default homo sapiens) This determines where the chromosome info is loaded from. It should be a URI-encoded string pointing to a JSON file where chromosomes should be represented by an array of objects containing the following keys (see public/data/homo_sampiens_chrInfo.json for guidance):
+    * `label`: the name of the chromosome
+    * `size`: the size of the chromosome
+    * `color`: an HTML color (hex, RGBA, or any other valid representation)
+
+  * `cyto`: (Default homo sapiens) This determines where the cytoband info is loaded from. It should be a URI-encoded string pointing to a JSON file which is an array of objects representing each color band. The objects should each contain the following keys (see public/data/homo_sapiens_cytobands.json):
+    * `chrom`: The chromosome label, which should match a `label` value in the chromosome file
+    * `start`: The starting location of the stain region
+    * `end`: The ending location of the stain region
+    * `label`: The commonly-known name of the stain region (e.g. "p35.3")
+    * `stain`: The stain level in this region: one of [`gneg`, `gpos25`, `gpos50`, `gpos75`, `gpos100`, `acen`, `gvar`, `stalk`]
+
   * `lefty`: If this parameter is present, regardless of its value, the controllers will be switched to a left-handed configuration (laser pointer on the left, hand avatar on the right).
 
   * `stats`: If this parameter is present, regardless of its value, then a stats window will be displayed in the upper left of the screen when not in VR mode.

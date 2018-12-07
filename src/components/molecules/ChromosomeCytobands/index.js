@@ -38,7 +38,7 @@ class ChromosomeCytobands extends Component {
                 yPosition={yPosition}
               />
             );
-          }, cytobands)
+          }, R.filter((band) => chromDict[band.chrom], cytobands))
         }
       </Entity>
     );

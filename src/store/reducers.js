@@ -25,11 +25,29 @@ export default combineReducers({
 
   pointCount: (state = initialState.pointCount) => state,
 
-  chromosomes: (state = initialState.chromosomes) => state,
+  chromosomes: (state = initialState.chromosomes, action) => {
+    switch (action && action.type) {
+      case "RECEIVED_CHR":
+        return action.data;
+
+      default:
+        return state;
+    }
+  },
 
   data: (state = initialState.data, action) => {
     switch (action && action.type) {
       case "RECEIVED_DATA":
+        return action.data;
+
+      default:
+        return state;
+    }
+  },
+
+  cytobands: (state = initialState.cytobands, action) => {
+    switch (action && action.type) {
+      case "RECEIVED_CYTO":
         return action.data;
 
       default:

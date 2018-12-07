@@ -1,6 +1,7 @@
 import "aframe";
 import "aframe-animation-component";
 import {Entity} from "aframe-react";
+import PropTypes from "prop-types";
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import * as R from 'ramda';
@@ -10,17 +11,31 @@ import PointPlane from "components/atoms/PointPlane";
 import PointCloud from "components/molecules/PointCloud";
 import Rotunda from "components/complexes/Rotunda";
 import Floor from "components/complexes/Floor";
-import cytobands from "data/human_genome_cytoband_edges.json";
 import {createChromosomeScale, calculateCoordinates} from "utils";
 
 class Room extends Component {
+  static propTypes = {
+    dataURL: PropTypes.string.isRequired,
+    chrURL: PropTypes.string.isRequired,
+    cytoURL: PropTypes.string.isRequired,
+    pCutoff: PropTypes.number,
+    pointCouny: PropTypes.number,
+
+    data: PropTypes.arrayOf(PropTypes.object),
+    chromosomes: PropTypes.arrayOf(PropTypes.object),
+    cytobands: PropTypes.arrayOf(PropTypes.object),
+    room: PropTypes.object
+  };
+
   componentDidMount() {
-    this.props.fetchData(this.props.url)
+    this.props.fetchData(this.props.dataURL)
+    this.props.fetchChromosomes(this.props.chrURL);
+    this.props.fetchCytobands(this.props.cytoURL);
   }
 
   render() {
-    const {data, room, chromosomes, pCutoff, pointCount} = this.props;
-    if (!data)
+    const {data, room, chromosomes, cytobands, pCutoff, pointCount} = this.props;
+    if (!data || R.isEmpty(chromosomes))
       return "Loading....";
 
     const roomHeight = room.height;
@@ -90,7 +105,8 @@ const mapStateToProps = (state) => ({
   pointCount: state.pointCount,
   room: state.room,
   chromosomes: state.chromosomes,
-  data: state.data
+  data: state.data,
+  cytobands: state.cytobands
 });
 
 export default connect(mapStateToProps, actionCreators)(Room);

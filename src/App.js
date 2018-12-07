@@ -88,7 +88,11 @@ class App extends Component {
 
           <HandControls />
 
-          <Room url={decodeURIComponent(queryParams.data || "data%2F90k_GIANT_height_filtered.gene_loc.coords.json")} />
+          <Room
+            dataURL={decodeURIComponent(queryParams.data || "data%2F90k_GIANT_height_filtered.gene_loc.coords.json")}
+            chrURL={decodeURIComponent(queryParams.chr || "data%2Fhomo_sapiens_chrInfo.json")}
+            cytoURL={decodeURIComponent(queryParams.cyto || "data%2Fhomo_sapiens_cytobands.json")}
+          />
 
           {this.state.inVR && <div>Now displaying in VR....</div>}
         </Scene>

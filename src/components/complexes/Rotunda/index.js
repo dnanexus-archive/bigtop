@@ -37,13 +37,13 @@ class Rotunda extends Component {
           radius={radius*0.999}
           yPosition={0}
         />
-        <ChromosomeCytobands
+        {!R.isEmpty(cytobands) && <ChromosomeCytobands
           cytobands={cytobands}
           chromDict={chromDict}
           radius={radius*0.998}
           height={height*0.06}
           yPosition={-1}
-        />
+        />}
         <YAxes
           chromList={chromList}
           yScaleDomain={yScaleDomain}

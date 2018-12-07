@@ -1,16 +1,16 @@
 import {put, call, takeEvery} from "redux-saga/effects";
 import API from "api";
 
-function *goFetchDataFile(action) {
+function *goFetchFile(action) {
   const {url} = action;
   try {
     const data = yield call(API.fetchJSON, url, null, {method: "GET"});
-    yield put({type: "RECEIVED_DATA", data});
+    yield put({type: action.successAction, data});
   } catch (error) {
     console.error(error);
   }
 }
 
-export function *watchFetchDataFile() {
-  yield takeEvery("FETCH_DATA", goFetchDataFile);
+export function *watchFetchFile() {
+  yield takeEvery("FETCH_FILE", goFetchFile);
 }
