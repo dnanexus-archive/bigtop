@@ -10,7 +10,7 @@ BigTop demonstrates some of the potential of virtual reality for scientific visu
 
 ## Quickest Start
 
-This can be viewed in Chrome or Firefox on [GitHub Pages](https://dnanexus.github.io/bigtop/build/index.html)
+This can be viewed in Chrome or Firefox on [GitHub Pages](https://dnanexus.github.io/bigtop/build/)
 
 ## Quick Start
 
