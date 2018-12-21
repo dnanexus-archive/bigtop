@@ -30,7 +30,7 @@ class GeneInfoPanel extends Component {
           />
           <Entity
             text={{
-              value: p.toExponential(),
+              value: p.toExponential(4),
               color: 'white',
             }}
             position={{x: 0.037}}
