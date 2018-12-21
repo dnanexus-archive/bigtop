@@ -89,7 +89,7 @@ class App extends Component {
           <HandControls />
 
           <Room
-            dataURL={decodeURIComponent(queryParams.data || "data%2Frice_SNP_data.downsam.coords.json")}
+            dataURL={decodeURIComponent(queryParams.data || "data%2Frice_grainWeight_data.coords.json")}
             chrURL={decodeURIComponent(queryParams.chr || "data%2Foryza_sativa_chrInfo.json")}
             cytoURL={decodeURIComponent(queryParams.cyto || "data%2Foryza_sativa_cytobands.json")}
           />
