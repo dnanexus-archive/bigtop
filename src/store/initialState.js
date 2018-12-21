@@ -9,7 +9,7 @@ export default {
     height: 10,
     radius: 10
   },
-  pCutoff: 1e-7,
+  pCutoff: 1e-4,
   pointCount: null,
   data: null,
   chromosomes: [],

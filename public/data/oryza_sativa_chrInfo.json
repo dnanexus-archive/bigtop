@@ -1,0 +1,14 @@
+[
+  {"label": "chr1", "size": 43270923, "color": "#E41A1C"},
+  {"label": "chr2", "size": 35937250, "color": "#A73C52"},
+  {"label": "chr3", "size": 36413819, "color": "#6B5F88"},
+  {"label": "chr4", "size": 35502694, "color": "#3780B3"},
+  {"label": "chr5", "size": 29958434, "color": "#3F918C"},
+  {"label": "chr6", "size": 31248787, "color": "#47A266"},
+  {"label": "chr7", "size": 29697621, "color": "#53A651"},
+  {"label": "chr8", "size": 28443022, "color": "#6D8470"},
+  {"label": "chr9", "size": 23012720, "color": "#87638F"},
+  {"label": "chr10", "size": 23207287, "color": "#A5548D"},
+  {"label": "chr11", "size": 29021106, "color": "#AD6428"},
+  {"label": "chr12", "size": 27531856, "color": "#BB614F"}
+]

@@ -11,7 +11,7 @@ import Room from "components/scenes/Room";
 // Breast cancer, no significant points :(
 // import sampleData from "data/100k_breast_cancer.coords.json";
 
-// Height:
+// Height data:
 //import sampleData from "data/90k_GIANT_height_filtered.gene_loc.coords.json";
 
 import configureStore from "./store/configureStore";
@@ -89,9 +89,9 @@ class App extends Component {
           <HandControls />
 
           <Room
-            dataURL={decodeURIComponent(queryParams.data || "data%2F90k_GIANT_height_filtered.gene_loc.coords.json")}
-            chrURL={decodeURIComponent(queryParams.chr || "data%2Fhomo_sapiens_chrInfo.json")}
-            cytoURL={decodeURIComponent(queryParams.cyto || "data%2Fhomo_sapiens_cytobands.json")}
+            dataURL={decodeURIComponent(queryParams.data || "data%2Frice_SNP_data.downsam.coords.json")}
+            chrURL={decodeURIComponent(queryParams.chr || "data%2Foryza_sativa_chrInfo.json")}
+            cytoURL={decodeURIComponent(queryParams.cyto || "data%2Foryza_sativa_cytobands.json")}
           />
 
           {this.state.inVR && <div>Now displaying in VR....</div>}
