@@ -109,3 +109,9 @@ The build is minified and the filenames include the hashes.
 DNAnexus provides a global network for sharing and management of genomic data and tools to accelerate genomics. The DNAnexus cloud-based platform is optimized to address the challenges of security, scalability, and collaboration for organizations that are pursuing genomic-based approaches to health in the clinic and in the research lab. The DNAnexus team is made up of experts in computational biology, cloud computing, and machine learning who work with organizations to tackle some of the most exciting opportunities in human health, making it easier--and in many cases feasible--to work with genomic data.
 
 If you're interested in joining the DNAnexus team, check out our [job listings](https://www.dnanexus.com/careers)!
+
+## Data sources
+
+GIANT Consortium height data: Winkler TW*, Justice AE*, Graff M*, Barata L*, Feitosa MF, Chu S, Czajkowski J, Esko T, Fall T, Kilpeläinen TO, Lu Y, Mägi R et al. (2015). The influence of age and sex on genetic associations with adult body size and shape: a large-scale genome-wide interaction study. PLoS Genetics. In press.
+
+Rice data: Sanciangco, Millicent D.;Alexandrov, Nickolai N.;Chebotarov, Dmytro;King, Ross D.;Naredo, Ma. Elizabeth B.;Leung, Hei;Mansueto, Locedie;Mauleon, Ramil P.;Orhobor, Oghenejokpeme I.;McNally, Kenneth L., 2018, "Discovery of genomic variants associated with genebank historical traits for rice improvement: SNP and indel data, phenotypic data, and GWAS results", https://doi.org/10.7910/DVN/HGRSJG, Harvard Dataverse, V2, UNF:6:osS/BNxV0RoT+73KAHwwqQ== [fileUNF]
