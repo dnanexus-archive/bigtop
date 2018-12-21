@@ -72,7 +72,7 @@ export const radiansToDegrees = function(degrees) {
   return degrees * (180 / Math.PI);
 }
 
-export const calculateCoordinates = function(data, chromDict, roomRadius, roomHeight) {
+export const calculateCoordinates = function(data, chromDict, roomRadius, roomHeight, pCutoff) {
   // OPTIONS:
   const yRange = [0, roomHeight];
   const optionalCeilingP = undefined; // 20
@@ -89,9 +89,9 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
   const dataMaxP = max(data, d => yTransform(d[keys.y]));
   const maxP = optionalCeilingP || dataMaxP * 1.05;
 
-  const floorDistance = 0; 				// Distance from 0 to floor, lowers points by this amount
+  const floorDistance = 0; // Distance from 0 to floor, lowers points by this amount
   let yScale = scaleLinear()
-    .domain([floorDistance, maxP+floorDistance])
+    .domain([floorDistance - Math.log10(pCutoff), maxP + floorDistance])
     .range(yRange);
 
   let thetaScale = scaleLinear()
@@ -118,3 +118,9 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
   let radiusScaleInfo = {domain: rScale.domain(), range: rScale.range()};
   return {coordinates, yScaleDomain, radiusScaleInfo};
 };
+
+export const shadeColor = (color, percent) => {
+  var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF; // eslint-disable-line no-mixed-operators
+  return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+}
+

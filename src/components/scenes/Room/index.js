@@ -61,7 +61,8 @@ class Room extends Component {
       downsampledData,
       chromDict,
       roomRadius,
-      roomHeight
+      roomHeight,
+      pCutoff
     );
 
     const {sigCoords = [], insigCoords = []} = R.groupBy((coord) => {return coord.p < pCutoff ? 'sigCoords' : 'insigCoords'}, coordinates)
@@ -74,6 +75,8 @@ class Room extends Component {
           height={roomHeight}
           yScaleDomain={yScaleDomain}
           radius={roomRadius}
+          pCutoff={pCutoff}
+          chromosomes={chromosomes}
         />
 
         <Rotunda
