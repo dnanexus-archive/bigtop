@@ -2,6 +2,8 @@ import * as R from 'ramda';
 import {scaleLinear} from 'd3-scale';
 import {max, extent} from 'd3-array';
 
+import initialState from "./store/initialState";
+
 export const createChromosomeScale = function(chroms, sizes) {
   let index = -1;
   let chromosomeLengths = R.zipWith(function(a, b) {
@@ -91,7 +93,7 @@ export const calculateCoordinates = function(data, chromDict, roomRadius, roomHe
 
   const floorDistance = 0; 				// Distance from 0 to floor, lowers points by this amount
   let yScale = scaleLinear()
-    .domain([floorDistance, maxP+floorDistance])
+    .domain([floorDistance-Math.log10(initialState.pCutoff), maxP+floorDistance])
     .range(yRange);
 
   let thetaScale = scaleLinear()
