@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BigTop VR</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" href="https://platform.dnanexus.com/favicon.ico">
+    <!-- Load any scripts here that you will need for your viewer -->
+    <script src='https://platform.dnanexus.com/javascript/file-viewer-1.2.min.js'></script>
+  </head>
+
+  <body>
+    <div id='root'>Loading your data into BigTop...</div>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <script language="javascript">
+      // Fetch the options from DNAnexus
+      getOptions(function(options) {
+        // For the moment, only accept whole datasets instead of piecemeal files. If more than one dataset is specified, we'll use the first one specified in the URL
+        for (var i = 0; i < options.files.length; ++i) {
+          history.replaceState({}, "BigTop", window.location.href + "&datasets=" + encodeURIComponent(options.files[i].url))
+        }
+
+        /* BigTop JavaScript goes here! */
+      });
+    </script>
+  </body>
+</html>
+
