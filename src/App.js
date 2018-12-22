@@ -92,6 +92,7 @@ class App extends Component {
             dataURL={decodeURIComponent(queryParams.data || "data%2F90k_GIANT_height_filtered.gene_loc.coords.json")}
             chrURL={decodeURIComponent(queryParams.chr || "data%2Fhomo_sapiens_chrInfo.json")}
             cytoURL={decodeURIComponent(queryParams.cyto || "data%2Fhomo_sapiens_cytobands.json")}
+            datasetsURL={queryParams.datasets && decodeURIComponent(queryParams.datasets)}
           />
 
           {this.state.inVR && <div>Now displaying in VR....</div>}

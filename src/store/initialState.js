@@ -11,7 +11,12 @@ export default {
   },
   pCutoff: 1e-7,
   pointCount: null,
-  data: null,
-  chromosomes: [],
-  cytobands: []
+  currentDataset: 0,
+  datasets: [
+    {
+      data: null,
+      chromosomes: [],
+      cytobands: []    
+    }
+  ]
 };

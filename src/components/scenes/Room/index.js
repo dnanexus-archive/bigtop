@@ -28,9 +28,14 @@ class Room extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchData(this.props.dataURL)
-    this.props.fetchChromosomes(this.props.chrURL);
-    this.props.fetchCytobands(this.props.cytoURL);
+    const {fetchData, fetchChromosomes, fetchCytobands, fetchDatasets, dataURL, chrURL, cytoURL, datasetsURL} = this.props;
+    if (datasetsURL) {
+      fetchDatasets(datasetsURL);
+    } else {
+      fetchData(dataURL)
+      fetchChromosomes(chrURL);
+      fetchCytobands(cytoURL);
+    }
   }
 
   render() {
@@ -107,9 +112,9 @@ const mapStateToProps = (state) => ({
   pCutoff: state.pCutoff,
   pointCount: state.pointCount,
   room: state.room,
-  chromosomes: state.chromosomes,
-  data: state.data,
-  cytobands: state.cytobands
+  chromosomes: R.pathOr([], ['datasets', state.currentDataset, 'chromosomes'], state),
+  data: R.pathOr([], ['datasets', state.currentDataset, 'data'], state),
+  cytobands: R.pathOr([], ['datasets', state.currentDataset, 'cytobands'], state),
 });
 
 export default connect(mapStateToProps, actionCreators)(Room);

@@ -25,30 +25,38 @@ export default combineReducers({
 
   pointCount: (state = initialState.pointCount) => state,
 
-  chromosomes: (state = initialState.chromosomes, action) => {
+  currentDataset: (state = initialState.currentDataset, action) => {
     switch (action && action.type) {
-      case "RECEIVED_CHR":
-        return action.data;
+      case "SWITCH_DATASET":
+        return action.index;
 
       default:
         return state;
     }
   },
 
-  data: (state = initialState.data, action) => {
+  datasets: (state = initialState.datasets, action) => {
     switch (action && action.type) {
-      case "RECEIVED_DATA":
+      case "RECEIVED_DATASETS":
         return action.data;
 
-      default:
-        return state;
-    }
-  },
+      case "RECEIVED_CHR": {
+        let datasets = [...state];
+        datasets[0] = {...datasets[0], chromosomes: action.data};
+        return datasets;
+      }
 
-  cytobands: (state = initialState.cytobands, action) => {
-    switch (action && action.type) {
-      case "RECEIVED_CYTO":
-        return action.data;
+      case "RECEIVED_CYTO": {
+        let datasets = [...state];
+        datasets[0] = {...datasets[0], cytobands: action.data};
+        return datasets;
+      }
+
+      case "RECEIVED_DATA": {
+        let datasets = [...state];
+        datasets[0] = {...datasets[0], data: action.data};
+        return datasets;
+      }
 
       default:
         return state;

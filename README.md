@@ -70,6 +70,8 @@ You can configure certain aspects of how the world renders by passing in query p
     * `label`: The commonly-known name of the stain region (e.g. "p35.3")
     * `stain`: The stain level in this region: one of [`gneg`, `gpos25`, `gpos50`, `gpos75`, `gpos100`, `acen`, `gvar`, `stalk`]
 
+  * `datasets`: Rather than specifying three files in the URL, you can conglomerate them into one large JSON file. This file should be an array with one object containing the keys `chromosomes`, `cytobands`, and `data`, the values of each of which should correcpond to the contents of the above three files. In the future we aim to support loading multiple datasets this way (by allowing the array to be longer than one object), but for the moment this is merely a shortcut to replace specifying the three files above.
+
   * `lefty`: If this parameter is present, regardless of its value, the controllers will be switched to a left-handed configuration (laser pointer on the left, hand avatar on the right).
 
   * `stats`: If this parameter is present, regardless of its value, then a stats window will be displayed in the upper left of the screen when not in VR mode.
