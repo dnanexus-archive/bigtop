@@ -53,7 +53,13 @@ class Rotunda extends Component {
         />
         {/* Y axis: e.g. "-log10(p-value)" */}
         <Entity
-          text={{value: yAxisTitle, align: "center", width: 10, color: "black"}}
+          text={{
+            font: "fonts/Roboto-msdf.json",
+            value: yAxisTitle,
+            align: "center",
+            width: 10,
+            color: "black"
+          }}
           // geometry={{primitive: "plane", height: "auto", width: 3.5}}
           material={{shader: "flat" }}
           position={{y: -0.3 * height, ...polarToCartesian(radius*0.997, -0.005 * (2 * Math.PI))}}

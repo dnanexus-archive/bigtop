@@ -25,11 +25,13 @@ class RadiusAxes extends Component {
       <Entity>
         {/* Radius axis: e.g. "Allele frequency" */}
         <Entity
-          text={{ value: title,
-                  align: "center",
-                  width: 10,
-                  color: "black"
-                }}
+          text={{
+            font: "fonts/Roboto-msdf.json",
+            value: title,
+            align: "center",
+            width: 10,
+            color: "black"
+          }}
           // geometry={{primitive: "plane", height: "auto", width: 3.5}}
           // material="color: black"
           position={{x: -0.5, y: yPosition, z: -1*(radiusScaleInfo.range[1]/2)}}

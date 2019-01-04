@@ -29,11 +29,13 @@ class FloorAxisTick extends Component {
             <Entity rotation={{y: direction}} key={direction}>
               {/* floor radius tick marks: 10%, 20%, etc. */}
               <Entity
-                text={{ value: `${value * 100}%`,
-                        align: "center",
-                        width: 5,
-                        color: "black"
-                      }}
+                text={{
+                  font: "fonts/Roboto-msdf.json",
+                  value: `${value * 100}%`,
+                  align: "center",
+                  width: 5,
+                  color: "black"
+                }}
                 // geometry={{primitive: "plane", height: "auto", width: 0.5}}
                 // material="color: black"
                 position={{x: 0, y: yPosition, z: -radialPosition}}

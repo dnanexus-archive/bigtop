@@ -26,7 +26,13 @@ class CylindricalPanel extends Component {
           key={tick.value}
           // geometry={{primitive: "plane", height: "auto", width: 0.75}}
           // material="color: black"
-          text={{value: tick.value, align: "center", width: 5, color: "black"}}
+          text={{
+            font: "fonts/Roboto-msdf.json",
+            value: tick.value,
+            align: "center",
+            width: 5,
+            color: "black"
+          }}
           position={{y: tick.position, x: x, z: z}}
           rotation={`0 ${360 - ((chrom.scaledStart + rightOfAxisOffset) * 360)} 0`}
         />), ticks)

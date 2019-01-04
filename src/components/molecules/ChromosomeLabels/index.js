@@ -22,7 +22,12 @@ class ChromosomeLabels extends Component {
               return (<Entity
                 key={d.chrom}
                 rotation={`0 ${360-((d.scaledStart + d.scaledEnd) / 2) * 360} 0`}
-                text={{value: R.replace(/^chr/, '', d.chrom), align: "center", width: 10}}
+                text={{
+                  font: "fonts/Roboto-msdf.json",
+                  value: R.replace(/^chr/, '', d.chrom),
+                  align: "center",
+                  width: 10
+                }}
                 position={{y: yPosition, x: x, z: z}}
               />);
             }

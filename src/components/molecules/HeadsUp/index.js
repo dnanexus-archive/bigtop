@@ -17,10 +17,13 @@ class HeadsUp extends Component {
 				material={{color: 'yellow', shader: 'flat', opacity: 0.9}}
       >
 				<Entity
-					text={{	value: text,
-									align: "center",
-									color: "teal",
-									width: 1 }}
+					text={{
+						font: "fonts/Roboto-msdf.json",
+						value: text,
+						align: "center",
+						color: "teal",
+						width: 1
+					}}
 				/>
 			</Entity>
     );

@@ -14,6 +14,7 @@ class GeneInfoPanel extends Component {
     return <InfoPanel position={this.props.position} scale={this.props.scale} rotation={this.props.rotation} look-at="[camera]">
       <Entity
         text={{
+          font: "fonts/Roboto-msdf.json",
           value: `${id}\n${gene}\n\n\n\n`, // Extra CRs to force space in the panel for the following text
           align: 'center',
           color: 'white',
@@ -24,12 +25,14 @@ class GeneInfoPanel extends Component {
         <Entity position={{x: 0.25}}>
           <Entity
             text={{
+              font: "fonts/Roboto-msdf.json",
               value: 'p:',
               color: 'rgb(128, 128, 128)'
             }}
           />
           <Entity
             text={{
+              font: "fonts/Roboto-msdf.json",
               value: p.toExponential(4),
               color: 'white',
             }}
@@ -39,6 +42,7 @@ class GeneInfoPanel extends Component {
         <Entity position={{x: -0.25}}>
           <Entity
             text={{
+              font: "fonts/Roboto-msdf.json",
               value: '%',
               color: 'rgb(128, 128, 128)',
               align: 'right'
@@ -47,6 +51,7 @@ class GeneInfoPanel extends Component {
           />
           <Entity
             text={{
+              font: "fonts/Roboto-msdf.json",
               value: d3Format('.1f')(frequency * 100),
               color: 'white',
               align: 'right'
@@ -57,6 +62,7 @@ class GeneInfoPanel extends Component {
       </Entity>
       <Entity
         text={{
+          font: "fonts/Roboto-msdf.json",
           value: `${chr}:${d3Format(`,.${location.toString().length}r`)(location)}`,
           color: 'white',
           align: 'center'
