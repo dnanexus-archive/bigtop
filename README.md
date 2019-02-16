@@ -5,6 +5,8 @@ BigTop demonstrates some of the potential of virtual reality for scientific visu
   * Provides a greater field for data display, making navigation faster and more intuitive than entering genomic coordinates in a browser.
   * Makes locating points of interest easier, as the user retains a greater sense of their body-relative location.
   * Opens potential for more natural methods of interacting with data.
+  
+While BigTop is meant for examining large genomic data sets such as those found in GWAS studies, in reality it can be used to visualize any data set that contains genomic location, p-value, and a factor that can be quantified between 0 and 1 (usually frequency of an attribute's expression in a cohort).
 
 ## Quickest Start
 
