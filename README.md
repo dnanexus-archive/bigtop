@@ -26,7 +26,7 @@ Viewing requires a browser that supports WebXR, such as the latest version of [C
   * [#webxr-gamepad-support](chrome://flags#webxr-gamepad-support)
   * [#oculus-vr](chrome://flags#oculus-vr)
 
-To view in virtual reality, you need a compatible VR headset. This has been tested with the Oculus Rift, HTC Vive, and Google Daydream.
+To view in virtual reality, you need a compatible VR headset. This has been tested with the Oculus Rift, Oculus Quest, HTC Vive, and Google Daydream. Note that because of the reduced processing power of Oculus Quest and Google Daydream devices, your experience browsing your data will be heavily impacted (both devices have mobile-class graphics processors, and update very slowly; this may cause nausea for some users).
 
 ### Installation and Building
 
