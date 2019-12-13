@@ -28,6 +28,17 @@ The located.txt file contains the SNPs with their chromosomal locations.
 The gene_loc file contains the SNPs with both their chromosomal locations and their gene info.
 The coords.json file contains the same info as the gene_loc file, but in structured JSON format ready to be used for BigTop.
 
+## Working with non-human data?
+
+If your data does not have rsID numbers for the SNPs, you can use the `nonhuman_JSON_setup.py` script included here.
+
+This script provides less information in the created structured JSON, but requires only 4 values per SNP:
+```
+chromosome	chr_position	p-value 				      allele frequency
+1			      1178			    1.61836446771225e-11	0.0868263473053892
+```
+This information, in TSV format, is converted to a coords.json file, similar to above, which can be loaded into BigTop.
+
 *****
 
 **##### NOTE: DETAILS BELOW ARE FOR DEPRECATED SCRIPTS #####**
