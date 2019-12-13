@@ -34,8 +34,8 @@ If your data does not have rsID numbers for the SNPs, you can use the `nonhuman_
 
 This script provides less information in the created structured JSON, but requires only 4 values per SNP:
 ```
-chromosome	chr_position	p-value 				      allele frequency
-1			      1178			    1.61836446771225e-11	0.0868263473053892
+chromosome	chr_position	p-value 		allele frequency
+1	        1178		1.61836446771225e-11	0.0868263473053892
 ```
 This information, in TSV format, is converted to a coords.json file, similar to above, which can be loaded into BigTop.
 
