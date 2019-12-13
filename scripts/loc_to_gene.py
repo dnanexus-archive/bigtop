@@ -1,7 +1,8 @@
 #!/usr/bin/Python
 
 # loc_to_gene.py
-# Purpose: Takes the output of rsID_to_loc.py, which contains the chromosome and coordinates of each SNP, and again uses cruzdb to try and find which gene(s) are at that location.
+# Purpose: Takes the output of rsID_to_loc.py, which contains the chromosome and coordinates of each SNP, and 
+# again uses cruzdb to find which gene(s), if any, are at that location.
 
 import sys, cruzdb, time
 
@@ -49,5 +50,6 @@ for line in infile:
 print "All done"
 t1 = time.clock()
 print "Time elapsed:\t", str(t1-t0), " seconds."
+
 infile.close()
 outfile.close()
