@@ -19,16 +19,21 @@ class Point extends Component {
   render() {
     const {
       datum,
+      gene,
+      highlightColor,
+      rsID,
       size,
       color
     } = this.props;
+
+    const highlighted = datum.id === rsID || (gene && (new RegExp(gene, "i")).test(datum.gene));
 
     return (
       <Entity
         id={datum.id}
         gene={datum.gene}
         geometry={{primitive: 'sphere', radius: size}}
-        material={{color, metalness: 0.5}}
+        material={{color: highlighted ? highlightColor : color, metalness: 0.5}}
         position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}
         events={{
           click: this.onEnter
@@ -38,4 +43,10 @@ class Point extends Component {
   }
 }
 
-export default connect(null, actionCreators)(Point);
+const mapStateToProps = (state) => ({
+  gene: state.gene,
+  highlightColor: state.highlightColor,
+  rsID: state.rsID
+});
+
+export default connect(mapStateToProps, actionCreators)(Point);

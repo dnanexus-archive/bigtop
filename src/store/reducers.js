@@ -25,6 +25,12 @@ export default combineReducers({
 
   pointCount: (state = initialState.pointCount) => state,
 
+  rsID: (state = initialState.rsID) => state,
+
+  gene: (state = initialState.gene) => state,
+
+  highlightColor: (state = initialState.highlightColor) => state,
+
   currentDataset: (state = initialState.currentDataset, action) => {
     switch (action && action.type) {
       case "SWITCH_DATASET":

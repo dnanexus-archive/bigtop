@@ -28,6 +28,8 @@ const store = configureStore(R.mergeDeepLeft({
     radius: (queryParams['room.radius'] && parseInt(queryParams['room.radius'], 10)) || initialState.room.radius,
   },
   pCutoff: (queryParams.p && parseFloat(queryParams.p, 10)) || initialState.pCutoff,
+  rsID: queryParams.rsid || initialState.rsID,
+  gene: queryParams.gene || initialState.gene,
   pointCount: (queryParams.points && parseInt(queryParams.points, 10)) || initialState.pointCount
 }, initialState));
 
