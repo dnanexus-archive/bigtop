@@ -18,6 +18,17 @@ rs1113396	T	C	0.058	-0.014	0.0063	0.026	230497
 Note that the SNP ID should be the first column.  The column containing the p-value can be set below this line.
 In this example shown above, the p-value is in column 7, so the label within the python script is 6 (Python arrays start at 0).
 
+This script produces (up to) three outputs:
+
+infile.located.txt
+infile.gene_loc.txt
+infile.gene_loc.coords.json
+
+The located.txt file contains the SNPs with their chromosomal locations.
+The gene_loc file contains the SNPs with both their chromosomal locations and their gene info.
+The coords.json file contains the same info as the gene_loc file, but in structured JSON format ready to be used for BigTop.
+
+*****
 
 **##### NOTE: DETAILS BELOW ARE FOR DEPRECATED SCRIPTS #####**
 
