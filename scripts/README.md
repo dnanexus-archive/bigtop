@@ -20,9 +20,9 @@ In this example shown above, the p-value is in column 7, so the label within the
 
 This script produces (up to) three outputs:
 
-infile.located.txt
-infile.gene_loc.txt
-infile.gene_loc.coords.json
+infile.located.txt    
+infile.gene_loc.txt    
+infile.gene_loc.coords.json    
 
 The located.txt file contains the SNPs with their chromosomal locations.
 The gene_loc file contains the SNPs with both their chromosomal locations and their gene info.
