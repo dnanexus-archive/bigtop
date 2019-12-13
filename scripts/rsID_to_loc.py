@@ -5,9 +5,11 @@
 # the UCSC Genome Browser using CruzDB.  For more info on CruzDB, see here: https://github.com/brentp/cruzdb
 #
 # Input structure: This takes a tab-separated values list of rsIDs (SNP IDs), such as:
+# rsID		major	minor	X	Y	Z	p-value	NaN
 # rs1113396	T	C	0.058	-0.014	0.0063	0.026	230497
 #
 # Note that the SNP ID should be the first column.  The column containing the p-value can be set below this line.
+# In this example shown above, the p-value is in column 7, so the label below is 6 (Python arrays start at 0).
 #
 ###### CUSTOMIZABLE: COLUMN CONTAINING P-VALUE FOR EACH SNP ######
 #
