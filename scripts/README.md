@@ -2,6 +2,25 @@
 
 *****
 
+To convert input data from TSV to JSON format for use in BigTop, we provide the following script: SNP_info_retriever.py
+
+`USAGE: python SNP_info_retriever.py infile.tsv [-1 -2 -3]`
+
+To skip Step 1, add -1 to the command.  To skip Step 2, add -2 to the command.  To skip Step 3, add -3 to the command.
+
+This Python program takes a file with SNP IDs (rs######) and produces the location, retrieved from the UCSC Genome Browser using CruzDB.  For more info on CruzDB, see here: https://github.com/brentp/cruzdb
+
+Input structure: This takes a tab-separated values list of rsIDs (SNP IDs), such as:
+```
+rsID		major	minor	X	Y	Z	p-value	NaN
+rs1113396	T	C	0.058	-0.014	0.0063	0.026	230497
+```
+Note that the SNP ID should be the first column.  The column containing the p-value can be set below this line.
+In this example shown above, the p-value is in column 7, so the label within the python script is 6 (Python arrays start at 0).
+
+
+**##### NOTE: DETAILS BELOW ARE FOR DEPRECATED SCRIPTS #####**
+
 These are scripts for converting GWAS data into JSON to be read into the VR environment.
 
 **Starting data example:**
