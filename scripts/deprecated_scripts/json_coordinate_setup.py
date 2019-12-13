@@ -16,10 +16,6 @@ chr_lengths_list = [248956422, 242193529, 198295559, 190214555, 181538259, 17080
 
 total = sum(chr_lengths_list)
 
-##### spacer variable introduces space between each chromosome #####
-#spacer = 0
-#total += spacer * len(chr_lengths_list)
-
 # functions
 def convert_to_polar(line):
 	splitline = line.strip().split("\t")
