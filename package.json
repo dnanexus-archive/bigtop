@@ -1,11 +1,10 @@
 {
   "name": "bigtop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "aframe": "^0.8.2",
-    "aframe-animation-component": "^4.2.0",
+    "aframe": "^1.0.3",
     "aframe-glow": "^1.0.1",
     "aframe-look-at-component": "^0.7.0",
     "aframe-particle-system-component": "^1.0.11",
@@ -35,7 +34,7 @@
   },
   "homepage": ".",
   "browserslist": [
-    "Chrome 68",
-    "Firefox 62"
+    "Chrome 79",
+    "Firefox 72"
   ]
 }

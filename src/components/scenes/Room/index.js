@@ -1,5 +1,4 @@
 import "aframe";
-import "aframe-animation-component";
 import {Entity} from "aframe-react";
 import PropTypes from "prop-types";
 import React, {Component} from "react";

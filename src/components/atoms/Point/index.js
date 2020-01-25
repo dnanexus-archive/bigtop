@@ -29,15 +29,14 @@ class Point extends Component {
     const highlighted = datum.id === rsID || (gene && (new RegExp(gene, "i")).test(datum.gene));
 
     return (
-      <Entity
+      <a-sphere
         id={datum.id}
         gene={datum.gene}
-        geometry={{primitive: 'sphere', radius: size}}
-        material={{color: highlighted ? highlightColor : color, metalness: 0.5}}
-        position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}
-        events={{
-          click: this.onEnter
-        }}
+        radius={size}
+        color={highlighted ? highlightColor : color}
+        metalness={0.5}
+        position={datum.coords.join(" ")}
+        onClick={this.onEnter}
       />
     );
   }

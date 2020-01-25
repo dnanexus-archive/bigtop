@@ -1,6 +1,4 @@
 import "aframe";
-import "aframe-animation-component";
-import {Entity, Scene} from "aframe-react";
 import React, {Component} from "react";
 import {Provider} from "react-redux";
 import queryString from 'query-string';
@@ -56,37 +54,34 @@ class App extends Component {
     const state = store.getState();
     const roomHeight = state.room.height;
     const sceneOpts = {
-      style: "position: absolute; height: 100%; width: 100%",
+      style: {position: "absolute", height: "100%", width: "100%"},
       stats: typeof queryParams.stats !== "undefined"
     };
 
     return (
       <Provider store={store}>
-        <Scene {...sceneOpts}>
+        <a-scene {...sceneOpts}>
           {
             // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
             // the position attribute on a camera. This allows both monitor and headset position to be similar.
           }
-          <Entity position={{y: -roomHeight / 2}}>
-            <Entity
+          <a-entity position={`0 ${-roomHeight / 2} 0`}>
+            <a-entity
               primitive="a-camera"
               id="userCamera"
               look-controls
               raycaster="objects: .data-point"
             >
-              {!this.state.inVR && (<Entity
+              {!this.state.inVR && (<a-ring
                 id="reticle"
-                cursor={{fuse: true, fuseTimeout: "500"}}
-                geometry={{
-                  primitive: "ring",
-                  radiusInner: 0.0005,
-                  radiusOuter: 0.001
-                }}
-                position={{x: 0, y: 0, z: -0.1}}
-                material={{color: "black", shader: "flat", opacity: 0.4}}
+                cursor="fuse: true; fuseTimeout: 500"
+                radius-inner="0.0005"
+                radius-outer="0.001"
+                position="0 0 -0.1"
+                material='color: "black"; opacity: 0.4'
               />)}
-            </Entity>
-          </Entity>
+            </a-entity>
+          </a-entity>
 
           <HandControls />
 
@@ -98,7 +93,7 @@ class App extends Component {
           />
 
           {this.state.inVR && <div>Now displaying in VR....</div>}
-        </Scene>
+        </a-scene>
       </Provider>
     );
   }
