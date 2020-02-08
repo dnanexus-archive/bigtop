@@ -1,6 +1,3 @@
-import 'aframe';
-import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
 import CylindricalPanel from 'components/atoms/CylindricalPanel';
@@ -25,26 +22,26 @@ class YAxes extends Component {
     let ticks = R.map(d => {return {value: d, position: yScale(d)}}, tickValues);
 
     return (
-      <Entity>
+      <a-entity>
         {
           R.map(d => {
-            return (<Entity key={d.chrom}>
-              <Entity scale={{x: 1, y: -1, z: -1}}>
+            return (<a-entity key={d.chrom}>
+              <a-entity scale="1 -1 -1">
                 <CylindricalPanel
                   radius={radius}
                   height={height}
-                  color={"black"}
+                  color="black"
                   start={d.scaledStart * 360}
                   length={0.3}
                   openEnded="true"
                   yPosition={yPosition}
                 />
-              </Entity>
+              </a-entity>
               <YAxisTickSet ticks={ticks} chrom={d} radius={radius * 0.99} />
-            </Entity>);
+            </a-entity>);
           }, chromList)
         }
-      </Entity>
+      </a-entity>
     );
   }
 }

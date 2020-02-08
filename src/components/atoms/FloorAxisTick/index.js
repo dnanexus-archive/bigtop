@@ -1,6 +1,3 @@
-import 'aframe';
-import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import * as R from 'ramda';
 import React, {Component} from 'react';
 
@@ -16,36 +13,32 @@ class FloorAxisTick extends Component {
   const ringWidth = 0.01;
 
   return (
-    <Entity>
-      <Entity
-        geometry={{primitive: 'ring', radiusInner: radialPosition, radiusOuter: radialPosition + ringWidth}}
-        position={{x:0, y: yPosition, z: 0}}
-        rotation={{x: 270, y: 0, z: 180}}
-        material={{color: 'black'}}
+    <a-entity>
+      <a-entity
+        geometry={`primitive: ring; radius-inner: ${radialPosition}; radius-outer: ${radialPosition + ringWidth}`}
+        position={`0 ${yPosition} 0`}
+        rotation="270 0 180"
+        material="color: black"
       />
       {
         R.map(function(direction) {
           return (
-            <Entity rotation={{y: direction}} key={direction}>
+            <a-entity rotation={`0 ${direction} 0`} key={direction}>
               {/* floor radius tick marks: 10%, 20%, etc. */}
-              <Entity
-                text={{
-                  font: "fonts/Roboto-msdf.json",
-                  value: `${value * 100}%`,
-                  align: "center",
-                  width: 5,
-                  color: "black"
-                }}
-                // geometry={{primitive: "plane", height: "auto", width: 0.5}}
-                // material="color: black"
-                position={{x: 0, y: yPosition, z: -radialPosition}}
-                rotation={{x: 270, y: 0, z: 0}}
+              <a-text
+                font="fonts/Roboto-msdf.json"
+                value={`${value * 100}%`}
+                align="center"
+                width="5"
+                color="black"
+                position={`0, ${yPosition} ${-radialPosition}`}
+                rotation="270 0 0"
               />
-            </Entity>
+            </a-entity>
           )
         }, [0, 90, 180, 270])
       }
-    </Entity>
+    </a-entity>
   );
   }
 }

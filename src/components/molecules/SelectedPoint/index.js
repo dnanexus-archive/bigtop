@@ -1,5 +1,3 @@
-import 'aframe';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as R from 'ramda';
@@ -46,28 +44,36 @@ class SelectedPoint extends Component {
 
 
     return (
-     <Entity
-        geometry={{primitive: 'sphere', radius: size + 0.002}}
-        material={{color: 'yellow'}}
-        position={{x: datum.coords[0], y: datum.coords[1], z: datum.coords[2]}}
-    >
-        <Entity
-          geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: datum.coords[1], openEnded: true}}
-          material={{color: 'white', shader: 'flat'}}
-          position={{x: 0, y: -datum.coords[1]/2, z: 0}}
+     <a-sphere
+        radius={size + 0.002}
+        color="yellow"
+        position={`${datum.coords[0]} ${datum.coords[1]} ${datum.coords[2]}`}
+      >
+        <a-cylinder
+          radius-top="0.01"
+          radius-bottom="0.01"
+          theta-start="90"
+          height={datum.coords[1]}
+          open-ended="true"
+          color="white"
+          position={`0 ${-datum.coords[1]/2} 0`}
         />
-        <Entity
-          geometry={{primitive: 'cylinder', radius: 0.01, thetaStart: 90, height: radius+datum.radius, openEnded: true}} material={{color: 'white', shader: 'flat'}}
-          position={{x: x, y: 0, z: z}}
-          rotation={{x:90, y: -((datum.theta*180) / Math.PI), z: 0}}
+        <a-cylinder
+          radius-top="0.01"
+          radius-bottom="0.01"
+          theta-start="90"
+          height={radius + datum.radius}
+          open-ended="true"
+          color="white"
+          position={`${x} 0 ${z}`}
+          rotation={`90 ${-((datum.theta*180) / Math.PI)} 0`}
         />
         <GeneInfoPanel
           position={{x: 0, y: infoHeight, z: 0}}
           scale={{x: pointDistance, y: pointDistance, z: pointDistance}}
           data={datum /* Only a little weird to turn a datum into data, but the datum does contain many data.... */}
         />
-
-    </Entity>
+    </a-sphere>
     );
   }
 }

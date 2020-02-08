@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Entity} from 'aframe-react';
 
 /*
 ** A wrapper component that applies a position to any children based on the current user position.
@@ -9,9 +8,9 @@ import {Entity} from 'aframe-react';
 */
 
 const UserTracker = (props) => (
-  <Entity position={{x: props.coords[0], y: props.coords[1], z: props.coords[2]}}>
+  <a-entity position={`${props.coords[0]} ${props.coords[1]} ${props.coords[2]}`}>
     {props.children}
-  </Entity>
+  </a-entity>
 );
 
 const mapStateToProps = (state) => {

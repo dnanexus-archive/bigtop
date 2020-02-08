@@ -1,5 +1,3 @@
-import 'aframe';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import Point from 'components/atoms/Point';
 import SelectedPoint from 'components/molecules/SelectedPoint';
@@ -35,10 +33,10 @@ class PointCloud extends Component {
     ), data);
 
     return (
-      <Entity position={{y: -height/2.0, x: 0, z: 0}}>
+      <a-entity position={`0 ${-height/2.0} 0`}>
         {points}
         <SelectedPoint points={data} radius={radius} sizeScaler={pointSizeScale} />
-      </Entity>
+      </a-entity>
     );
   }
 }

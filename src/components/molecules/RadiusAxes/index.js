@@ -1,6 +1,3 @@
-import 'aframe';
-import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
 import {scaleLinear} from 'd3-scale';
@@ -22,20 +19,16 @@ class RadiusAxes extends Component {
     let ticks = R.map(d => {return {value: d, position: rScale(d)}}, tickValues);
 
     return (
-      <Entity>
+      <a-entity>
         {/* Radius axis: e.g. "Allele frequency" */}
-        <Entity
-          text={{
-            font: "fonts/Roboto-msdf.json",
-            value: title,
-            align: "center",
-            width: 10,
-            color: "black"
-          }}
-          // geometry={{primitive: "plane", height: "auto", width: 3.5}}
-          // material="color: black"
-          position={{x: -0.5, y: yPosition, z: -1*(radiusScaleInfo.range[1]/2)}}
-          rotation={{x: 270, y: 0, z: 90}}
+        <a-text
+          font="fonts/Roboto-msdf.json"
+          value={title}
+          align="center"
+          width="10"
+          color="black"
+          position={`-0.5 ${yPosition} ${-1*(radiusScaleInfo.range[1]/2)}`}
+          rotation="270 0 90"
         />
         {
           R.map(function(d) {
@@ -48,7 +41,7 @@ class RadiusAxes extends Component {
               />);
           }, ticks)
         }
-      </Entity>
+      </a-entity>
     );
   }
 }

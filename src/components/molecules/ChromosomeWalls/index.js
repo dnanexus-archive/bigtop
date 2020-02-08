@@ -1,6 +1,3 @@
-import 'aframe';
-import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
 import CylindricalPanel from 'components/atoms/CylindricalPanel';
@@ -15,7 +12,7 @@ class ChromosomeWalls extends Component {
     } = this.props;
 
     return (
-      <Entity scale={{x: 1, y: -1, z: -1}}>
+      <a-entity scale="1 -1 -1">
         {
           R.map(d =>
             <CylindricalPanel
@@ -29,7 +26,7 @@ class ChromosomeWalls extends Component {
             />
           , chromList)
         }
-      </Entity>
+      </a-entity>
     );
   }
 }

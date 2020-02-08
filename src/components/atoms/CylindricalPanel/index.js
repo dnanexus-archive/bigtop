@@ -1,5 +1,3 @@
-import 'aframe';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 
 class CylindricalPanel extends Component {
@@ -16,17 +14,17 @@ class CylindricalPanel extends Component {
   } = this.props;
 
   return (
-    <Entity
-      geometry={{
-        primitive: 'cylinder',
-        openEnded: openEnded,
-        thetaStart: start,
-        thetaLength: length,
-        radius: radius,
-        height: height
-      }}
-      material={{color: color, side: "double"}}
-      position={{x: 0, y: yPosition, z: 0}}
+    <a-entity
+      geometry={`
+        primitive: cylinder;
+        openEnded: ${openEnded};
+        thetaStart: ${start};
+        thetaLength: ${length};
+        radius: ${radius};
+        height: ${height}
+      `}
+      material={`color: ${color}; side: double`}
+      position={`0 ${yPosition} 0`}
       />
     );
   }

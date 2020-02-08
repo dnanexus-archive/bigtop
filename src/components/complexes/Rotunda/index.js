@@ -1,6 +1,3 @@
-import 'aframe';
-import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
 import ChromosomeWalls from 'components/molecules/ChromosomeWalls';
@@ -23,9 +20,10 @@ class Rotunda extends Component {
     } = this.props;
 
     const chromList = R.values(chromDict);
+    const cartesian = polarToCartesian(radius * 0.997, -0.005 * (2 * Math.PI));
 
     return (
-      <Entity>
+      <a-entity>
         <ChromosomeWalls
           radius={radius}
           height={height}
@@ -52,20 +50,16 @@ class Rotunda extends Component {
           yPosition={0}
         />
         {/* Y axis: e.g. "-log10(p-value)" */}
-        <Entity
-          text={{
-            font: "fonts/Roboto-msdf.json",
-            value: yAxisTitle,
-            align: "center",
-            width: 10,
-            color: "black"
-          }}
-          // geometry={{primitive: "plane", height: "auto", width: 3.5}}
-          material={{shader: "flat" }}
-          position={{y: -0.3 * height, ...polarToCartesian(radius*0.997, -0.005 * (2 * Math.PI))}}
-          rotation={{z: 90}}
+        <a-text
+          font="fonts/Roboto-msdf.json"
+          value={yAxisTitle}
+          align="center"
+          width="10"
+          color="black"
+          position={`${cartesian.x} ${-0.3 * height} ${cartesian.z}`}
+          rotation="0 0 90"
         />
-      </Entity>
+      </a-entity>
     );
   }
 }

@@ -1,6 +1,3 @@
-import 'aframe';
-import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
 import CylindricalPanel from 'components/atoms/CylindricalPanel';
@@ -21,7 +18,7 @@ class ChromosomeCytobands extends Component {
       .range(["#fff", "#ccc", "#888", "#444", "#000", "red", "white", "teal"]);
 
     return (
-      <Entity scale={{x: 1, y: -1, z: -1}}>
+      <a-entity scale="1 -1 -1">
         {
           R.map(d => {
             let chrom = chromDict[d.chrom];
@@ -40,7 +37,7 @@ class ChromosomeCytobands extends Component {
             );
           }, R.filter((band) => chromDict[band.chrom], cytobands))
         }
-      </Entity>
+      </a-entity>
     );
   }
 }

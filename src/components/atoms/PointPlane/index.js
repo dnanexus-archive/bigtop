@@ -1,5 +1,3 @@
-import 'aframe';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 
 class PointPlane extends Component {
@@ -27,15 +25,16 @@ class PointPlane extends Component {
       ctx.beginPath();
       ctx.arc(canvasX, canvasY, pointSize, 0, Math.PI * 2, true);
       ctx.fill();
-//      ctx.fillRect(canvasX, canvasY, pointSize, pointSize)
     }
 
     return (
-      <Entity
-        geometry={{primitive: 'plane', height: radius * 2, width: radius * 2}}
-        position={{y: -height / 2 + 0.02, x: 0, z: 0}}
-        rotation={{x: -90, y: 0, z: 0}}
-        material={{src: canvas.toDataURL(), opacity: 0.7, shader: 'flat'}}
+      <a-plane
+        height={radius * 2}
+        width={radius * 2}
+        position={`0 ${-height / 2 + 0.02} 0`}
+        rotation="-90 0 0"
+        src={canvas.toDataURL()}
+        opacity="0.7"
       />
     );
   }

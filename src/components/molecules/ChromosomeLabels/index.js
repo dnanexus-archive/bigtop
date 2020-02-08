@@ -1,6 +1,3 @@
-import 'aframe';
-import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import * as R from 'ramda';
 import {polarToCartesian} from 'utils';
@@ -14,26 +11,24 @@ class ChromosomeLabels extends Component {
     } = this.props;
 
     return (
-      <Entity>
+      <a-entity>
         {
           R.map(d =>
             {
               let {x, z} = polarToCartesian(radius, ((d.scaledStart + d.scaledEnd) / 2) * (2 * Math.PI));
-              return (<Entity
+              return (<a-text
                 key={d.chrom}
                 rotation={`0 ${360-((d.scaledStart + d.scaledEnd) / 2) * 360} 0`}
-                text={{
-                  font: "fonts/Roboto-msdf.json",
-                  value: R.replace(/^chr/, '', d.chrom),
-                  align: "center",
-                  width: 10
-                }}
-                position={{y: yPosition, x: x, z: z}}
+                font="fonts/Roboto-msdf.json"
+                value={R.replace(/^chr/, '', d.chrom)}
+                align="center"
+                width="10"
+                position={`${x} ${yPosition} ${z}`}
               />);
             }
           , chromList)
         }
-      </Entity>
+      </a-entity>
     );
   }
 }

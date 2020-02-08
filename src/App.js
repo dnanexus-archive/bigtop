@@ -1,4 +1,3 @@
-import "aframe";
 import React, {Component} from "react";
 import {Provider} from "react-redux";
 import queryString from 'query-string';
@@ -51,10 +50,7 @@ class App extends Component {
   }
 
   render() {
-    const state = store.getState();
-    const roomHeight = state.room.height;
     const sceneOpts = {
-      style: {position: "absolute", height: "100%", width: "100%"},
       stats: typeof queryParams.stats !== "undefined"
     };
 
@@ -65,23 +61,25 @@ class App extends Component {
             // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
             // the position attribute on a camera. This allows both monitor and headset position to be similar.
           }
-          <a-entity position={`0 ${-roomHeight / 2} 0`}>
+          <a-entity id="rig" position="0 -2 0">
             <a-entity
-              primitive="a-camera"
               id="userCamera"
               look-controls
+              wasd-controls
               raycaster="objects: .data-point"
             >
-              {!this.state.inVR && (<a-ring
+              {!this.state.inVR && (<a-entity
+                geometry="primitive: ring; radius-inner: 0.0005; radius-outer: 0.001"
                 id="reticle"
                 cursor="fuse: true; fuseTimeout: 500"
-                radius-inner="0.0005"
-                radius-outer="0.001"
                 position="0 0 -0.1"
                 material='color: "black"; opacity: 0.4'
               />)}
             </a-entity>
           </a-entity>
+
+          <a-light type="ambient" color="#ffffff" intensity="0.9" />
+          <a-light type="point" color="#ffffff" intensity="0.4" distance="50" position="0 -1 0" />
 
           <HandControls />
 

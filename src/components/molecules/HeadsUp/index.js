@@ -1,6 +1,3 @@
-import 'aframe';
-import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 
 class HeadsUp extends Component {
@@ -10,22 +7,21 @@ class HeadsUp extends Component {
     } = this.props;
 
     return (
-			<Entity
-				geometry={{primitive: 'plane', height: 0.05, width: 3}}
-				// optimal position = 0, -0.6, -0.2
+			<a-plane
+				height="0.05"
+				width="3"
 				position="0 -0.145 -0.2"
-				material={{color: 'yellow', shader: 'flat', opacity: 0.9}}
+				opacity="0.9"
+				color="yellow"
       >
-				<Entity
-					text={{
-						font: "fonts/Roboto-msdf.json",
-						value: text,
-						align: "center",
-						color: "teal",
-						width: 1
-					}}
+				<a-text
+					font="fonts/Roboto-msdf.json"
+					value={text}
+					align="center"
+					color="teal"
+					width="1"
 				/>
-			</Entity>
+			</a-plane>
     );
   }
 }

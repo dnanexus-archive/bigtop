@@ -1,5 +1,3 @@
-import "aframe";
-import {Entity} from "aframe-react";
 import PropTypes from "prop-types";
 import React, {Component} from "react";
 import {connect} from "react-redux";
@@ -72,7 +70,7 @@ class Room extends Component {
     const {sigCoords = [], insigCoords = []} = R.groupBy((coord) => {return coord.p < pCutoff ? 'sigCoords' : 'insigCoords'}, coordinates)
 
     return (
-      <Entity>
+      <a-entity>
         <PointPlane points={insigCoords} height={roomHeight} radius={roomRadius} />
         <PointCloud
           data={sigCoords}
@@ -93,16 +91,13 @@ class Room extends Component {
           yAxisTitle="-log10(p-value)"
         />
 
-        <Entity light={{ type: "ambient", color: "#ffffff", intensity: 0.9 }} />
-        <Entity light={{ type: "point", color: "#ffffff", intensity: 0.4, distance: 50 }} position={`0 ${roomHeight / 2 - roomHeight * 0.1} 0`} />
-
         <Floor
           radius={roomRadius}
           yPosition={-roomHeight / 2}
           radiusScaleInfo={radiusScaleInfo}
           radiusAxisTitle="Allele frequency"
         />
-      </Entity>
+      </a-entity>
     );
   }
 }

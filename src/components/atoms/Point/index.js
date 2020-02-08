@@ -1,6 +1,4 @@
-import 'aframe';
 import 'aframe-particle-system-component';
-import {Entity} from 'aframe-react';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from './actions';
