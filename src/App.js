@@ -50,6 +50,9 @@ class App extends Component {
   }
 
   render() {
+    const state = store.getState();
+    const roomHeight = state.room.height;
+
     const sceneOpts = {
       stats: typeof queryParams.stats !== "undefined"
     };
@@ -61,21 +64,22 @@ class App extends Component {
             // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
             // the position attribute on a camera. This allows both monitor and headset position to be similar.
           }
-          <a-entity id="rig" position="0 -2 0">
-            <a-entity
+          <a-entity id="rig" position={`0 ${-roomHeight / 2} 0`}>
+            <a-camera
               id="userCamera"
-              look-controls
-              wasd-controls
+              position="0 1.8 0"
               raycaster="objects: .data-point"
             >
-              {!this.state.inVR && (<a-entity
-                geometry="primitive: ring; radius-inner: 0.0005; radius-outer: 0.001"
-                id="reticle"
-                cursor="fuse: true; fuseTimeout: 500"
-                position="0 0 -0.1"
-                material='color: "black"; opacity: 0.4'
-              />)}
-            </a-entity>
+              {!this.state.inVR && (
+                <a-entity
+                  geometry="primitive: ring; radius-inner: 0.0005; radius-outer: 0.001"
+                  id="reticle"
+                  cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -0.1"
+                  material='color: "black"; opacity: 0.4'
+                />
+              )}
+            </a-camera>
           </a-entity>
 
           <a-light type="ambient" color="#ffffff" intensity="0.9" />

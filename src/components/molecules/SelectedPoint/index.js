@@ -50,8 +50,7 @@ class SelectedPoint extends Component {
         position={`${datum.coords[0]} ${datum.coords[1]} ${datum.coords[2]}`}
       >
         <a-cylinder
-          radius-top="0.01"
-          radius-bottom="0.01"
+          radius="0.01"
           theta-start="90"
           height={datum.coords[1]}
           open-ended="true"
@@ -59,8 +58,7 @@ class SelectedPoint extends Component {
           position={`0 ${-datum.coords[1]/2} 0`}
         />
         <a-cylinder
-          radius-top="0.01"
-          radius-bottom="0.01"
+          radius="0.01"
           theta-start="90"
           height={radius + datum.radius}
           open-ended="true"

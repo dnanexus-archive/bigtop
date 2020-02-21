@@ -2,15 +2,17 @@ import React, {Component} from 'react';
 
 class InfoPanel extends Component {
   render() {
+    const {children, ...props} = this.props;
+
     return (
       <a-plane
         height="0.25"
         width="0.4"
         color="black"
         opacity="0.4"
-        {...this.props}
+        {...props}
       >
-        {this.props.children}
+        {children}
       </a-plane>
     );
   }
