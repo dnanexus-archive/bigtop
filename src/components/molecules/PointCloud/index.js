@@ -34,7 +34,9 @@ class PointCloud extends Component {
 
     return (
       <a-entity position={`0 ${-height/2.0} 0`}>
-        {points}
+        <a-entity id="pointList">
+          {points}
+        </a-entity>
         <SelectedPoint points={data} radius={radius} sizeScaler={pointSizeScale} />
       </a-entity>
     );

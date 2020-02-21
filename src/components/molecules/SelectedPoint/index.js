@@ -67,8 +67,8 @@ class SelectedPoint extends Component {
           rotation={`90 ${-((datum.theta*180) / Math.PI)} 0`}
         />
         <GeneInfoPanel
-          position={{x: 0, y: infoHeight, z: 0}}
-          scale={{x: pointDistance, y: pointDistance, z: pointDistance}}
+          position={`0 ${infoHeight} 0`}
+          scale={`${pointDistance} ${pointDistance} ${pointDistance}`}
           data={datum /* Only a little weird to turn a datum into data, but the datum does contain many data.... */}
         />
     </a-sphere>
