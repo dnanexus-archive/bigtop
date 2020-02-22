@@ -27,8 +27,8 @@ class RadiusAxes extends Component {
           align="center"
           width="10"
           color="black"
-          position={`-0.5 ${yPosition} ${-1*(radiusScaleInfo.range[1]/2)}`}
-          rotation="270 0 90"
+          position={`-0.5 ${yPosition + 0.001} ${-1*(radiusScaleInfo.range[1]/2)}`}
+          rotation="270 0 93"
         />
         {
           R.map(function(d) {
