@@ -59,7 +59,7 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <a-scene {...sceneOpts}>
+        <a-scene vr-mode-ui="enabled: true" {...sceneOpts} style={{height: "100vh"}}>
           {
             // Camera wrapped in a positional entity because VR headsets apply their own position, which overrides
             // the position attribute on a camera. This allows both monitor and headset position to be similar.
