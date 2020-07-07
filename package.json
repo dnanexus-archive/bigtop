@@ -16,7 +16,7 @@
     "d3-scale": "^2.1.2",
     "install": "^0.11.2",
     "isomorphic-fetch": "^2.2.1",
-    "npm": "^6.4.1",
+    "npm": "^6.14.6",
     "query-string": "^6.2.0",
     "ramda": "^0.25.0",
     "react": "^16.5.2",
